@@ -32,6 +32,9 @@
   "contributors": [
     "Ian Routledge <ian@ediblecode.com>"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@nice-digital/eslint-config": "^1.0.2",
     "babel-cli": "^6.26.0",
