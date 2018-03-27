@@ -1,0 +1,42 @@
+{
+  "name": "@nice-digital/wdio-cucumber-steps",
+  "version": "0.0.1",
+  "description": "Shared step definitions for Cucumber JS BDD tests in WebdriverIO",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint **/*.js --fix",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "jest --config=jest.json",
+    "readme": "babel-node ./scripts/readme.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhsevidence/wdio-cucumber-steps.git"
+  },
+  "keywords": [
+    "cucumber",
+    "BDD",
+    "webdriverio",
+    "wdio",
+    "wdio-plugin",
+    "wdio-framework"
+  ],
+  "author": "NICE Digital Services",
+  "license": "MIT",
+  "homepage": "https://github.com/nhsevidence/wdio-cucumber-steps#readme",
+  "contributors": [
+    "Ian Routledge <ian@ediblecode.com>"
+  ],
+  "devDependencies": {
+    "@nice-digital/eslint-config": "^1.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "jest": "^22.4.3",
+    "np": "^2.20.1"
+  }
+}
