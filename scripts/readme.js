@@ -32,10 +32,10 @@ const getCommentRegex = (step: string): RegExp =>
 /**
  * Replaces pipes with their HTML entity code - markdown tables can't have pipes in the body.
  *
- * @param {string} text
- * @returns {string} The text with pipes replaced
+ * @param {string} text The text in which to look for pipes
+ * @returns {string} The text with pipes escaped
  */
-const replacePipes: string = (text: string): string => text.replace(/\|/g, "&#124;");
+const escapePipes: string = (text: string): string => text.replace(/\|/g, "\\|");
 
 /**
  * Gets the content for the given step, which contains all the definitions and their summaries
@@ -48,7 +48,7 @@ const getContent = (step: string): string => {
 
 	const tableHead: string = "Regex | Summary\r\n----- | -------";
 	const tableBody: string = stepDefinitions
-		.map((stepDef: StepDefType): string => `\`${ replacePipes(stepDef.regex.toString()) }\` | ${ stepDef.title }`)
+		.map((stepDef: StepDefType): string => `\`${ escapePipes(stepDef.regex.toString()) }\` | ${ stepDef.title }`)
 		.join("\r\n");
 
 	return `<!-- START ${ step } generated comment -->
