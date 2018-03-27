@@ -8,7 +8,11 @@
     "lint:fix": "eslint **/*.js --fix",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --config=jest.json",
-    "readme": "babel-node ./scripts/readme.js"
+    "readme": "babel-node ./scripts/readme.js",
+    "version": "npm run readme",
+    "release": "np patch",
+    "release:minor": "np minor",
+    "release:major": "np major"
   },
   "repository": {
     "type": "git",
