@@ -48,7 +48,7 @@ const getContent = (step: string): string => {
 
 	const tableHead: string = "Regex | Summary\r\n----- | -------";
 	const tableBody: string = stepDefinitions
-		.map((stepDef: StepDefType): string => `<code>${ replacePipes(stepDef.regex.toString()) }</code> | ${ stepDef.title }`)
+		.map((stepDef: StepDefType): string => `\`${ replacePipes(stepDef.regex.toString()) }\` | ${ stepDef.title }`)
 		.join("\r\n");
 
 	return `<!-- START ${ step } generated comment -->
