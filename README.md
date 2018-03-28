@@ -1,4 +1,4 @@
-# @nice-digital/wdio-cucumber-steps
+# [@nice-digital/wdio-cucumber-steps](https://www.npmjs.com/package/@nice-digital/wdio-cucumber-steps)
 
 > Shared step definitions for Cucumber JS BDD tests in WebdriverIO. Focus on writing features, not step definitions.
 
@@ -8,6 +8,8 @@
 
 - [Usage](#usage)
 - [Development](#development)
+  - [npm linking](#npm-linking)
+- [Releasing](#releasing)
 - [Tests](#tests)
   - [Running the tests](#running-the-tests)
 - [Step definitions](#step-definitions)
