@@ -1,1 +1,12 @@
+# Folders we don't need
 src
+scripts
+test
+
+# Root files we don't need
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitignore
+jest.json
