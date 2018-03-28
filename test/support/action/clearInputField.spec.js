@@ -1,4 +1,4 @@
-import clearInputField from "support/action/clearInputField";
+import clearInputField from "src/support/action/clearInputField";
 
 describe("clearInputField", () => {
 	let element;

@@ -1,4 +1,4 @@
-import checkOffset from "support/check/checkOffset";
+import checkOffset from "src/support/check/checkOffset";
 
 describe("checkOffset", () => {
 	let expectToEqual;

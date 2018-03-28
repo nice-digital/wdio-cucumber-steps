@@ -1,4 +1,4 @@
-import isEnabled from "support/check/isEnabled";
+import isEnabled from "src/support/check/isEnabled";
 
 describe("isEnabled", () => {
 	let expectToEqual;

@@ -1,4 +1,4 @@
-import checkNewWindow from "support/check/checkNewWindow";
+import checkNewWindow from "src/support/check/checkNewWindow";
 
 describe("checkNewWindow", () => {
 	let expectToEqual;

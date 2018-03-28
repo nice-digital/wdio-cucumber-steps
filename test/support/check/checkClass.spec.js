@@ -1,4 +1,4 @@
-import checkClass from "support/check/checkClass";
+import checkClass from "src/support/check/checkClass";
 
 describe("checkClass", () => {
 	let expectToIncludeStub;

@@ -1,9 +1,16 @@
+/**
+ * @module Readme replacer
+ *
+ * Replaces html comments in the readme with a table of regex and title
+ * for each of given, when, then step definitions.
+ */
+
 const fs = require("fs"),
 	path = require("path");
 
-import givenStepDefinitions from "../given/definitions";
-import whenStepDefinitions from "../when/definitions";
-import thenStepDefinitions from "../then/definitions";
+import givenStepDefinitions from "../src/given/definitions";
+import whenStepDefinitions from "../src/when/definitions";
+import thenStepDefinitions from "../src/then/definitions";
 
 // @flow
 type StepDefType = {

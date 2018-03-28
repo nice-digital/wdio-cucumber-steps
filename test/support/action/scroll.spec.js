@@ -1,4 +1,4 @@
-import scroll from "support/action/scroll";
+import scroll from "src/support/action/scroll";
 
 describe("scroll", () => {
 	beforeEach(() => {

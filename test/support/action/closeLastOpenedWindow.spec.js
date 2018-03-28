@@ -1,4 +1,4 @@
-import closeLastOpenedWindow from "support/action/closeLastOpenedWindow";
+import closeLastOpenedWindow from "src/support/action/closeLastOpenedWindow";
 
 describe("closeLastOpenedWindow", () => {
 	beforeEach(() => {

@@ -1,4 +1,4 @@
-import checkModalText from "support/check/checkModalText";
+import checkModalText from "src/support/check/checkModalText";
 
 describe("checkModalText", () => {
 	let expectToEqual;

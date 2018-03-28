@@ -1,4 +1,4 @@
-import checkDimension from "support/check/checkDimension";
+import checkDimension from "src/support/check/checkDimension";
 
 describe("checkDimension", () => {
 	let expectToEqual;

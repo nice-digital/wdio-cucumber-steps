@@ -1,4 +1,4 @@
-import checkFocus from "support/check/checkFocus";
+import checkFocus from "src/support/check/checkFocus";
 
 describe("checkFocus", () => {
 	let expectToEqual;

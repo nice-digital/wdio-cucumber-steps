@@ -1,4 +1,4 @@
-import isVisible from "support/check/isVisible";
+import isVisible from "src/support/check/isVisible";
 
 describe("isVisible", () => {
 	let expectToEqual;

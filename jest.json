@@ -10,10 +10,10 @@
       }
     },
     "collectCoverageFrom": [
-      "support/**/*.js",
-      "given/**/*.js",
-      "when/**/*.js",
-      "then/**/*.js"
+      "src/support/**/*.js",
+      "src/given/**/*.js",
+      "src/when/**/*.js",
+      "src/then/**/*.js"
     ],
     "notify": true,
     "setupTestFrameworkScriptFile": "./test/setup.js",
@@ -28,4 +28,3 @@
       "^.+\\.js$": "babel-jest"
     }
   }
-  

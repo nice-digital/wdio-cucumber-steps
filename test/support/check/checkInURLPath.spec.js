@@ -1,4 +1,4 @@
-import checkInURLPath from "support/check/checkInURLPath";
+import checkInURLPath from "src/support/check/checkInURLPath";
 
 describe("checkInURLPath", () => {
 	let expectShouldContain;

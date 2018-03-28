@@ -1,4 +1,4 @@
-import setPromptText from "support/action/setPromptText";
+import setPromptText from "src/support/action/setPromptText";
 
 describe("setPromptText", () => {
 	beforeEach(() => {

@@ -1,4 +1,4 @@
-import handleModal from "support/action/handleModal";
+import handleModal from "src/support/action/handleModal";
 
 describe("handleModal", () => {
 	beforeEach(() => {

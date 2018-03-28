@@ -1,4 +1,4 @@
-import checkTitle from "support/check/checkTitle";
+import checkTitle from "src/support/check/checkTitle";
 
 describe("checkTitle", () => {
 	let expectToEqual;

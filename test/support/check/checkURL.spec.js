@@ -1,4 +1,4 @@
-import checkURL from "support/check/checkURL";
+import checkURL from "src/support/check/checkURL";
 
 describe("checkURL", () => {
 	let expectToEqual;

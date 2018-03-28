@@ -1,4 +1,4 @@
-import closeAllButFirstTab from "support/action/closeAllButFirstTab";
+import closeAllButFirstTab from "src/support/action/closeAllButFirstTab";
 
 describe("closeAllButFirstTab", () => {
 	beforeEach(() => {

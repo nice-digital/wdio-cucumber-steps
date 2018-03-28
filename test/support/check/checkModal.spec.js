@@ -1,4 +1,4 @@
-import checkModal from "support/check/checkModal";
+import checkModal from "src/support/check/checkModal";
 
 describe("checkModal", () => {
 	let expectToEqual;

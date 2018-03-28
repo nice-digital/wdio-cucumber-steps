@@ -1,4 +1,4 @@
-import checkProperty from "support/check/checkProperty";
+import checkProperty from "src/support/check/checkProperty";
 
 describe("checkProperty", () => {
 	let expectToEqual;

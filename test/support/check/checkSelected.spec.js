@@ -1,4 +1,4 @@
-import checkSelected from "support/check/checkSelected";
+import checkSelected from "src/support/check/checkSelected";
 
 describe("checkSelected", () => {
 	let expectToEqual;

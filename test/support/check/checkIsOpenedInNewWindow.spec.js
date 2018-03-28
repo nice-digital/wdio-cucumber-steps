@@ -1,4 +1,4 @@
-import checkIsOpenedInNewWindow from "support/check/checkIsOpenedInNewWindow";
+import checkIsOpenedInNewWindow from "src/support/check/checkIsOpenedInNewWindow";
 
 describe("checkIsOpenedInNewWindow", () => {
 	let expectLengthShouldNotEqual;

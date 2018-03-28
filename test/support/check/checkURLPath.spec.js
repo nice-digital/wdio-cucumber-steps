@@ -1,4 +1,4 @@
-import checkURLPath from "support/check/checkURLPath";
+import checkURLPath from "src/support/check/checkURLPath";
 
 describe("checkURLPath", () => {
 	let expectToEqual;

@@ -1,4 +1,4 @@
-import checkContent from "support/check/checkContainsAnyText";
+import checkContent from "src/support/check/checkContainsAnyText";
 
 describe("checkContent", () => {
 	let expectToEqual;

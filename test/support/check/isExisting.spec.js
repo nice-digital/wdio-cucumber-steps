@@ -1,4 +1,4 @@
-import isExisting from "support/check/isExisting";
+import isExisting from "src/support/check/isExisting";
 
 describe("isExisting", () => {
 	let expectToHaveLengthAbove;

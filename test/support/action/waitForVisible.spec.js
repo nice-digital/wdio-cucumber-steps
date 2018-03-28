@@ -1,4 +1,4 @@
-import waitForVisible from "support/action/waitForVisible";
+import waitForVisible from "src/support/action/waitForVisible";
 
 describe("waitForVisible", () => {
 	beforeEach(() => {

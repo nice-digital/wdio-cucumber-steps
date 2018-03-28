@@ -1,4 +1,4 @@
-import setInputField from "support/action/setInputField";
+import setInputField from "src/support/action/setInputField";
 
 describe("setInputField", () => {
 	let expectToHaveLengthOf;

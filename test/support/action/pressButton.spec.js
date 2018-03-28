@@ -1,4 +1,4 @@
-import pressButton from "support/action/pressButton";
+import pressButton from "src/support/action/pressButton";
 
 describe("pressButton", () => {
 	beforeEach(() => {

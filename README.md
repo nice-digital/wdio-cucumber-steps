@@ -1,6 +1,6 @@
 # @nice-digital/wdio-cucumber-steps
 
-> Shared step definitions for Cucumber JS BDD tests in WebdriverIO
+> Shared step definitions for Cucumber JS BDD tests in WebdriverIO. Focus on writing features, not step definitions.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -32,7 +32,6 @@ Then assuming you have a *wdio.conf.js* that looks something like this:
 exports.config = {
     // Options missing here for brevity
     cucumberOpts: {
-        compiler: ["js:babel-register"],
         require: [
             "./src/steps/index.js",
         ]
@@ -40,21 +39,23 @@ exports.config = {
 };
 ```
 
-Note: you'll need *babel-register*, *babel-preset-flow* and probably *babel-preset-env* too.
-
 Then import the following into *./src/steps/index.js* (or wherever your custom step definitions) are:
 
 ```js
-import "@nice-digital/wdio-cucumber-steps/given";
-import "@nice-digital/wdio-cucumber-steps/when";
-import "@nice-digital/wdio-cucumber-steps/then";
+import "@nice-digital/wdio-cucumber-steps/lib/given";
+import "@nice-digital/wdio-cucumber-steps/lib/when";
+import "@nice-digital/wdio-cucumber-steps/lib/then";
 ```
 
 The easiest way is to fork the [NICE frontend testing base](https://github.com/nhsevidence/frontend-testing-base/) as it comes with the required dependencies.
 
 ## Development
 
-To dev locally, it can be useful to test in context of real tests. In this case, use [npm link](https://docs.npmjs.com/cli/link) to symlink to another repo:
+You can use ES6 and [Flow type definitions](https://flow.org/) when developing in the [src folder](src). The source is automatically transpiled with [Babel](https://babeljs.io/docs/usage/cli/) into the lib folder when you [release](#releasing).
+
+### npm linking
+
+To dev locally, it can be useful to test these step definitions in context of real features. In this case, use [npm link](https://docs.npmjs.com/cli/link) to symlink to another folder:
 
 ```sh
 npm link
@@ -67,6 +68,10 @@ npm link @nice-digital/wdio-cucumber-steps
 ```
 
 > Don't forget to unlink! `npm unlink @nice-digital/wdio-cucumber-steps`
+
+## Releasing
+
+We use [np](https://www.npmjs.com/package/np) for releasing. Run `npm run release` to release a patch version or `npm run release:minor` or `npm run release:major.` This will run tests, bump package.json version and create a git tag for you.
 
 ## Tests
 

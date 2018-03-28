@@ -1,4 +1,4 @@
-import submitForm from "support/action/submitForm";
+import submitForm from "src/support/action/submitForm";
 
 describe("submitForm", () => {
 	beforeEach(() => {

@@ -1,4 +1,4 @@
-import checkCookieContent from "support/check/checkCookieContent";
+import checkCookieContent from "src/support/check/checkCookieContent";
 
 describe("checkCookieContent", () => {
 	let expectToEqual;

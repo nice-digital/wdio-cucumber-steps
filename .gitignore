@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# ES5 transpiled code
+lib

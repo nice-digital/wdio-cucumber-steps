@@ -1,4 +1,4 @@
-import deleteCookie from "support/action/deleteCookie";
+import deleteCookie from "src/support/action/deleteCookie";
 
 describe("deleteCookie", () => {
 	beforeEach(() => {

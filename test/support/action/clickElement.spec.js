@@ -1,4 +1,4 @@
-import clickElement from "support/action/clickElement";
+import clickElement from "src/support/action/clickElement";
 
 describe("clickElement", () => {
 	let expectToHaveLengthOf;

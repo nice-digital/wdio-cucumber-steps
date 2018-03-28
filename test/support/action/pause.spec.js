@@ -1,4 +1,4 @@
-import pause from "support/action/pause";
+import pause from "src/support/action/pause";
 
 describe("pause", () => {
 	beforeEach(() => {
