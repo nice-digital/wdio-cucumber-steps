@@ -58,4 +58,4 @@ typings/
 .env
 
 # ES5 transpiled code
-lib
+/lib
