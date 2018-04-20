@@ -26,6 +26,7 @@ import isVisible from "../support/check/isVisible";
 import waitFor from "../support/action/waitFor";
 import waitForVisible from "../support/action/waitForVisible";
 import checkIfElementExists from "../support/lib/checkIfElementExists";
+import debugThen from "../support/action/debugThen";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/then.js
 const stepDefinitions = [
@@ -178,7 +179,12 @@ const stepDefinitions = [
 		regex: /^I expect that a (alertbox|confirmbox|prompt)( not)* contains the text "([^"]*)?"$/,
 		fn: checkModalText,
 		title: "Check the text of a modal"
-	}
+	},
+/* 	{
+		regex: /^debug$/,
+		fn: debugThen,
+		title: "Add a breakpoint to a feature file"
+	} */
 ];
 
 export default stepDefinitions;

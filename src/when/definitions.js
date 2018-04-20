@@ -15,6 +15,7 @@ import setCookie from "../support/action/setCookie";
 import setInputField from "../support/action/setInputField";
 import setPromptText from "../support/action/setPromptText";
 import submitForm from "../support/action/submitForm";
+import debugWhen from "../support/action/debugWhen";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/when.js
 const stepDefinitions = [
@@ -102,7 +103,12 @@ const stepDefinitions = [
 		regex: /^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/,
 		fn: moveToElement,
 		title: "Move the mouse by an (optional) offset of the specified element"
-	}
+	},
+	/* {
+		regex: /^debug$/,
+		fn: debugWhen,
+		title: "Add a breakpoint to a feature file"
+	} */
 ];
 
 export default stepDefinitions;
