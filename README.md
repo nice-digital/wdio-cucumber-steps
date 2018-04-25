@@ -84,7 +84,7 @@ npm link @nice-digital/wdio-cucumber-steps
 
 ## Releasing
 
-We use [np](https://www.npmjs.com/package/np) for releasing. Run `npm run release` to release a patch version or `npm run release:minor` or `npm run release:major.` This will run tests, bump package.json version and create a git tag for you.
+We use [np](https://www.npmjs.com/package/np) for releasing. Run `npm run release` to release a patch version or `npm run release:minor` or `npm run release:major.` This will run tests, bump package.json version and create a git tag for you
 
 ## Tests
 
