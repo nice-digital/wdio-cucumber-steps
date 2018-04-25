@@ -9,6 +9,6 @@ describe("debug", () => {
 	it("should call debug on the browser object", () => {
 		debug();
 
-		expect(global.browser.debug).toHaveBeenCalledTimes(1);
+		expect(global.browser.debug).toBeCalled();
 	});
 });

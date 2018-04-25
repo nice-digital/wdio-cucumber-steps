@@ -15,7 +15,7 @@ import setCookie from "../support/action/setCookie";
 import setInputField from "../support/action/setInputField";
 import setPromptText from "../support/action/setPromptText";
 import submitForm from "../support/action/submitForm";
-import debugWhen from "../support/action/debugWhen";
+import refreshBrowser from "../support/action/refreshBrowser";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/when.js
 const stepDefinitions = [
@@ -104,11 +104,11 @@ const stepDefinitions = [
 		fn: moveToElement,
 		title: "Move the mouse by an (optional) offset of the specified element"
 	},
-	/* {
-		regex: /^debug$/,
-		fn: debugWhen,
-		title: "Add a breakpoint to a feature file"
-	} */
+	{
+		regex: /^I refresh$/,
+		fn: refreshBrowser,
+		title: "Refresh the current page"
+	}
 ];
 
 export default stepDefinitions;

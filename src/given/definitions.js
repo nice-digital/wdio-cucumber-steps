@@ -18,7 +18,7 @@ import isEnabled from "../support/check/isEnabled";
 import isVisible from "../support/check/isVisible";
 import openWebsite from "../support/action/openWebsite";
 import resizeScreenSize from "../support/action/resizeScreenSize";
-import debugGiven from "../support/action/debugGiven";
+import debug from "../support/action/debug";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/given.js
 const stepDefinitions = [
@@ -129,8 +129,8 @@ const stepDefinitions = [
 	},
 	{
 		regex: /^I debug$/,
-		fn: debugGiven,
-		title: "Add a breakpoint to a feature file"
+		fn: debug,
+		title: "Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html))."
 	}
 ];
 

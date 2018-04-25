@@ -57,13 +57,13 @@ You can use ES6 and [Flow type definitions](https://flow.org/) when developing i
 
 ### Debug
 
-You can use Given/Then/When/And followed by debug within the feature file which forces a breakpoint:
+You can use Given/Then/When/And followed by "I debug" within the feature file which stops the running browser and gives you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)):
 
 ```sh
-Given debug
-Then debug
-When debug
-And debug
+Given I debug
+Then I debug
+When I debug
+And I debug
 ```
 
 ### npm linking
@@ -97,11 +97,6 @@ npm test
 ```
 
 Or alternatively just run `npm run lint` or `npm run test:unit` individually. If you're devving and you've got eslint errors you need to fix, run `npm run lint:fix`.
-
-To run a single test you can run:
-
-```sh
-npm test -- -t <testfile>
 
 ## Step definitions
 
