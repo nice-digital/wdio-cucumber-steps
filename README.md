@@ -8,6 +8,7 @@
 
 - [Usage](#usage)
 - [Development](#development)
+  - [Debug](#debug)
   - [npm linking](#npm-linking)
 - [Releasing](#releasing)
 - [Tests](#tests)

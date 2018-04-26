@@ -15,7 +15,7 @@ import setCookie from "../support/action/setCookie";
 import setInputField from "../support/action/setInputField";
 import setPromptText from "../support/action/setPromptText";
 import submitForm from "../support/action/submitForm";
-import refreshBrowser from "../support/action/refreshBrowser";
+import refresh from "../support/action/refresh";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/when.js
 const stepDefinitions = [
@@ -106,7 +106,7 @@ const stepDefinitions = [
 	},
 	{
 		regex: /^I refresh$/,
-		fn: refreshBrowser,
+		fn: refresh,
 		title: "Refresh the current page"
 	}
 ];
