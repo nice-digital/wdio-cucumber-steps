@@ -130,6 +130,7 @@ Regex | Summary
 `/^I have a screen that is ([\d]+) by ([\d]+) pixels$/` | Set the browser size to a given size
 `/^I have closed all but the first (window\|tab)$/` | Close all but the first browser window/tab
 `/^a (alertbox\|confirmbox\|prompt) is( not)* opened$/` | Check if a modal is opened
+`/^I debug$/` | Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)).
 <!-- END given generated comment -->
 
 ### When steps
@@ -157,6 +158,7 @@ Regex | Summary
 `/^I select the (\d+)(st\|nd\|rd\|th) option for element "([^"]*)?"$/` | Select a option based on its index
 `/^I select the option with the (name\|value\|text) "([^"]*)?" for element "([^"]*)?"$/` | Select a option based on its name, value or visible text
 `/^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/` | Move the mouse by an (optional) offset of the specified element
+`/^I refresh$/` | Refresh the current page
 <!-- END when generated comment -->
 
 ### Then steps
