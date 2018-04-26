@@ -3,7 +3,7 @@ import refresh from "src/support/action/refresh";
 describe("refresh", () => {
 	beforeEach(() => {
 		global.browser = {
-			debug: jest.fn(),
+			refresh: jest.fn(),
 		};
 	});
 	it("should call refresh on the browser object", () => {
