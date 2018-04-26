@@ -18,6 +18,7 @@ import isEnabled from "../support/check/isEnabled";
 import isVisible from "../support/check/isVisible";
 import openWebsite from "../support/action/openWebsite";
 import resizeScreenSize from "../support/action/resizeScreenSize";
+import debug from "../support/action/debug";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/given.js
 const stepDefinitions = [
@@ -125,6 +126,11 @@ const stepDefinitions = [
 		regex: /^a (alertbox|confirmbox|prompt) is( not)* opened$/,
 		fn: checkModal,
 		title: "Check if a modal is opened"
+	},
+	{
+		regex: /^I debug$/,
+		fn: debug,
+		title: "Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html))."
 	}
 ];
 

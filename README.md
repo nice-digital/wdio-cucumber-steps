@@ -55,6 +55,17 @@ The easiest way is to fork the [NICE frontend testing base](https://github.com/n
 
 You can use ES6 and [Flow type definitions](https://flow.org/) when developing in the [src folder](src). The source is automatically transpiled with [Babel](https://babeljs.io/docs/usage/cli/) into the lib folder when you [release](#releasing).
 
+### Debug
+
+You can use Given/Then/When/And followed by "I debug" within the feature file which stops the running browser and gives you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)):
+
+```sh
+Given I debug
+Then I debug
+When I debug
+And I debug
+```
+
 ### npm linking
 
 To dev locally, it can be useful to test these step definitions in context of real features. In this case, use [npm link](https://docs.npmjs.com/cli/link) to symlink to another folder:
