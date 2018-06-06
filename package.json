@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "es5ify": "babel src -s inline -d lib",
+    "es5ify:watch": "babel src -s inline -d lib -w",
     "// Tests": "",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix",
