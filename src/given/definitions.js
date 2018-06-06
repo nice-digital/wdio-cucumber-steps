@@ -19,6 +19,7 @@ import isVisible from "../support/check/isVisible";
 import openWebsite from "../support/action/openWebsite";
 import resizeScreenSize from "../support/action/resizeScreenSize";
 import debug from "../support/action/debug";
+import accountsLogin from "../support/action/accountsLogin";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/given.js
 const stepDefinitions = [
@@ -131,6 +132,11 @@ const stepDefinitions = [
 		regex: /^I debug$/,
 		fn: debug,
 		title: "Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html))."
+	},
+	{
+		regex: /^I am logged in to (beta|live|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
+		fn: accountsLogin,
+		title: "Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables"
 	}
 ];
 
