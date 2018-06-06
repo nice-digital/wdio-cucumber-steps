@@ -20,6 +20,7 @@ import openWebsite from "../support/action/openWebsite";
 import resizeScreenSize from "../support/action/resizeScreenSize";
 import debug from "../support/action/debug";
 import accountsLogin from "../support/action/accountsLogin";
+import accountsLogOut from "../support/action/accountsLogOut";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/given.js
 const stepDefinitions = [
@@ -136,7 +137,12 @@ const stepDefinitions = [
 	{
 		regex: /^I am logged in to (beta|live|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
 		fn: accountsLogin,
-		title: "Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables"
+		title: "Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables. If this is used remember to redirect back to where you expect to be"
+	},
+	{
+		regex: /^I am logged out of NICE accounts$/,
+		fn: accountsLogOut,
+		title: "Log out of NICE accounts"
 	}
 ];
 
