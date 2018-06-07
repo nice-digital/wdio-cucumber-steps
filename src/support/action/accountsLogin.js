@@ -1,3 +1,5 @@
+import login from "./login";
+import { getNICEAccountsUrl } from "./../utils";
 /**
  * Log in to particular version of nice accounts indepentendly of TopHat
  * @param  {string}   environment The domain of accounts to use to sign to nice accounts (beta, live or test)
@@ -10,10 +12,6 @@ module.exports = (environment, username, password) => {
 		return;
 	}
 
-	const url = ["https://" + environment + "-accounts.nice.org.uk"].join();
-	browser.url(url);
-	browser.waitForExist("input[name='Email']", 5000);
-	browser.setValue("input[name='Email']", process.env[username]);
-	browser.setValue("input[name='Password']", process.env[password]);
-	browser.submitForm("input[name='Email']");
+	browser.url(getNICEAccountsUrl(environment));
+	login(username, password);
 };

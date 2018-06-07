@@ -142,7 +142,7 @@ const stepDefinitions = [
 	{
 		regex: /^I am logged out of NICE accounts$/,
 		fn: accountsLogOut,
-		title: "Log out of NICE accounts"
+		title: "Log out of NICE accounts. If this is used remember to redirect back to where you expect to be"
 	}
 ];
 
