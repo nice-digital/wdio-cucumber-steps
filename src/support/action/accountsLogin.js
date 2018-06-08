@@ -8,6 +8,7 @@ import { getNICEAccountsUrl } from "./../utils";
  */
 module.exports = (environment, username, password) => {
 	// If you are already logged in
+
 	if (browser.getCookie("__nrpa_2.2")) {
 		return;
 	}
