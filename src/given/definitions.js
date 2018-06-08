@@ -137,7 +137,7 @@ const stepDefinitions = [
 	{
 		regex: /^I am logged in to (beta|live|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
 		fn: accountsLogin,
-		title: "Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables. If this is used remember to redirect back to where you expect to be"
+		title: "Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be"
 	},
 	{
 		regex: /^I am logged out of NICE accounts$/,
