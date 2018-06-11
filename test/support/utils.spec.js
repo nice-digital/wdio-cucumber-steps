@@ -1,4 +1,5 @@
 import { getNICEAccountsUrl } from "../../src/support/utils";
+import { applyStepDefinitions } from "../../src/support/utils";
 
 describe("getNICEAccountsUrl", () => {
 
@@ -24,5 +25,32 @@ describe("getNICEAccountsUrl", () => {
 
 		let URL = getNICEAccountsUrl("fake");
 		expect(URL).toEqual(false);
+	});
+
+	describe("applyStepDefinitions", () => {
+
+		it("passes given step objects to given function", ()=>{
+			const myFunction = jest.fn();
+			const steps = [
+				{
+					regex: "regex",
+					options: "options",
+					fn: "functionOne"
+				},
+				{
+					regex: "regex2",
+					fn: "functionTwo"
+				}
+			];
+
+			applyStepDefinitions(myFunction, steps);
+			expect(myFunction).toBeCalledWith(
+				"regex", "options", "functionOne"
+			);
+			expect(myFunction).toBeCalledWith(
+				"regex2", "functionTwo"
+			);
+		});
+
 	});
 });
