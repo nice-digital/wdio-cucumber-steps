@@ -1,0 +1,14 @@
+[ignore]
+
+[include]
+node_modules/
+src/
+
+[libs]
+
+[lints]
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=src

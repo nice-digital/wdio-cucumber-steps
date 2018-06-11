@@ -16,6 +16,7 @@ import setInputField from "../support/action/setInputField";
 import setPromptText from "../support/action/setPromptText";
 import submitForm from "../support/action/submitForm";
 import refresh from "../support/action/refresh";
+import tophatLogin from "../support/action/tophatLogin";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/when.js
 const stepDefinitions = [
@@ -108,6 +109,11 @@ const stepDefinitions = [
 		regex: /^I refresh$/,
 		fn: refresh,
 		title: "Refresh the current page"
+	},
+	{
+		regex: /^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
+		fn: tophatLogin,
+		title: "Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables "
 	}
 ];
 

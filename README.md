@@ -81,6 +81,12 @@ Then in your testing project:
 npm link @nice-digital/wdio-cucumber-steps
 ```
 
+Once they are all linked, run the following command to recompile the files as you make changes so that they are reflected in your test project:
+
+```sh
+npm run es5ify:watch
+```
+
 > Don't forget to unlink! `npm unlink @nice-digital/wdio-cucumber-steps`
 
 ## Releasing
