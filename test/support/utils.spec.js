@@ -1,5 +1,8 @@
 import { getNICEAccountsUrl } from "../../src/support/utils";
+<<<<<<< HEAD
 import { applyStepDefinitions } from "../../src/support/utils";
+=======
+>>>>>>> master
 
 describe("getNICEAccountsUrl", () => {
 
