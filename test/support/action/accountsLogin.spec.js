@@ -1,5 +1,4 @@
 import accountsLogin from "../../../src/support/action/accountsLogin.js";
-import { getNICEAccountsUrl } from "../../../src/support/utils";
 import login from "../../../src/support/action/login";
 jest.mock("../../../src/support/action/login");
 
@@ -14,7 +13,7 @@ describe("accountLogin", () => {
 		};
 	});
 
-	it("should not call the get Nice accounts URL function if the cookie is not present", ()=> {
+	it("should not call the get Nice accounts URL function if the cookie is present", ()=> {
 		accountsLogin();
 		expect(global.browser.url).not.toHaveBeenCalled();
 		expect(login).not.toHaveBeenCalled();
@@ -22,8 +21,8 @@ describe("accountLogin", () => {
 
 	it("should call the get Nice accounts URL function if the cookie is not present", () => {
 		global.browser.getCookie = jest.fn(() => null);
-		accountsLogin("env", "username", "password");
-		expect(global.browser.url).toHaveBeenCalled();
+		accountsLogin("test", "username", "password");
+		expect(global.browser.url).toHaveBeenCalledWith("https://test-accounts.nice.org.uk");
 		expect(login).toHaveBeenCalledWith("username", "password");
 	});
 

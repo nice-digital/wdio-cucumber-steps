@@ -19,9 +19,16 @@ const applyStepDefinitions = (fn, steps) => {
  * Returns the homepage of the NICE Accounts instance for the given environment
  * @param {String} environment The name of the accounts environment (beta, live or test)
  */
-const getNICEAccountsUrl = (environment: string): string => {
-	const accountsHostPrefix: string = environment === "live" ? "" : `${environment}-`;
-	return `https://${accountsHostPrefix}accounts.nice.org.uk`;
+const getNICEAccountsUrl = (environment: string): string | false => {
+	function isValidEnvironment(env) {
+		return (env === "live") || (env === "beta") || (env === "test");
+	}
+
+	if (isValidEnvironment(environment)) {
+		const accountsHostPrefix: string = environment === "live" ? "" : `${environment}-`;
+		return `https://${accountsHostPrefix}accounts.nice.org.uk`;
+	}
+	return false;
 };
 
 export {
