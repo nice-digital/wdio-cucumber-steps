@@ -16,7 +16,7 @@ import setInputField from "../support/action/setInputField";
 import setPromptText from "../support/action/setPromptText";
 import submitForm from "../support/action/submitForm";
 import refresh from "../support/action/refresh";
-import tophatLogin from "../support/action/tophatLogin";
+import tophatLogin from "../support/action/tophatLogIn";
 
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/when.js
 const stepDefinitions = [
