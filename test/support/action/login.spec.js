@@ -11,7 +11,7 @@ describe("login", () => {
 
 	it("should wait for the email input to exist", () => {
 		login();
-		expect(global.browser.waitForExist).toBeCalledWith("input[name='Email']", 10000);
+		expect(global.browser.waitForExist).toBeCalledWith("body #Email", 10000);
 	});
 
 	it("should set the form inputs to the supplied username and password", ()=>{
