@@ -3,7 +3,7 @@ import login from "../../../src/support/action/login";
 describe("login", () => {
 	beforeEach(() => {
 		global.browser = {
-			waitForExist: jest.fn(),
+			waitForVisible: jest.fn(),
 			setValue: jest.fn(),
 			submitForm: jest.fn(),
 		};
