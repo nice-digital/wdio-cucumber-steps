@@ -112,6 +112,11 @@ const stepDefinitions = [
 	},
 	{
 		regex: /^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
+		options: {
+			wrapperOptions: {
+				retry: 3,
+			}
+		},
 		fn: tophatLogin,
 		title: "Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables "
 	}
