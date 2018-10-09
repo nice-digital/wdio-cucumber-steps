@@ -1,4 +1,5 @@
 /*! https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/support/check/checkModalText.js */
+///^I expect that a (alertbox|confirmbox|prompt)( not)* contains the text "([^"]*)?"$/
 /**
  * Check the text of a modal
  * @param  {String}   modalType     The type of modal that is expected
@@ -7,30 +8,25 @@
  * @param  {String}   expectedText  The text to check against
  */
 module.exports = (modalType, falseState, expectedText) => {
-	try {
-		/**
-         * The text of the current modal
-         * @type {String}
-         */
-		const text = browser.alertText();
+	/**
+		 * The text of the current modal
+		 * @type {String}
+		 */
+	let text;
 
-		if (falseState) {
-			expect(text).to.not.equal(
-				expectedText,
-				`Expected the text of ${modalType} not to equal ` +
-                `"${expectedText}"`
-			);
-		} else {
-			expect(text).to.equal(
-				expectedText,
-				`Expected the text of ${modalType} not to equal ` +
-                `"${expectedText}", instead found "${text}"`
-			);
-		}
-	} catch (e) {
-		assert(
-			e,
-			`A ${modalType} was not opened when it should have been opened`
+	expect(() => {
+		text = browser.alertText();
+	}).to.not.throw();
+
+	if (falseState) {
+		expect(text).to.not.equal(
+			expectedText,
+			`Expected the text of ${modalType} not to equal "${expectedText}"`
+		);
+	} else {
+		expect(text).to.equal(
+			expectedText,
+			`Expected the text of ${modalType} to equal "${expectedText}", instead found "${text}"`
 		);
 	}
 };

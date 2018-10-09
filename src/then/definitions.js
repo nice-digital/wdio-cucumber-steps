@@ -177,7 +177,7 @@ const stepDefinitions = [
 	{
 		regex: /^I expect that a (alertbox|confirmbox|prompt)( not)* contains the text "([^"]*)?"$/,
 		fn: checkModalText,
-		title: "Check the text of a modal"
+		title: "Check the text of a modal. E.g. `I expect that a alertbox contains the text \"Continue?\"` or `I expect that a confirmbox not contains the text \"Continue?\"`"
 	}
 ];
 
