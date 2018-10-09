@@ -206,7 +206,7 @@ Regex | Summary
 `/^I expect that element "([^"]*)?" is( not)* focused$/` | Check if a element has the focus
 `/^I wait on element "([^"]*)?"(?: for (\d+)ms)*(?: to( not)* (be checked\|be enabled\|be selected\|be visible\|contain a text\|contain a value\|exist))*$/` | Wait for a element to be checked, enabled, selected, visible, contain a certain value or text or to exist
 `/^I expect that a (alertbox\|confirmbox\|prompt) is( not)* opened$/` | Check that a modal is (not) opened
-`/^I expect that a (alertbox\|confirmbox\|prompt)( not)* contains the text "([^"]*)?"$/` | Check the text of a modal
+`/^I expect that a (alertbox\|confirmbox\|prompt)( not)* contains the text "([^"]*)?"$/` | Check the text of a modal. E.g. `I expect that a alertbox contains the text "Continue?"` or `I expect that a confirmbox not contains the text "Continue?"`
 <!-- END then generated comment -->
 
 ## License
