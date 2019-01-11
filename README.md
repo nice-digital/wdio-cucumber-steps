@@ -7,6 +7,7 @@
 
 
 - [Usage](#usage)
+  - [VS Code integration](#vs-code-integration)
 - [Development](#development)
   - [Debug](#debug)
   - [npm linking](#npm-linking)
@@ -51,6 +52,22 @@ import "@nice-digital/wdio-cucumber-steps/lib/then";
 ```
 
 The easiest way is to fork the [NICE frontend testing base](https://github.com/nhsevidence/frontend-testing-base/) as it comes with the required dependencies.
+
+### VS Code integration
+
+We recommend the [Cucumber (Gherkin) Full Support VSCode extension](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete#overview) for intellisense for step definitions.
+
+Install the extension and configure by adding the following to *.vscode/settings.json* in your testing application:
+
+```diff
+{
++    "cucumberautocomplete.steps": [
++        "node_modules/@nice-digital/wdio-cucumber-steps/src/given/definitions.js",
++        "node_modules/@nice-digital/wdio-cucumber-steps/src/when/definitions.js",
++        "node_modules/@nice-digital/wdio-cucumber-steps/src/then/definitions.js",
++    ]
+}
+```
 
 ## Development
 
@@ -113,7 +130,7 @@ Given…
 
 <!-- START given generated comment -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN COMMAND TO UPDATE -->
-Regex | Summary
+Step | Summary
 ----- | -------
 `/^I open the (url\|site) "([^"]*)?"$/` | Open a site in the current browser window/tab
 `/^the element "([^"]*)?" is( not)* visible$/` | Check the (in)visibility of a element
@@ -136,7 +153,7 @@ Regex | Summary
 `/^I have a screen that is ([\d]+) by ([\d]+) pixels$/` | Set the browser size to a given size
 `/^I have closed all but the first (window\|tab)$/` | Close all but the first browser window/tab
 `/^a (alertbox\|confirmbox\|prompt) is( not)* opened$/` | Check if a modal is opened
-`/^I debug$/` | Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)).
+`I debug` | Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)).
 `/^I am logged in to (beta\|live\|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be
 `/^I am logged out of NICE accounts$/` | Log out of NICE accounts. If this is used remember to redirect back to where you expect to be
 <!-- END given generated comment -->
@@ -147,7 +164,7 @@ When…
 
 <!-- START when generated comment -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN COMMAND TO UPDATE -->
-Regex | Summary
+Step | Summary
 ----- | -------
 `/^I (click\|doubleclick) on the (link\|button\|element) "([^"]*)?"$/` | (Double)click a link, button or element
 `/^I (add\|set) "([^"]*)?" to the inputfield "([^"]*)?"$/` | Add or set the content of an input field
@@ -176,7 +193,7 @@ Then…
 
 <!-- START then generated comment -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN COMMAND TO UPDATE -->
-Regex | Summary
+Step | Summary
 ----- | -------
 `/^I expect that the title is( not)* "([^"]*)?"$/` | Check the title of the current browser window/tab
 `/^I expect that element "([^"]*)?" does( not)* appear exactly "([^"]*)?" times$/` | Checks that the element is on the page a specific number of times
