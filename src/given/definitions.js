@@ -22,128 +22,81 @@ import debug from "../support/action/debug";
 import accountsLogin from "../support/action/accountsLogin";
 import accountsLogOut from "../support/action/accountsLogOut";
 
+import { Given } from "../support/utils";
+
 // Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/given.js
-const stepDefinitions = [
-	{
-		regex: /^I open the (url|site) "([^"]*)?"$/,
-		fn: openWebsite,
-		title: "Open a site in the current browser window/tab"
-	},
-	{
-		regex: /^the element "([^"]*)?" is( not)* visible$/,
-		fn: isVisible,
-		title: "Check the (in)visibility of a element"
-	},
-	{
-		regex: /^the element "([^"]*)?" is( not)* enabled$/,
-		fn: isEnabled,
-		title: "Check if a element is (not) enabled"
-	},
-	{
-		regex: /^the element "([^"]*)?" is( not)* selected$/,
-		fn: checkSelected,
-		title: "Check if a element is (not) selected"
-	},
-	{
-		regex: /^the checkbox "([^"]*)?" is( not)* checked$/,
-		fn: checkSelected,
-		title: "Check if a checkbox is (not) checked"
-	},
-	{
-		regex: /^there is (an|no) element "([^"]*)?" on the page$/,
-		fn: checkElementExists,
-		title: "Check if a element (does not) exist"
-	},
-	{
-		regex: /^the title is( not)* "([^"]*)?"$/,
-		fn: checkTitle,
-		title: "Check the title of the current browser window/tab"
-	},
-	{
-		regex: /^the element "([^"]*)?" contains( not)* the same text as element "([^"]*)?"$/,
-		fn: compareText,
-		title: "Compare the text of two elements"
-	},
-	{
-		regex: /^the (button|element) "([^"]*)?"( not)* matches the text "([^"]*)?"$/,
-		fn: checkEqualsText,
-		title: "Check if a element equals the given text"
-	},
-	{
-		regex: /^the (button|element) "([^"]*)?"( not)* contains the text "([^"]*)?"$/,
-		fn: checkContainsText,
-		title: "Check if a element contains the given text"
-	},
-	{
-		regex: /^the (button|element) "([^"]*)?"( not)* contains any text$/,
-		fn: checkContainsAnyText,
-		title: "Check if a element does not contain any text"
-	},
-	{
-		regex: /^the (button|element) "([^"]*)?" is( not)* empty$/,
-		fn: checkIsEmpty,
-		title: "Check if a element is empty"
-	},
-	{
-		regex: /^the page url is( not)* "([^"]*)?"$/,
-		fn: checkUrl,
-		title: "Check the url of the current browser window/tab"
-	},
-	{
-		regex: /^the( css)* attribute "([^"]*)?" from element "([^"]*)?" is( not)* "([^"]*)?"$/,
-		fn: checkProperty,
-		title: "Check the value of a element's (css) attribute"
-	},
-	{
-		regex: /^the cookie "([^"]*)?" contains( not)* the value "([^"]*)?"$/,
-		fn: checkCookieContent,
-		title: "Check the value of a cookie"
-	},
-	{
-		regex: /^the cookie "([^"]*)?" does( not)* exist$/,
-		fn: checkCookieExists,
-		title: "Check the existence of a cookie"
-	},
-	{
-		regex: /^the element "([^"]*)?" is( not)* ([\d]+)px (broad|tall)$/,
-		fn: checkDimension,
-		title: "Check the width/height of a element"
-	},
-	{
-		regex: /^the element "([^"]*)?" is( not)* positioned at ([\d]+)px on the (x|y) axis$/,
-		fn: checkOffset,
-		title: "Check the position of a element"
-	},
-	{
-		regex: /^I have a screen that is ([\d]+) by ([\d]+) pixels$/,
-		fn: resizeScreenSize,
-		title: "Set the browser size to a given size"
-	},
-	{
-		regex: /^I have closed all but the first (window|tab)$/,
-		fn: closeAllButFirstTab,
-		title: "Close all but the first browser window/tab"
-	},
-	{
-		regex: /^a (alertbox|confirmbox|prompt) is( not)* opened$/,
-		fn: checkModal,
-		title: "Check if a modal is opened"
-	},
-	{
-		regex: /^I debug$/,
-		fn: debug,
-		title: "Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html))."
-	},
-	{
-		regex: /^I am logged in to (beta|live|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
-		fn: accountsLogin,
-		title: "Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be"
-	},
-	{
-		regex: /^I am logged out of NICE accounts$/,
-		fn: accountsLogOut,
-		title: "Log out of NICE accounts. If this is used remember to redirect back to where you expect to be"
-	}
+export const stepDefinitions = [
+	Given(/^I open the (url|site) "([^"]*)?"$/, openWebsite)
+		.withDocs("Open a site in the current browser window/tab"),
+
+	Given(/^the element "([^"]*)?" is( not)* visible$/, isVisible)
+		.withDocs("Check the (in)visibility of a element"),
+
+	Given(/^the element "([^"]*)?" is( not)* enabled$/, isEnabled)
+		.withDocs("Check if a element is (not) enabled"),
+
+	Given(/^the element "([^"]*)?" is( not)* selected$/, checkSelected)
+		.withDocs("Check if a element is (not) selected"),
+
+	Given(/^the checkbox "([^"]*)?" is( not)* checked$/, checkSelected)
+		.withDocs("Check if a checkbox is (not) checked"),
+
+	Given(/^there is (an|no) element "([^"]*)?" on the page$/, checkElementExists)
+		.withDocs("Check if a element (does not) exist"),
+
+	Given(/^the title is( not)* "([^"]*)?"$/, checkTitle)
+		.withDocs("Check the title of the current browser window/tab"),
+
+	Given(/^the element "([^"]*)?" contains( not)* the same text as element "([^"]*)?"$/, compareText)
+		.withDocs("Compare the text of two elements"),
+
+	Given(/^the (button|element) "([^"]*)?"( not)* matches the text "([^"]*)?"$/, checkEqualsText)
+		.withDocs("Check if a element equals the given text"),
+
+	Given(/^the (button|element) "([^"]*)?"( not)* contains the text "([^"]*)?"$/, checkContainsText)
+		.withDocs("Check if a element contains the given text"),
+
+	Given(/^the (button|element) "([^"]*)?"( not)* contains any text$/, checkContainsAnyText)
+		.withDocs("Check if a element does not contain any text"),
+
+	Given(/^the (button|element) "([^"]*)?" is( not)* empty$/, checkIsEmpty)
+		.withDocs("Check if a element is empty"),
+
+	Given(/^the page url is( not)* "([^"]*)?"$/, checkUrl)
+		.withDocs("Check the url of the current browser window/tab"),
+
+	Given(/^the( css)* attribute "([^"]*)?" from element "([^"]*)?" is( not)* "([^"]*)?"$/, checkProperty)
+		.withDocs("Check the value of a element's (css) attribute"),
+
+	Given(/^the cookie "([^"]*)?" contains( not)* the value "([^"]*)?"$/, checkCookieContent)
+		.withDocs("Check the value of a cookie"),
+
+	Given(/^the cookie "([^"]*)?" does( not)* exist$/, checkCookieExists)
+		.withDocs("Check the existence of a cookie"),
+
+	Given(/^the element "([^"]*)?" is( not)* ([\d]+)px (broad|tall)$/, checkDimension)
+		.withDocs("Check the width/height of a element"),
+
+	Given(/^the element "([^"]*)?" is( not)* positioned at ([\d]+)px on the (x|y) axis$/, checkOffset)
+		.withDocs("Check the position of a element"),
+
+	Given(/^I have a screen that is ([\d]+) by ([\d]+) pixels$/, resizeScreenSize)
+		.withDocs("Set the browser size to a given size"),
+
+	Given(/^I have closed all but the first (window|tab)$/, closeAllButFirstTab)
+		.withDocs("Close all but the first browser window/tab"),
+
+	Given(/^a (alertbox|confirmbox|prompt) is( not)* opened$/, checkModal)
+		.withDocs("Check if a modal is opened"),
+
+	Given("I debug", debug)
+		.withDocs("Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html))."),
+
+	Given(/^I am logged in to (beta|live|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/, accountsLogin)
+		.withDocs("Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be"),
+
+	Given(/^I am logged out of NICE accounts$/, accountsLogOut)
+		.withDocs("Log out of NICE accounts. If this is used remember to redirect back to where you expect to be")
 ];
 
 export default stepDefinitions;

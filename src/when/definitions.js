@@ -18,108 +18,71 @@ import submitForm from "../support/action/submitForm";
 import refresh from "../support/action/refresh";
 import tophatLogin from "../support/action/tophatLogIn";
 
-// Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/when.js
-const stepDefinitions = [
-	{
-		regex: /^I (click|doubleclick) on the (link|button|element) "([^"]*)?"$/,
-		fn: clickElement,
-		title: "(Double)click a link, button or element"
-	},
-	{
-		regex: /^I (add|set) "([^"]*)?" to the inputfield "([^"]*)?"$/,
-		fn: setInputField,
-		title: "Add or set the content of an input field"
-	},
-	{
-		regex: /^I clear the inputfield "([^"]*)?"$/,
-		fn: clearInputField,
-		title: "Clear an input field"
-	},
-	{
-		regex: /^I drag element "([^"]*)?" to element "([^"]*)?"$/,
-		fn: dragElement,
-		title: "Drag a element to another element"
-	},
-	{
-		regex: /^I submit the form "([^"]*)?"$/,
-		fn: submitForm,
-		title: "Submit a form"
-	},
-	{
-		regex: /^I pause for (\d+)ms$/,
-		fn: pause,
-		title: "Pause for a certain number of milliseconds"
-	},
-	{
-		regex: /^I set a cookie "([^"]*)?" with the content "([^"]*)?"$/,
-		fn: setCookie,
-		title: "Set the content of a cookie with the given name to the given string"
-	},
-	{
-		regex: /^I delete the cookie "([^"]*)?"$/,
-		fn: deleteCookie,
-		title: "Delete the cookie with the given name"
-	},
-	{
-		regex: /^I press "([^"]*)?"$/,
-		fn: pressButton,
-		title: "Press a given key. You’ll find all supported characters [here](https://w3c.github.io/webdriver/webdriver-spec.html#keyboard-actions). To do that, the value has to correspond to a key from the table."
-	},
-	{
-		regex: /^I (accept|dismiss) the (alertbox|confirmbox|prompt)$/,
-		fn: handleModal,
-		title: "Accept or dismiss a modal window"
-	},
-	{
-		regex: /^I enter "([^"]*)?" into the prompt$/,
-		fn: setPromptText,
-		title: "Enter a given text into a modal prompt"
-	},
-	{
-		regex: /^I scroll to element "([^"]*)?"$/,
-		fn: scroll,
-		title: "Scroll to a given element"
-	},
-	{
-		regex: /^I close the last opened (window|tab)$/,
-		fn: closeLastOpenedWindow,
-		title: "Close the last opened browser window/tab"
-	},
-	{
-		regex: /^I focus the last opened (window|tab)$/,
-		fn: focusLastOpenedWindow,
-		title: "Focus the last opened browser window/tab"
-	},
-	{
-		regex: /^I select the (\d+)(st|nd|rd|th) option for element "([^"]*)?"$/,
-		fn: selectOptionByIndex,
-		title: "Select a option based on its index"
-	},
-	{
-		regex: /^I select the option with the (name|value|text) "([^"]*)?" for element "([^"]*)?"$/,
-		fn: selectOption,
-		title: "Select a option based on its name, value or visible text"
-	},
-	{
-		regex: /^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/,
-		fn: moveToElement,
-		title: "Move the mouse by an (optional) offset of the specified element"
-	},
-	{
-		regex: /^I refresh$/,
-		fn: refresh,
-		title: "Refresh the current page"
-	},
-	{
-		regex: /^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/,
-		options: {
+import { When } from "../support/utils";
+
+// Initial steps taken from https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/steps/given.js
+export const stepDefinitions = [
+	When(/^I (click|doubleclick) on the (link|button|element) "([^"]*)?"$/, clickElement)
+		.withDocs("(Double)click a link, button or element"),
+
+	When(/^I (add|set) "([^"]*)?" to the inputfield "([^"]*)?"$/, setInputField)
+		.withDocs("Add or set the content of an input field"),
+
+	When(/^I clear the inputfield "([^"]*)?"$/, clearInputField)
+		.withDocs("Clear an input field"),
+
+	When(/^I drag element "([^"]*)?" to element "([^"]*)?"$/, dragElement)
+		.withDocs("Drag a element to another element"),
+
+	When(/^I submit the form "([^"]*)?"$/, submitForm)
+		.withDocs("Submit a form"),
+
+	When(/^I pause for (\d+)ms$/, pause)
+		.withDocs("Pause for a certain number of milliseconds"),
+
+	When(/^I set a cookie "([^"]*)?" with the content "([^"]*)?"$/, setCookie)
+		.withDocs("Set the content of a cookie with the given name to the given string"),
+
+	When(/^I delete the cookie "([^"]*)?"$/, deleteCookie)
+		.withDocs("Delete the cookie with the given name"),
+
+	When(/^I press "([^"]*)?"$/, pressButton)
+		.withDocs("Press a given key. You’ll find all supported characters [here](https://w3c.github.io/webdriver/webdriver-spec.html#keyboard-actions). To do that, the value has to correspond to a key from the table."),
+
+	When(/^I (accept|dismiss) the (alertbox|confirmbox|prompt)$/, handleModal)
+		.withDocs("Accept or dismiss a modal window"),
+
+	When(/^I enter "([^"]*)?" into the prompt$/, setPromptText)
+		.withDocs("Enter a given text into a modal prompt"),
+
+	When(/^I scroll to element "([^"]*)?"$/, scroll)
+		.withDocs("Scroll to a given element"),
+
+	When(/^I close the last opened (window|tab)$/, closeLastOpenedWindow)
+		.withDocs("Close the last opened browser window/tab"),
+
+	When(/^I focus the last opened (window|tab)$/, focusLastOpenedWindow)
+		.withDocs("Focus the last opened browser window/tab"),
+
+	When(/^I select the (\d+)(st|nd|rd|th) option for element "([^"]*)?"$/, selectOptionByIndex)
+		.withDocs("Select a option based on its index"),
+
+	When(/^I select the option with the (name|value|text) "([^"]*)?" for element "([^"]*)?"$/, selectOption)
+		.withDocs("Select a option based on its name, value or visible text"),
+
+	When(/^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/, moveToElement)
+		.withDocs("Move the mouse by an (optional) offset of the specified element"),
+
+	When(/^I refresh$/, refresh)
+		.withDocs("Refresh the current page"),
+
+	When(/^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/, tophatLogin)
+		.withOptions({
 			wrapperOptions: {
-				retry: 3,
+				retry: 3
 			}
-		},
-		fn: tophatLogin,
-		title: "Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables "
-	}
+		})
+		.withDocs("Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables "),
 ];
 
 export default stepDefinitions;

@@ -14,7 +14,7 @@ import thenStepDefinitions from "../src/then/definitions";
 
 // @flow
 type StepDefType = {
-	regex: RegExp,
+	pattern: RegExp,
 	title: string
   };
 
@@ -53,9 +53,9 @@ const escapePipes: string = (text: string): string => text.replace(/\|/g, "\\|")
 const getContent = (step: string): string => {
 	const stepDefinitions: Array = stepDefinitionsMap[step];
 
-	const tableHead: string = "Regex | Summary\r\n----- | -------";
+	const tableHead: string = "Step | Summary\r\n----- | -------";
 	const tableBody: string = stepDefinitions
-		.map((stepDef: StepDefType): string => `\`${ escapePipes(stepDef.regex.toString()) }\` | ${ stepDef.title }`)
+		.map((stepDef: StepDefType): string => `\`${ escapePipes(stepDef.pattern.toString()) }\` | ${ stepDef.title }`)
 		.join("\r\n");
 
 	return `<!-- START ${ step } generated comment -->
