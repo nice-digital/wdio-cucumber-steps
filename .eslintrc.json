@@ -1,15 +1,19 @@
 {
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-		"@nice-digital/eslint-config/es6-flow"
-    ],
-    "globals": {
-      "assert": true,
-      "browser": true,
-      "expect": true
-    },
-    "root": true
+	"parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "@nice-digital/eslint-config/es6-flow"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "globals": {
+    "assert": true,
+    "browser": true,
+    "expect": true
+  },
+  "root": true
 }
