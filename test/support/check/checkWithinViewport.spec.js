@@ -1,4 +1,6 @@
-import checkWithinViewport from "src/support/check/checkWithinViewport";
+import checkWithinViewport from "../../../src/support/check/checkWithinViewport";
+
+const _expect = global.expect;
 
 describe("checkWithinViewport", () => {
 	let expectToEqual;

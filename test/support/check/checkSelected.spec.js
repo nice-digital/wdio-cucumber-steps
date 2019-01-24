@@ -1,4 +1,6 @@
-import checkSelected from "src/support/check/checkSelected";
+import checkSelected from "../../../src/support/check/checkSelected";
+
+const _expect = global.expect;
 
 describe("checkSelected", () => {
 	let expectToEqual;

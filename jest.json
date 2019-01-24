@@ -16,13 +16,10 @@
       "src/then/**/*.js"
     ],
     "notify": true,
-    "setupTestFrameworkScriptFile": "./test/setup.js",
-    "roots": [
-      "test/"
-    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
     "moduleDirectories": [
       "node_modules",
-      "."
+      "<rootDir>"
     ],
     "transform": {
       "^.+\\.js$": "babel-jest"

@@ -1,4 +1,4 @@
-import selectOption from "src/support/action/selectOption";
+import selectOption from "../../../src/support/action/selectOption";
 
 describe("selectOption", () => {
 	let selectByAttribute;

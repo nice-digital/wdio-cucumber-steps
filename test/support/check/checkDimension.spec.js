@@ -1,4 +1,6 @@
-import checkDimension from "src/support/check/checkDimension";
+import checkDimension from "../../../src/support/check/checkDimension";
+
+const _expect = global.expect;
 
 describe("checkDimension", () => {
 	let expectToEqual;

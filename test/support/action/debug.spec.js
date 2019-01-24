@@ -1,4 +1,4 @@
-import debug from "src/support/action/debug";
+import debug from "../../../src/support/action/debug";
 
 describe("debug", () => {
 	beforeEach(() => {

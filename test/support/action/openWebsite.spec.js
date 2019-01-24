@@ -1,4 +1,4 @@
-import openWebsite from "src/support/action/openWebsite";
+import openWebsite from "../../../src/support/action/openWebsite";
 
 describe("openWebsite", () => {
 	beforeEach(() => {

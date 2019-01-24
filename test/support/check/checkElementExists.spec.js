@@ -1,4 +1,6 @@
-import checkElementExists from "src/support/check/checkElementExists";
+import checkElementExists from "../../../src/support/check/checkElementExists";
+
+const _expect = global.expect;
 
 describe("checkElementExists", () => {
 	let expectToHaveLengthOf;

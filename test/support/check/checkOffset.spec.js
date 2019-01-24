@@ -1,4 +1,6 @@
-import checkOffset from "src/support/check/checkOffset";
+import checkOffset from "../../../src/support/check/checkOffset";
+
+const _expect = global.expect;
 
 describe("checkOffset", () => {
 	let expectToEqual;

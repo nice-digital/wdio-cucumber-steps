@@ -1,4 +1,4 @@
-import dragElement from "src/support/action/dragElement";
+import dragElement from "../../../src/support/action/dragElement";
 
 describe("dragElement", () => {
 	beforeEach(() => {

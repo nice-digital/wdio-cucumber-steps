@@ -26,6 +26,7 @@ import isVisible from "../support/check/isVisible";
 import waitFor from "../support/action/waitFor";
 import waitForVisible from "../support/action/waitForVisible";
 import checkIfElementExists from "../support/lib/checkIfElementExists";
+import checkForAccessibilityIssues from "../support/check/checkForAccessibilityIssues";
 
 import { Then } from "../support/utils";
 
@@ -121,7 +122,10 @@ export const stepDefinitions = [
 		.withDocs("Check that a modal is (not) opened"),
 
 	Then(/^I expect that a (alertbox|confirmbox|prompt)( not)* contains the text "([^"]*)?"$/, checkModalText)
-		.withDocs("Check the text of a modal. E.g. `I expect that a alertbox contains the text \"Continue?\"` or `I expect that a confirmbox not contains the text \"Continue?\"`")
+		.withDocs("Check the text of a modal. E.g. `I expect that a alertbox contains the text \"Continue?\"` or `I expect that a confirmbox not contains the text \"Continue?\"`"),
+	
+	Then(/^the page should have no(?: (A|AA))? accessibility issues$/, checkForAccessibilityIssues)
+		.withDocs("Check each element on the page for accessibility issues. Please note this won't find all accessibility issues.")
 ];
 
 export default stepDefinitions;

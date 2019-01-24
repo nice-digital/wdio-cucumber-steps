@@ -1,5 +1,7 @@
 //these tests need to be reworked!
-import checkModalText from "src/support/check/checkModalText";
+import checkModalText from "../../../src/support/check/checkModalText";
+
+const _expect = global.expect;
 
 describe("checkModalText", () => {
 	let expectToEqual;

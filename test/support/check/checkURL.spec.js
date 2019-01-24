@@ -1,4 +1,6 @@
-import checkURL from "src/support/check/checkURL";
+import checkURL from "../../../src/support/check/checkURL";
+
+const _expect = global.expect;
 
 describe("checkURL", () => {
 	let expectToEqual;

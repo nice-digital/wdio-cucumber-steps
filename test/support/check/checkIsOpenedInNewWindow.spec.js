@@ -1,4 +1,6 @@
-import checkIsOpenedInNewWindow from "src/support/check/checkIsOpenedInNewWindow";
+import checkIsOpenedInNewWindow from "../../../src/support/check/checkIsOpenedInNewWindow";
+
+const _expect = global.expect;
 
 describe("checkIsOpenedInNewWindow", () => {
 	let expectLengthShouldNotEqual;

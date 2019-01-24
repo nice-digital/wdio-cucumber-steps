@@ -1,4 +1,4 @@
-import setCookie from "src/support/action/setCookie";
+import setCookie from "../../../src/support/action/setCookie";
 
 describe("setCookie", () => {
 	beforeEach(() => {

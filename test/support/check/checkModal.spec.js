@@ -1,4 +1,6 @@
-import checkModal from "src/support/check/checkModal";
+import checkModal from "../../../src/support/check/checkModal";
+
+const _expect = global.expect;
 
 describe("checkModal", () => {
 	let expectToEqual;
