@@ -3,7 +3,7 @@ import { source as axeSource } from "axe-core";
 /**
  * Check if the page has accessibility issues.
  */
-module.exports = (level) => {
+export const checkForAccessibilityIssues = (level) => {
 	var levels = ["wcag2a", "wcag2aa", "best-practice"];
 	switch(level) {
 		case "A":
@@ -27,15 +27,21 @@ module.exports = (level) => {
 		};
 		axe.run(options, function(err, results) { // eslint-disable-line no-undef
 			if (err) done(err);
-			done(results);
+			else done(results);
 		});
 	}, levels);
 
-	var errors = results.value.violations.map(violation => {
+	expect(results.value.violations, getErrorMessage(results.value.violations)).to.equal([]);
+};
+
+export const getErrorMessage = (violations) => {
+
+	var errors = violations.map(violation => {
 		var elements = violation.nodes.map(node => node.html).join(", ");
 		return `${violation.help} | ${elements}\n   (see ${violation.helpUrl})`;
 	}).join("\n - ");
 
-	expect(results.value.violations, `Found ${results.value.violations.length} accessibility errors on ${browser.getUrl()}:\n - ${errors}`).to.equal([]);
-
+	return `Found ${violations.length} accessibility errors on ${browser.getUrl()}:\n - ${errors}`;
 };
+
+export default checkForAccessibilityIssues;
