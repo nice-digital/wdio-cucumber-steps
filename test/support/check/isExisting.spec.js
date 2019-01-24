@@ -1,4 +1,6 @@
-import isExisting from "src/support/check/isExisting";
+import isExisting from "../../../src/support/check/isExisting";
+
+const _expect = global.expect;
 
 describe("isExisting", () => {
 	let expectToHaveLengthAbove;

@@ -1,4 +1,6 @@
-import checkProperty from "src/support/check/checkProperty";
+import checkProperty from "../../../src/support/check/checkProperty";
+
+const _expect = global.expect;
 
 describe("checkProperty", () => {
 	let expectToEqual;

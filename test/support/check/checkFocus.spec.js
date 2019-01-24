@@ -1,4 +1,6 @@
-import checkFocus from "src/support/check/checkFocus";
+import checkFocus from "../../../src/support/check/checkFocus";
+
+const _expect = global.expect;
 
 describe("checkFocus", () => {
 	let expectToEqual;

@@ -1,4 +1,6 @@
-import checkClass from "src/support/check/checkClass";
+import checkClass from "../../../src/support/check/checkClass";
+
+const _expect = global.expect;
 
 describe("checkClass", () => {
 	let expectToIncludeStub;

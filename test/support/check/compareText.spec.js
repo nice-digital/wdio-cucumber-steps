@@ -1,4 +1,6 @@
-import compareText from "src/support/check/compareText";
+import compareText from "../../../src/support/check/compareText";
+
+const _expect = global.expect;
 
 describe("compareText", () => {
 	let expectToEqual;

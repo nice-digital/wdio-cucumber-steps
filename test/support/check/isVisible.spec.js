@@ -1,4 +1,6 @@
-import isVisible from "src/support/check/isVisible";
+import isVisible from "../../../src/support/check/isVisible";
+
+const _expect = global.expect;
 
 describe("isVisible", () => {
 	let expectToEqual;

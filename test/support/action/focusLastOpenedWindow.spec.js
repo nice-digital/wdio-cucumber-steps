@@ -1,4 +1,4 @@
-import focusLastOpenedWindow from "src/support/action/focusLastOpenedWindow";
+import focusLastOpenedWindow from "../../../src/support/action/focusLastOpenedWindow";
 
 describe("focusLastOpenedWindow", () => {
 	beforeEach(() => {

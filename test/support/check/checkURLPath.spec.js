@@ -1,4 +1,6 @@
-import checkURLPath from "src/support/check/checkURLPath";
+import checkURLPath from "../../../src/support/check/checkURLPath";
+
+const _expect = global.expect;
 
 describe("checkURLPath", () => {
 	let expectToEqual;

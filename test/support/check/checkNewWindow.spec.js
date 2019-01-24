@@ -1,4 +1,6 @@
-import checkNewWindow from "src/support/check/checkNewWindow";
+import checkNewWindow from "../../../src/support/check/checkNewWindow";
+
+const _expect = global.expect;
 
 describe("checkNewWindow", () => {
 	let expectToEqual;

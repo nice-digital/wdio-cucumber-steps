@@ -1,5 +1,7 @@
-import checkForAccessibilityIssues from "src/support/check/checkForAccessibilityIssues";
+import checkForAccessibilityIssues from "../../../src/support/check/checkForAccessibilityIssues";
 import { source as axeSource } from "axe-core";
+
+const _expect = global.expect;
 
 describe("checkForAccessibilityIssues", () => {
 	beforeEach(() => {
@@ -7,8 +9,8 @@ describe("checkForAccessibilityIssues", () => {
 			execute: jest.fn(),
 			executeAsync: jest.fn(() => {
 				return { value: { violations: [] } };
-            }),
-            getUrl: jest.fn()
+			}),
+			getUrl: jest.fn()
 		};
 
 		global.expect = jest.fn(() => ({
@@ -20,7 +22,7 @@ describe("checkForAccessibilityIssues", () => {
 
 	it("Should inject axe-core into the browser", () => {
 		checkForAccessibilityIssues();
-        _expect(global.browser.execute).toHaveBeenCalledTimes(1);
-        _expect(global.browser.execute).toHaveBeenCalledWith(axeSource);
+		_expect(global.browser.execute).toHaveBeenCalledTimes(1);
+		_expect(global.browser.execute).toHaveBeenCalledWith(axeSource);
 	});
 });

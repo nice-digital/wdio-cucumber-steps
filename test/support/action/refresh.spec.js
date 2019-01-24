@@ -1,4 +1,4 @@
-import refresh from "src/support/action/refresh";
+import refresh from "../../../src/support/action/refresh";
 
 describe("refresh", () => {
 	beforeEach(() => {

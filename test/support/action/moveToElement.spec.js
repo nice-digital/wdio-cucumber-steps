@@ -1,4 +1,4 @@
-import moveToElement from "src/support/action/moveToElement";
+import moveToElement from "../../../src/support/action/moveToElement";
 
 describe("moveToElement", () => {
 	beforeEach(() => {

@@ -1,4 +1,6 @@
-import checkContent from "src/support/check/checkContainsAnyText";
+import checkContent from "../../../src/support/check/checkContainsAnyText";
+
+const _expect = global.expect;
 
 describe("checkContent", () => {
 	let expectToEqual;

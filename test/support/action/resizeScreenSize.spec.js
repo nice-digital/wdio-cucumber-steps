@@ -1,4 +1,4 @@
-import resizeScreenSize from "src/support/action/resizeScreenSize";
+import resizeScreenSize from "../../../src/support/action/resizeScreenSize";
 
 describe("resizeScreenSize", () => {
 	beforeEach(() => {

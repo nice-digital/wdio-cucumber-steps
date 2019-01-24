@@ -1,4 +1,4 @@
-import waitFor from "src/support/action/waitFor";
+import waitFor from "../../../src/support/action/waitFor";
 
 describe("waitFor", () => {
 	beforeEach(() => {

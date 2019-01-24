@@ -1,4 +1,4 @@
-import selectOptionByIndex from "src/support/action/selectOptionByIndex";
+import selectOptionByIndex from "../../../src/support/action/selectOptionByIndex";
 
 describe("selectOptionByIndex", () => {
 	beforeEach(() => {

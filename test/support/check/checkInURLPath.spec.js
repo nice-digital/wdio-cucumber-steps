@@ -1,4 +1,6 @@
-import checkInURLPath from "src/support/check/checkInURLPath";
+import checkInURLPath from "../../../src/support/check/checkInURLPath";
+
+const _expect = global.expect;
 
 describe("checkInURLPath", () => {
 	let expectShouldContain;

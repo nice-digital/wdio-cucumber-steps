@@ -1,4 +1,6 @@
-import isEnabled from "src/support/check/isEnabled";
+import isEnabled from "../../../src/support/check/isEnabled";
+
+const _expect = global.expect;
 
 describe("isEnabled", () => {
 	let expectToEqual;

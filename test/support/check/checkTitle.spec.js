@@ -1,4 +1,6 @@
-import checkTitle from "src/support/check/checkTitle";
+import checkTitle from "../../../src/support/check/checkTitle";
+
+const _expect = global.expect;
 
 describe("checkTitle", () => {
 	let expectToEqual;
