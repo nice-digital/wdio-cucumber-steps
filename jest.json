@@ -3,17 +3,14 @@
     "coverageDirectory": "./coverage",
     "coverageThreshold": {
       "global": {
-        "branches": 70,
-        "functions": 70,
-        "lines": 70,
-        "statements": 70
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
       }
     },
     "collectCoverageFrom": [
-      "src/support/**/*.js",
-      "src/given/**/*.js",
-      "src/when/**/*.js",
-      "src/then/**/*.js"
+      "src/support/**/*.js"
     ],
     "notify": true,
     "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
