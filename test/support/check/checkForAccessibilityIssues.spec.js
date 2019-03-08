@@ -19,7 +19,7 @@ describe("checkForAccessibilityIssues", () => {
 
 		global.expect = jest.fn(() => ({
 			to: {
-				equal: jest.fn()
+				eql: jest.fn()
 			}
 		}));
 	});

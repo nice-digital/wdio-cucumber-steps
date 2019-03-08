@@ -31,7 +31,7 @@ export const checkForAccessibilityIssues = (level) => {
 		});
 	}, levels);
 
-	expect(results.value.violations, getErrorMessage(results.value.violations)).to.equal([]);
+	expect(results.value.violations, getErrorMessage(results.value.violations)).to.eql([]);
 };
 
 export const getErrorMessage = (violations) => {
