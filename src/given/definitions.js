@@ -92,7 +92,7 @@ export const stepDefinitions = [
 	Given("I debug", debug)
 		.withDocs("Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html))."),
 
-	Given(/^I am logged in to (beta|live|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/, accountsLogin)
+	Given(/^I am logged in to (beta|live|test) Accounts with username "([A-z0-9_@.]+)" and password "([A-z0-9_]+)"$/, accountsLogin)
 		.withDocs("Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be"),
 
 	Given(/^I am logged out of NICE accounts$/, accountsLogOut)
