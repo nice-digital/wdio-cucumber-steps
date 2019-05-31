@@ -85,7 +85,7 @@ export const stepDefinitions = [
 		})
 		.withDocs("Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables "),
 
-	When(/^I focus on the element "([^"]*)?"$/, focusElement).withDocs(
+	When(/^I focus on the element "([^"]+)"$/, focusElement).withDocs(
 		"Move focus to the given element"),
 ];
 
