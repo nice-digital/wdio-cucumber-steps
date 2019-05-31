@@ -56,6 +56,6 @@
     "np": "^3.1.0"
   },
   "dependencies": {
-    "axe-core": "^3.1.2"
+    "axe-core": "^3.2.2"
   }
 }
