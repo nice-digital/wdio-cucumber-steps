@@ -185,7 +185,7 @@ Step | Summary
 `/^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/` | Move the mouse by an (optional) offset of the specified element
 `/^I refresh$/` | Refresh the current page
 `/^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables 
-`/^I focus on the element "([^"]*)?"$/` | Move focus to the given element
+`/^I focus on the element "([^"]+)"$/` | Move focus to the given element
 <!-- END when generated comment -->
 
 ### Then steps
