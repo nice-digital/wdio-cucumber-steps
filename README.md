@@ -154,7 +154,7 @@ Step | Summary
 `/^I have closed all but the first (window\|tab)$/` | Close all but the first browser window/tab
 `/^a (alertbox\|confirmbox\|prompt) is( not)* opened$/` | Check if a modal is opened
 `I debug` | Add a breakpoint to stop the running browser and give you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)).
-`/^I am logged in to (beta\|live\|test) Accounts with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be
+`/^I am logged in to (beta\|live\|test) Accounts with username "([A-z0-9_@.]+)" and password "([A-z0-9_]+)"$/` | Log into a specific version of Nice accounts independently of using TopHat. Username and Password should be names of environment variables (eg, Given I am logged in to beta Accounts with username 'ACCOUNTS_EMAIL' and password 'ACCOUNTS_PASSWORD'). If this is used remember to redirect back to where you expect to be
 `/^I am logged out of NICE accounts$/` | Log out of NICE accounts. If this is used remember to redirect back to where you expect to be
 <!-- END given generated comment -->
 
@@ -185,6 +185,7 @@ Step | Summary
 `/^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/` | Move the mouse by an (optional) offset of the specified element
 `/^I refresh$/` | Refresh the current page
 `/^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables 
+`/^I focus on the element "([^"]+)"$/` | Move focus to the given element
 <!-- END when generated comment -->
 
 ### Then steps

@@ -17,6 +17,7 @@ import setPromptText from "../support/action/setPromptText";
 import submitForm from "../support/action/submitForm";
 import refresh from "../support/action/refresh";
 import tophatLogin from "../support/action/tophatLogIn";
+import focusElement from "../support/action/focusElement";
 
 import { When } from "../support/utils";
 
@@ -83,6 +84,9 @@ export const stepDefinitions = [
 			}
 		})
 		.withDocs("Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables "),
+
+	When(/^I focus on the element "([^"]+)"$/, focusElement).withDocs(
+		"Move focus to the given element"),
 ];
 
 export default stepDefinitions;
