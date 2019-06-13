@@ -10,8 +10,6 @@ export const checkForAccessibilityIssues = (level) => {
 			levels = ["wcag2a", "best-practice"];
 			break;
 		case "AA":
-			levels = ["wcag2aa", "best-practice"];
-			break;
 		default:
 			break;
 	}
