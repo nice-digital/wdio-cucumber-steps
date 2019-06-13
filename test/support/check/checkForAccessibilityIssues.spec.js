@@ -50,16 +50,16 @@ describe("checkForAccessibilityIssues", () => {
 			_expect(global.axe.run.mock.calls[0][0].runOnly.values).toEqual(expected);
 		};
 
-		it("Should call axe with all three levels (wcag2a, wcag2aa, best-practice)", () => {
+		it("Should call axe with all three levels (wcag2a, wcag2aa, best-practice) for default", () => {
 			a11yLevelTest(undefined, ["wcag2a", "wcag2aa", "best-practice"]);
 		});
 
-		it("Should call axe with two levels (wcag2a, best-practice)", () => {
+		it("Should call axe with two levels (wcag2a, best-practice) for A", () => {
 			a11yLevelTest("A", ["wcag2a", "best-practice"]);
 		});
 
-		it("Should call axe with two levels (wcag2aa, best-practice)", () => {
-			a11yLevelTest("AA", ["wcag2aa", "best-practice"]);
+		it("Should call axe with three levels (wcag2a, wcag2aa, best-practice) for AA", () => {
+			a11yLevelTest("AA", ["wcag2a", "wcag2aa", "best-practice"]);
 		});
 	});
 
