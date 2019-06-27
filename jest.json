@@ -13,7 +13,7 @@
       "src/support/**/*.js"
     ],
     "notify": true,
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
+    "setupFilesAfterEnv": ["<rootDir>/test/setup.js"],
     "moduleDirectories": [
       "node_modules",
       "<rootDir>"
