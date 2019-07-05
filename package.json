@@ -42,18 +42,21 @@
     "access": "public"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
     "@nice-digital/eslint-config": "^1.0.3",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
     "chai": "^4.2.0",
     "doctoc": "^1.4.0",
-    "eslint": "^5.12.0",
-    "eslint-plugin-flowtype": "^3.2.1",
-    "jest": "^23.6.0",
-    "np": "^3.1.0"
+    "eslint": "^6.0.1",
+    "eslint-plugin-flowtype": "^3.11.1",
+    "jest": "^24.8.0",
+    "np": "^5.0.3"
   },
   "dependencies": {
     "axe-core": "^3.2.2"
