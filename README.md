@@ -51,7 +51,7 @@ import "@nice-digital/wdio-cucumber-steps/lib/when";
 import "@nice-digital/wdio-cucumber-steps/lib/then";
 ```
 
-The easiest way is to fork the [NICE frontend testing base](https://github.com/nhsevidence/frontend-testing-base/) as it comes with the required dependencies.
+The easiest way is to fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies.
 
 ### VS Code integration
 
