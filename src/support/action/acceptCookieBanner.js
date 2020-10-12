@@ -1,18 +1,13 @@
-/*! https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/support/action/acceptCookieBanner.js */
 /**
- * Accept the settings from the cookie banner
- * @param  {String}   element Element selector
+ * Accept all cookies using the NICE cookie banner.
+ * We use this as the cookie banner blocks clicks.
  */
+ module.exports = () => {
 
- // To dismiss cookie banner, as it blocks clicks
-
- module.exports = (text) => {
-
-	browser.waitForExist('#global-nav-header', 2000)
+	browser.waitForExist("body #ccc", 2000)
 
 	const cookieControl = $("body #ccc");
 	if (cookieControl.isVisible("button.ccc-accept-button")) {
-	cookieControl.$("button.ccc-accept-button").click();
-
+		cookieControl.$("button.ccc-accept-button").click();
 	}
  };

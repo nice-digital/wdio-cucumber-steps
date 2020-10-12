@@ -89,8 +89,8 @@ export const stepDefinitions = [
 	When(/^I focus on the element "([^"]+)"$/, focusElement).withDocs(
 		"Move focus to the given element"),
 
-	When(/^I accept the cookie settings$/, acceptCookieBanner)
-		.withDocs("Accept the cookie banner settings"),
+	When(/^I accept all cookies$/, acceptCookieBanner)
+		.withDocs("Accept all cookies using the NICE cookie banner"),
 ];
 
 export default stepDefinitions;
