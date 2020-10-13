@@ -1,3 +1,4 @@
+import acceptCookieBanner from "../support/action/acceptCookieBanner"
 import clearInputField from "../support/action/clearInputField";
 import clickElement from "../support/action/clickElement";
 import closeLastOpenedWindow from "../support/action/closeLastOpenedWindow";
@@ -87,6 +88,9 @@ export const stepDefinitions = [
 
 	When(/^I focus on the element "([^"]+)"$/, focusElement).withDocs(
 		"Move focus to the given element"),
+
+	When(/^I accept all cookies$/, acceptCookieBanner)
+		.withDocs("Accept all cookies using the NICE cookie banner"),
 ];
 
 export default stepDefinitions;

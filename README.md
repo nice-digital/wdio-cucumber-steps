@@ -186,6 +186,7 @@ Step | Summary
 `/^I refresh$/` | Refresh the current page
 `/^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables 
 `/^I focus on the element "([^"]+)"$/` | Move focus to the given element
+`/^I accept all cookies$/` | Accept all cookies using the NICE cookie banner
 <!-- END when generated comment -->
 
 ### Then steps
