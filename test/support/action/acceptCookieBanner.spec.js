@@ -1,7 +1,6 @@
 import acceptCookieBanner from "../../../src/support/action/acceptCookieBanner";
 
 describe("acceptCookieBanner", () => {
-
 	beforeEach(() => {
 		global.browser = {
 			waitForExist: jest.fn(),
@@ -17,8 +16,8 @@ describe("acceptCookieBanner", () => {
 
 	it("should click accept when the accept button is available", () => {
 		acceptCookieBanner();
-		expect(global.browser.click).toHaveBeenCalledWith("button.ccc-accept-button");
-	})
-
-
+		expect(global.browser.click).toHaveBeenCalledWith(
+			"button.ccc-accept-button"
+		);
+	});
 });
