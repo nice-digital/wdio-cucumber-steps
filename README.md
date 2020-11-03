@@ -6,19 +6,20 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Usage](#usage)
-  - [VS Code integration](#vs-code-integration)
-- [Development](#development)
-  - [Debug](#debug)
-  - [npm linking](#npm-linking)
-- [Releasing](#releasing)
-- [Tests](#tests)
-  - [Running the tests](#running-the-tests)
-- [Step definitions](#step-definitions)
-  - [Given steps](#given-steps)
-  - [When steps](#when-steps)
-  - [Then steps](#then-steps)
-- [License](#license)
+- [@nice-digital/wdio-cucumber-steps](#nice-digitalwdio-cucumber-steps)
+	- [Usage](#usage)
+		- [VS Code integration](#vs-code-integration)
+	- [Development](#development)
+		- [Debug](#debug)
+		- [npm linking](#npm-linking)
+	- [Releasing](#releasing)
+	- [Tests](#tests)
+		- [Running the tests](#running-the-tests)
+	- [Step definitions](#step-definitions)
+		- [Given steps](#given-steps)
+		- [When steps](#when-steps)
+		- [Then steps](#then-steps)
+	- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -108,7 +109,7 @@ npm run es5ify:watch
 
 ## Releasing
 
-We use [np](https://www.npmjs.com/package/np) for releasing. Run `npm run release` to release a patch version or `npm run release:minor` or `npm run release:major.` This will run tests, bump package.json version and create a git tag for you.
+We use [np](https://www.npmjs.com/package/np) for releasing. Run `npm run release:patch` to release a patch version or `npm run release:minor` or `npm run release:major.` This will run tests, bump package.json version and create a git tag for you. Or run `npm run release` for more fine grained control, for example `npm run release -- prepatch --tag=alpha --preview --any-branch`.
 
 ## Tests
 
