@@ -1,0 +1,26 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.rulers": [80, 120],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[feature]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
+  },
+  "files.eol": "\n",
+  "cucumberautocomplete.steps": [
+    "node_modules/@nice-digital/wdio-cucumber-steps/src/given/definitions.js",
+    "node_modules/@nice-digital/wdio-cucumber-steps/src/when/definitions.js",
+    "node_modules/@nice-digital/wdio-cucumber-steps/src/then/definitions.js",
+    "./steps/**/*.ts"
+  ],
+  "cucumberautocomplete.customParameters": [
+    {
+      "parameter": "(window|tab)",
+      "value": "window/tab"
+    }
+  ]
+}

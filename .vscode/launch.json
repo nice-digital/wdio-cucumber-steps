@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run current feature",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "wdio.conf.js",
+        "--spec",
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "cwd": "${workspaceFolder}",
+      // "localRoot": "${workspaceFolder}",
+      // "remoteRoot": "${workspaceFolder}",
+      "autoAttachChildProcesses": true,
+      "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+      "console": "integratedTerminal",
+      "presentation": {
+        "hidden": false,
+        "group": "Tests",
+        "order": 1
+      },
+      "sourceMaps": true,
+      "smartStep": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "WebdriverIO",
+      "runtimeExecutable": "${workspaceRoot}/functional-tests/node_modules/.bin/wdio",
+      "port": 9299,
+      "args": [
+        "--spec",
+        "features/***.feature"
+      ],
+      "env": {
+        "DEBUG": "true"
+      },
+      //"windows": {
+      //    "runtimeExecutable": "${workspaceRoot}/functional-tests/node_modules/.bin/wdio.cmd"
+      //},
+      "cwd": "${workspaceRoot}/functional-tests",
+      "console": "integratedTerminal"
+      // This args config runs only the file that's open and displayed
+      // (e.g., a file in test/spec/):
+      //"args":[
+      //    "test"
+      // ]
+      ///"runtimeArgs": [""],
+    }
+  ]
+}

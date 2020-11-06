@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "christian-kohler.npm-intellisense",
+    "eg2.vscode-npm-script",
+    "alexkrechik.cucumberautocomplete",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint"
+  ]
+}
