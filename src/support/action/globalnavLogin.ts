@@ -1,4 +1,4 @@
-import login from "./login";
+import { login } from "./login";
 /**
  * Log in to nice accounts by clicking on Global nav
  * @param  {string}   username The email address used to sign in to Nice Accounts
@@ -10,14 +10,14 @@ export function globalnavLogin(username: string, password: string): void {
 	}
 
 	$("header[aria-label='Site header']").waitForExist();
-	var headerMenuShown = $("#header-menu-button").isDisplayed();
+	const headerMenuShown = $("#header-menu-button").isDisplayed();
 	if (headerMenuShown) {
 		$("#header-menu-button").click();
 		$("#header-menu a[href*='accounts.nice.org.uk/signin']").click();
 	} else {
 		$("#header-menu-button+* a[href*='accounts.nice.org.uk/signin']").click();
 	}
-	login(usename, password);
+	login(username, password);
 }
 // module.exports = (username, password) => {
 // 	// If you are already logged in

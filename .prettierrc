@@ -4,7 +4,7 @@
 	"trailingComma": "es5",
 	"useTabs": true,
 	"printWidth": 80,
-	"endOfLine": "lf",
+	"endOfLine": "auto",
 	"overrides": [
 		{
 			"files": ["**/*.{scss,md,yml,sh}"],
