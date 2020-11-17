@@ -4,23 +4,15 @@
  * @param  {String}   selectionType  Type of method to select by (name, value or
  *                                   text)
  * @param  {String}   selectionValue Value to select by
- * @param  {String}   selectElem     Element selector
+ * @param  {String}   selector     Element selector
  */
-module.exports = (selectionType, selectionValue, selectElem) => {
-	/**
-     * Arguments to pass to the selection method
-     * @type {Array}
-     */
-	const commandArguments = [
-		selectElem,
-		selectionValue,
-	];
-
-	/**
-     * The method to use for selecting the option
-     * @type {String}
-     */
+export function selectOption(
+	selectionType: "name" | "value" | "text",
+	selectionValue: string,
+	selector: string
+): void {
 	let command = "";
+	const commandArguments = [selectionValue];
 
 	switch (selectionType) {
 		case "name": {
@@ -28,13 +20,16 @@ module.exports = (selectionType, selectionValue, selectElem) => {
 
 			// The selectByAttribute command expects the attribute name as it
 			// second argument so let's add it
-			commandArguments.splice(1, 0, "name");
+			commandArguments.unshift("name");
 
 			break;
 		}
 
 		case "value": {
-			command = "selectByValue";
+			// The selectByAttribute command expects the attribute name as it
+			// second argument so let's add it
+			commandArguments.unshift("value");
+			command = "selectByAttribute";
 			break;
 		}
 
@@ -48,5 +43,5 @@ module.exports = (selectionType, selectionValue, selectElem) => {
 		}
 	}
 
-	browser[command](...commandArguments);
-};
+	$(selector)[command](...commandArguments);
+}

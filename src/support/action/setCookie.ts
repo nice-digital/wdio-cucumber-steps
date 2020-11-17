@@ -5,9 +5,9 @@
  * @param  {String}   cookieName    The name of the cookie
  * @param  {String}   cookieContent The value of the cookie
  */
-module.exports = (cookieName, cookieContent) => {
+export function setCookie(cookieName: string, cookieContent: string): void {
 	browser.setCookie({
 		name: cookieName,
 		value: cookieContent,
 	});
-};
+}
