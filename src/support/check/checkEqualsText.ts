@@ -1,36 +1,26 @@
-/*! https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/support/check/checkEqualsText.js */
+import { expect } from "chai";
+
 /**
  * Check if the given elements text is the same as the given text
  * @param  {String}   elementType   Element type (element or button)
- * @param  {String}   element       Element selector
+ * @param  {String}   selector       Element selector
  * @param  {String}   falseCase     Whether to check if the content equals the
  *                                  given text or not
  * @param  {String}   expectedText  The text to validate against
  */
-module.exports = (elementType, element, falseCase, expectedText) => {
-	/**
-     * The command to execute on the browser object
-     * @type {String}
-     */
+export function checkEqualsText(
+	elementType: string,
+	selector: string,
+	falseCase: string,
+	expectedText: string
+): void {
 	let command = "getValue";
 
-	if (
-		elementType === "button" ||
-        browser.getAttribute(element, "value") === null
-	) {
+	if (elementType === "button" || $(selector).getAttribute("value") === null) {
 		command = "getText";
 	}
 
-	/**
-     * The expected text to validate against
-     * @type {String}
-     */
 	let parsedExpectedText = expectedText;
-
-	/**
-     * Whether to check if the content equals the given text or not
-     * @type {Boolean}
-     */
 	let boolFalseCase = !!falseCase;
 
 	// Check for empty element
@@ -45,11 +35,11 @@ module.exports = (elementType, element, falseCase, expectedText) => {
 		boolFalseCase = true;
 	}
 
-	const text = browser[command](element);
+	const text = $(selector)[command]();
 
 	if (boolFalseCase) {
-		parsedExpectedText.should.not.equal(text);
+		expect(parsedExpectedText).to.not.equal(text);
 	} else {
-		parsedExpectedText.should.equal(text);
+		expect(parsedExpectedText).to.equal(text);
 	}
-};
+}
