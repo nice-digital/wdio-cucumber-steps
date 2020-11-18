@@ -1,6 +1,4 @@
 import { expect } from "chai";
-import { isNumber } from "util";
-
 /**
  * Check the given property of the given element
  * @param  {String}   isCSS         Whether to check for a CSS property or an attribute
@@ -19,17 +17,18 @@ export function checkProperty(
 ): void {
 	const command = isCSS ? "getCSSProperty" : "getAttribute";
 	const attrType = isCSS ? "CSS attribute" : "Attribute";
-	let attributeValue = $(selector)[command](attrName);
+	const attributeValue = $(selector)[command](attrName);
 
-	const value = isNumber(expectedValue)
-		? parseFloat(expectedValue)
-		: expectedValue;
+	const value =
+		typeof expectedValue === "number"
+			? parseFloat(expectedValue)
+			: expectedValue;
 
-	// when getting something with a color or font-weight WebdriverIO returns a
-	// object but we want to assert against a string
-	if (/(color|font-weight)/.exec(attrName)) {
-		attributeValue = (attributeValue as WebdriverIO.CSSProperty).value;
-	}
+	// // when getting something with a color or font-weight WebdriverIO returns an
+	// // object but we want to assert against a string
+	// if (/(color|font-weight)/.exec(attrName)) {
+	// 	attributeValue = (attributeValue as WebdriverIO.CSSProperty).value;
+	// }
 	if (falseCase) {
 		expect(attributeValue).to.not.equal(
 			value,
