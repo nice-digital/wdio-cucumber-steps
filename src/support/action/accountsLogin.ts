@@ -14,7 +14,7 @@ export function accountsLogin(
 	if (browser.getCookie("__nrpa_2.2")) {
 		return;
 	}
-	browser.url(getNICEAccountsUrl(envinment));
+	browser.url(getNICEAccountsUrl(environment));
 	login(username, password);
 }
 // module.exports = (environment, username, password) => {
