@@ -25,6 +25,9 @@
     "release:minor": "np minor",
     "release:major": "np major"
   },
+  "engines": {
+    "node": ">=12.16.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nice-digital/wdio-cucumber-steps.git"
