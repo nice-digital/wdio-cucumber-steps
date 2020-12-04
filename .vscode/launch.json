@@ -5,14 +5,8 @@
       "name": "Run current feature",
       "type": "node",
       "request": "launch",
-      "args": [
-        "wdio.conf.js",
-        "--spec",
-        "${relativeFile}"
-      ],
-      "runtimeArgs": [
-        "--nolazy"
-      ],
+      "args": ["wdio.conf.js", "--spec", "${relativeFile}"],
+      "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       // "localRoot": "${workspaceFolder}",
       // "remoteRoot": "${workspaceFolder}",
@@ -33,10 +27,7 @@
       "name": "WebdriverIO",
       "runtimeExecutable": "${workspaceRoot}/functional-tests/node_modules/.bin/wdio",
       "port": 9299,
-      "args": [
-        "--spec",
-        "features/***.feature"
-      ],
+      "args": ["--spec", "features/***.feature"],
       "env": {
         "DEBUG": "true"
       },
@@ -51,6 +42,16 @@
       //    "test"
       // ]
       ///"runtimeArgs": [""],
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Tests",
+      "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+      "args": ["-c", "./jest.config.js", "--verbose", "-i", "--no-cache"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "openOnSessionStart",
+      "outFiles": ["${workspaceRoot}/dist/**/*"]
     }
   ]
 }

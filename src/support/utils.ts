@@ -1,16 +1,20 @@
 // @flow
 
-type StepDefType = {
-	pattern: string | RegExp,
-	options: ?{},
-	code: (...args: any) => void,
-	title: string,
-	examples: string[],
-	withDocs: (string) => StepDefType,
-	withExample: (string) => StepDefType,
-};
+interface StepDefType {
+	pattern: string | RegExp;
+	options?: unknown;
+	code: (...args: any) => void;
+	title: string;
+	examples: string[];
+	withDocs: (arg: string) => StepDefType;
+	withOptions: (arg: string) => StepDefType;
+	withExample: (arg: string) => StepDefType;
+}
 
-const cucumberFunction = (pattern: string | RegExp, code): StepDefType => ({
+const cucumberFunction = (
+	pattern: string | RegExp,
+	code: any
+): StepDefType => ({
 	pattern: pattern,
 	options: null,
 	code: code,

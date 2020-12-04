@@ -1,4 +1,4 @@
-import acceptCookieBanner from "../../../src/support/action/acceptCookieBanner";
+import { acceptCookieBanner } from "../../../src/support/action/acceptCookieBanner";
 
 describe("acceptCookieBanner", () => {
 	beforeEach(() => {
