@@ -1,29 +1,25 @@
 import { login } from "./login";
-import { getNICEAccountsUrl } from "../utils";
+import { getNICEAccountsUrl, AccountsEnvironment } from "../lib/nice-accounts";
+
 /**
  * Log in to particular version of nice accounts indepentendly of TopHat
- * @param  {string}   environment The domain of accounts to use to sign to nice accounts (beta, live or test)
- * @param  {string}   username The email address used to sign in to Nice Accounts
- * @param  {string}   password The password used to sign in to Nice Accounts
+ * @param environment The domain of accounts to use to sign to nice accounts (beta, live or test)
+ * @param usernameEnvVar The name of the environment variable with the email address used to sign in to Nice Accounts
+ * @param passwordEnvVar The name of the environment variable with the password used to sign in to Nice Accounts
  */
-export function accountsLogin(
-	environment: string,
-	username: string,
-	password: string
-): void {
-	if (browser.getCookie("__nrpa_2.2")) {
-		return;
-	}
-	browser.url(getNICEAccountsUrl(environment));
-	login(username, password);
+export async function accountsLogin(
+	environment: AccountsEnvironment,
+	usernameEnvVar: string,
+	passwordEnvVar: string
+): Promise<void> {
+	// You're already logged in if you have the nrpa auth cookie, so no need to do anything more
+	const accountsAuthCookie = await browser.getCookies("__nrpa_2.2");
+	if (accountsAuthCookie.length > 0) return;
+
+	const accountsUrl = getNICEAccountsUrl(environment);
+
+	if (accountsUrl) {
+		browser.url(accountsUrl);
+		login(usernameEnvVar, passwordEnvVar);
+	} else throw "Invalid NICE Accounts URL/environment";
 }
-// module.exports = (environment, username, password) => {
-// 	// If you are already logged in
-
-// 	if (browser.getCookie("__nrpa_2.2")) {
-// 		return;
-// 	}
-
-// 	browser.url(getNICEAccountsUrl(environment));
-// 	login(username, password);
-// };
