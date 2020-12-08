@@ -15,7 +15,6 @@ import { selectOptionByIndex } from "../support/action/selectOptionByIndex";
 import { setCookie } from "../support/action/setCookie";
 import { setInputField } from "../support/action/setInputField";
 import { setPromptText } from "../support/action/setPromptText";
-import { submitForm } from "../support/action/submitForm";
 import { refresh } from "../support/action/refresh";
 import { tophatLogin } from "../support/action/tophatLogIn";
 import { focusElement } from "../support/action/focusElement";
@@ -41,8 +40,6 @@ When(/^I clear the inputfield "([^"]*)?"$/, clearInputField).withDocs(
 When(/^I drag element "([^"]*)?" to element "([^"]*)?"$/, dragElement).withDocs(
 	"Drag a element to another element"
 );
-
-When(/^I submit the form "([^"]*)?"$/, submitForm).withDocs("Submit a form");
 
 When(/^I pause for (\d+)ms$/, pause).withDocs(
 	"Pause for a certain number of milliseconds"
