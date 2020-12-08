@@ -59,3 +59,5 @@ typings/
 
 # ES5 transpiled code
 /lib
+
+*.tsbuildinfo
