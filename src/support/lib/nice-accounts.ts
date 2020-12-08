@@ -17,3 +17,9 @@ export const getNICEAccountsUrl = (
 	}
 	return false;
 };
+
+export const isLoggedIn = async (): Promise<boolean> => {
+	// You're already logged in if you have the nrpa auth cookie, so no need to do anything more
+	const accountsAuthCookie = await browser.getCookies("__nrpa_2.2");
+	return accountsAuthCookie.length > 0;
+};

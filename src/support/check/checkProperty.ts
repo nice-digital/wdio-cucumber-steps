@@ -8,16 +8,17 @@ import { expect } from "chai";
  *                                  attribute matches or not
  * @param  {String}   expectedValue The value to match against
  */
-export function checkProperty(
+export async function checkProperty(
 	isCSS: string,
 	attrName: string,
 	selector: string,
 	falseCase: string,
 	expectedValue: string
-): void {
-	const command = isCSS ? "getCSSProperty" : "getAttribute";
-	const attrType = isCSS ? "CSS attribute" : "Attribute";
-	const attributeValue = $(selector)[command](attrName);
+): Promise<void> {
+	const element = await $(selector),
+		command = isCSS ? "getCSSProperty" : "getAttribute",
+		attrType = isCSS ? "CSS attribute" : "Attribute",
+		attributeValue = await element[command](attrName);
 
 	const value =
 		typeof expectedValue === "number"

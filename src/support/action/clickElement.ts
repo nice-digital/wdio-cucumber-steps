@@ -1,38 +1,22 @@
 /*! https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/support/action/clickElement.js */
-import checkIfElementExists from "../lib/checkIfElementExists";
+import { checkIfElementExists } from "../lib/checkIfElementExists";
 
 /**
  * Perform an click action on the given element
- * @param  {String}   action  The action to perform (click or doubleClick)
- * @param  {String}   type    Type of the element (link or selector)
- * @param  {String}   selector Element selector
+ * @param action  The action to perform (click or doubleClick)
+ * @param type    Type of the element (link or selector)
+ * @param selector Element selector
  */
-export function clickElement(
-	action: string,
+export async function clickElement(
+	action: "click" | "doubleClick",
 	type: string,
 	selector: string
-): void {
-	const elem = type === "link" ? `=${selector}` : selector;
-	const method = action === "click" ? "click" : "doubleClick";
+): Promise<void> {
+	const actualSelector = type === "link" ? `=${selector}` : selector,
+		method = action === "click" ? "click" : "doubleClick";
 
-	checkIfElementExists(selector2);
+	await checkIfElementExists(actualSelector);
 
-	$(elem)[method];
+	const element = await $(actualSelector);
+	await element[method]();
 }
-// module.exports = (action, type, element) => {
-// 	/**
-// 	 * Element to perform the action on
-// 	 * @type {String}
-// 	 */
-// 	const elem = type === "link" ? `=${element}` : element;
-
-// 	/**
-// 	 * The method to call on the browser object
-// 	 * @type {String}
-// 	 */
-// 	const method: string = action === "click" ? "click" : "doubleClick";
-
-// 	checkIfElementExists(elem);
-
-// 	browser[method](elem);
-// };

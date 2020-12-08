@@ -5,8 +5,11 @@ import { expect } from "chai";
  * @param  {String}   obsolete  The type of opened object (window or tab)
  * @param  {String}   falseCase Whether to check if a new window/tab was opened or not
  */
-export function checkNewWindow(obsolete: string, falseCase: string): void {
-	const windowHandles = browser.getWindowHandles();
+export async function checkNewWindow(
+	_obsolete: "window" | "tab",
+	falseCase: string
+): Promise<void> {
+	const windowHandles = await browser.getWindowHandles();
 
 	if (falseCase) {
 		expect(windowHandles.length).to.equal(

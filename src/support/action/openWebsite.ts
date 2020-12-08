@@ -4,17 +4,11 @@
  * @param  {String}   type Type of navigation (url or site)
  * @param  {String}   page The URL to navigate to
  */
-export function openWebsite(type: "url" | "site", page: string): void {
-	const url = type === "url" ? page : browser.options.baseurl + page;
+export async function openWebsite(
+	type: "url" | "site",
+	page: string
+): Promise<void> {
+	const url = type === "url" ? page : browser.options.baseUrl + page;
 
-	browser.url(url);
+	await browser.url(url);
 }
-// module.exports = (type, page) => {
-// 	/**
-//      * The URL to navigate to
-//      * @type {String}
-//      */
-// 	const url = (type === "url") ? page : browser.options.baseUrl + page;
-
-// 	browser.url(url);
-// };

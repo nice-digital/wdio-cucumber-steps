@@ -5,8 +5,12 @@ import { expect } from "chai";
  * @param  {String}   selector   Element selector
  * @param  {String}   falseCase Check for a visible or a hidden element
  */
-export function isDisplayed(selector: string, falseCase: string): void {
-	const displayed = $(selector).isDisplayed();
+export async function isDisplayed(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const element = await $(selector),
+		displayed = await element.isDisplayed();
 
 	if (falseCase) {
 		expect(displayed).to.not.equal(

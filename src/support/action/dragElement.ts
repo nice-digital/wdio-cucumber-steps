@@ -1,8 +1,13 @@
 /**
  * Drag a element to a given destination
- * @param  {String}   selector      The selector for the source element
- * @param  {String}   destination The selector for the destination element
+ * @param  {String}   sourceSelector      The selector for the source element
+ * @param  {String}   destinationSelector The selector for the destination element
  */
-export function dragElement(selector: string, destination: string): void {
-	$(selector).dragAndDrop($(destination));
+export async function dragElement(
+	sourceSelector: string,
+	destinationSelector: string
+): Promise<void> {
+	const sourceElement = await $(sourceSelector),
+		destinationElement = await $(destinationSelector);
+	await sourceElement.dragAndDrop(destinationElement);
 }

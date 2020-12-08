@@ -7,13 +7,15 @@ import { expect } from "chai";
  *                              elements match or not
  * @param  {String}   selector2  Element selector for the second element
  */
-export function compareText(
+export async function compareText(
 	selector1: string,
 	falseCase: string,
 	selector2: string
-): void {
-	const text1 = $(selector1).getText();
-	const text2 = $(selector2).getText();
+): Promise<void> {
+	const element1 = await $(selector1),
+		text1 = await element1.getText(),
+		element2 = await $(selector2),
+		text2 = await element2.getText();
 
 	if (falseCase) {
 		expect(text1).to.not.equal(text2, `Expected text not to be "${text1}"`);

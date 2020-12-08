@@ -1,11 +1,4 @@
-export function accountsLogOut(): void {
-	browser.deleteCookie("__nrpa_2.2");
-	browser.deleteCookie("__ngat_1.2");
-	browser.refresh();
+export async function accountsLogOut(): Promise<void> {
+	await browser.deleteCookies(["__ngat_1.2", "__nrpa_2.2"]);
+	await browser.refresh();
 }
-
-// module.exports = () => {
-// 	browser.deleteCookie("__nrpa_2.2");
-// 	browser.deleteCookie("__ngat_1.2");
-// 	browser.refresh();
-// };

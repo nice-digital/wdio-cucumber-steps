@@ -5,8 +5,11 @@ import { expect } from "chai";
  * @param  {String}   selector  Element selector
  * @param  {String}   falseCase Whether to check if the element exists or not
  */
-export function isExisting(selector: string, falseCase: string): void {
-	const elements = $$(selector);
+export async function isExisting(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const elements = await $$(selector);
 
 	if (falseCase) {
 		expect(elements).to.have.lengthOf(

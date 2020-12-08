@@ -8,13 +8,15 @@ import { checkIfElementExists } from "../lib/checkIfElementExists";
  * @param  {String}   value   The value to set the element to
  * @param  {String}   selector Element selector
  */
-export function setInputField(
+export async function setInputField(
 	method: "add" | "set",
 	value: string,
 	selector: string
-): void {
-	const command = method === "add" ? "addValue" : "setValue";
+): Promise<void> {
+	await checkIfElementExists(selector, false, 1);
 
-	checkIfElementExists(element, false, 1);
-	$(selector)[command](value || " ");
+	const command = method === "add" ? "addValue" : "setValue",
+		element = await $(selector);
+
+	element[command](value || " ");
 }

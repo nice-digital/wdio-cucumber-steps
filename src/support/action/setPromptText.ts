@@ -4,9 +4,9 @@ import { assert } from "chai";
  * Set the text of the current prompt
  * @param  {String}   modalText The text to set to the prompt
  */
-export function setPromptText(modalText: string): void {
+export async function setPromptText(modalText: string): Promise<void> {
 	try {
-		browser.sendAlertText(modalText);
+		await browser.sendAlertText(modalText);
 	} catch (e) {
 		assert(e, "A prompt was not open when it should have been open");
 	}

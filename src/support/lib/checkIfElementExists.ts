@@ -7,25 +7,25 @@ import { expect } from "chai";
  * @param  {Number}  exactly  Check if the element exists exactly this number
  *                            of times
  */
-export function checkIfElementExists(
+export async function checkIfElementExists(
 	selector: string,
 	falseCase?: boolean,
 	exactly?: number
-): void {
-	const nrOfElements = $$(selector);
+): Promise<void> {
+	const elements = await $$(selector);
 
 	if (falseCase === true) {
-		expect(nrOfElements).to.have.lengthOf(
+		expect(elements).to.have.lengthOf(
 			0,
 			`Element with selector "${selector}" should not exist on the page`
 		);
 	} else if (exactly) {
-		expect(nrOfElements).to.have.lengthOf(
+		expect(elements).to.have.lengthOf(
 			exactly,
 			`Element with selector "${selector}" should exist exactly ${exactly} time(s)`
 		);
 	} else {
-		expect(nrOfElements).to.have.length.of.at.least(
+		expect(elements).to.have.length.of.at.least(
 			1,
 			`Element with selector "${selector}" should exist on the page`
 		);

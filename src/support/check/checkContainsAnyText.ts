@@ -6,19 +6,21 @@ import { expect } from "chai";
  * @param  {String}   falseCase     Whether to check if the content contains
  *                                  text or not
  */
-export function checkContainsAnyText(
+export async function checkContainsAnyText(
 	elementType: string,
 	selector: string,
 	falseCase?: string | boolean
-): void {
-	let command = "getValue";
+): Promise<void> {
+	const element = await $(selector);
 
-	if (elementType === "button" || $(selector).getAttribute("value") === null) {
+	let command: "getValue" | "getText" = "getValue";
+
+	if (elementType === "button" || element.getAttribute("value") === null) {
 		command = "getText";
 	}
 
 	let boolFalseCase;
-	const text = $(selector)[command]();
+	const text = element[command]();
 
 	if (typeof falseCase === "undefined") {
 		boolFalseCase = false;

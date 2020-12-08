@@ -5,8 +5,12 @@ import { expect } from "chai";
  * @param  {String}   selector   Element selector
  * @param  {String}   falseCase Whether to check if the element is elected or not
  */
-export function checkSelected(selector: string, falseCase: string): void {
-	const isSelected = $(selector).isSelected();
+export async function checkSelected(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const element = await $(selector),
+		isSelected = await element.isSelected();
 
 	if (falseCase) {
 		expect(isSelected).to.not.equal(

@@ -6,8 +6,11 @@ import { expect } from "chai";
  *                                  expected value or not
  * @param  {Type}     expectedTitle The expected title
  */
-export function checkTitle(falseCase: string, expectedTitle: string): void {
-	const title = browser.getTitle();
+export async function checkTitle(
+	falseCase: string,
+	expectedTitle: string
+): Promise<void> {
+	const title = await browser.getTitle();
 
 	if (falseCase) {
 		expect(title).to.not.equal(

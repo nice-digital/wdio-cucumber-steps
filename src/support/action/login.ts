@@ -1,17 +1,24 @@
 /**
  * Log in to nice accounts
- * @param  {string}   username The email address used to sign in to Nice Accounts
- * @param  {string}   password The password used to sign in to Nice Accounts
+ * @param  {string}   usernameEnvVar The name of the environment variables with the email address used to sign in to NICE Accounts
+ * @param  {string}   passwordEnvVar The name of the environment variables with the password used to sign in to NICE Accounts
  */
-export function login(username: string, password: string): void {
-	$("body #Email").waitForDisplayed(4000);
-	$("input[name='Email']").setValue(process.env[username]);
-	$("input[name='Password']").setValue(process.env[password]);
-	$("input[name='Email']").submit();
+export async function login(
+	usernameEnvVar: string,
+	passwordEnvVar: string
+): Promise<void> {
+	const username = process.env[usernameEnvVar],
+		password = process.env[passwordEnvVar],
+		emailInputElement = await $("body #Email"),
+		passwordInputElement = await $("body #Password"),
+		signInButton = await $("button[type='submit']");
+
+	if (!username || !password)
+		throw "Username and password environments variables for NICE accounts were empty";
+
+	await emailInputElement.waitForDisplayed({ timeout: 4000 });
+
+	await emailInputElement.setValue(username);
+	await passwordInputElement.setValue(password);
+	await signInButton.click();
 }
-// module.exports = (username, password) => {
-// 	browser.waitForVisible("body #Email", 40000);
-// 	browser.setValue("input[name='Email']", process.env[username]);
-// 	browser.setValue("input[name='Password']", process.env[password]);
-// 	browser.submitForm("input[name='Email']");
-// };

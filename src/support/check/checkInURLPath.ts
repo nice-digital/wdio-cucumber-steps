@@ -6,11 +6,11 @@ import { expect } from "chai";
  *                                    the URL path or not
  * @param  {String}   expectedUrlPart The string to check for
  */
-export function checkInURLPath(
+export async function checkInURLPath(
 	falseCase: string,
 	expectedUrlPart: string
-): void {
-	const currentUrl = browser.getUrl();
+): Promise<void> {
+	const currentUrl = await browser.getUrl();
 
 	if (falseCase) {
 		expect(currentUrl).to.not.contain(

@@ -8,15 +8,17 @@ import { expect } from "chai";
  *                                  given text or not
  * @param  {String}   expectedText  The text to validate against
  */
-export function checkEqualsText(
+export async function checkEqualsText(
 	elementType: string,
 	selector: string,
 	falseCase: string,
 	expectedText: string
-): void {
-	let command = "getValue";
+): Promise<void> {
+	const element = await $(selector);
 
-	if (elementType === "button" || $(selector).getAttribute("value") === null) {
+	let command: "getValue" | "getText" = "getValue";
+
+	if (elementType === "button" || element.getAttribute("value") === null) {
 		command = "getText";
 	}
 
@@ -35,7 +37,7 @@ export function checkEqualsText(
 		boolFalseCase = true;
 	}
 
-	const text = $(selector)[command]();
+	const text = await element[command]();
 
 	if (boolFalseCase) {
 		expect(parsedExpectedText).to.not.equal(text);

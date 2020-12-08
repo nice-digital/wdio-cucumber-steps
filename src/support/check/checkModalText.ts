@@ -7,13 +7,13 @@ import { expect } from "chai";
  * @param  {String}   falseState    Whether to check if the text matches or not
  * @param  {String}   expectedText  The text to check against
  */
-export function checkModalText(
+export async function checkModalText(
 	modalType: string,
 	falseState: string,
 	expectedText: string
-): void {
+): Promise<void> {
 	try {
-		const text = browser.getAlertText();
+		const text = await browser.getAlertText();
 
 		if (falseState) {
 			expect(text).to.not.equal(

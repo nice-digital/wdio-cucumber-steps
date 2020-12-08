@@ -2,17 +2,18 @@
  * Accept all cookies using the NICE cookie banner.
  * We use this as the cookie banner blocks clicks.
  */
-export function acceptCookieBanner(): void {
-	$("body #ccc").waitForDisplayed(2000);
-	const isDisplayed = $("button.ccc-accept-button").isDispalyed();
-	if (isDisplayed) {
-		$("button.ccc-accept-button").click();
+export async function acceptCookieBanner(): Promise<void> {
+	// The cookie banner (and license key) load async from the CDN
+	// so we need to wait for it to load
+	const cookieBannerElement = await $("body #ccc");
+	await cookieBannerElement.waitForDisplayed({ timeout: 2000 });
+
+	const acceptCookiesButtonElement = await cookieBannerElement.$(
+		"button.ccc-accept-button"
+	);
+
+	// If cookies have already been chosen then the accept button doesn't show
+	if (await acceptCookiesButtonElement.isDisplayed()) {
+		await acceptCookiesButtonElement.click();
 	}
 }
-// module.exports = () => {
-// 	browser.waitForExist("body #ccc", 2000);
-// 	const isVisible = browser.isVisible("button.ccc-accept-button");
-// 	if (isVisible) {
-// 		browser.click("button.ccc-accept-button");
-// 	}
-// };

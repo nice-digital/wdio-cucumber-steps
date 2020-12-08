@@ -7,20 +7,12 @@
  *
  * @todo  merge with selectOption
  */
-export function selectOptionByIndex(
+export async function selectOptionByIndex(
 	index: string,
-	obsolete: string,
+	_obsolete: string,
 	selector: string
-): void {
-	const optionIndex = parseInt(index, 10);
-	$(selector).selectByIndex(optionIndex);
+): Promise<void> {
+	const optionIndex = parseInt(index, 10),
+		element = await $(selector);
+	await element.selectByIndex(optionIndex);
 }
-// module.exports = (index, obsolete, selectElem) => {
-// 	/**
-// 	 * The index of the option to select
-// 	 * @type {Int}
-// 	 */
-// 	const optionIndex = parseInt(index, 10);
-
-// 	browser.selectByIndex(selectElem, optionIndex);
-// };

@@ -8,17 +8,19 @@ import { expect } from "chai";
  *                                  the given text or not
  * @param  {String}   expectedText  The text to check against
  */
-export function checkContainsText(
-	elementType: string,
+export async function checkContainsText(
+	elementType: "element" | "button",
 	selector: string,
 	falseCase: string,
 	expectedText: string
-): void {
-	let command = "getValue";
+): Promise<void> {
+	const element = await $(selector);
+
+	let command: "getValue" | "getText" = "getValue";
 
 	if (
 		["button", "container"].includes(elementType) ||
-		$(selector).getAttribute("value") === null
+		element.getAttribute("value") === null
 	) {
 		command = "getText";
 	}
@@ -26,9 +28,8 @@ export function checkContainsText(
 	let boolFalseCase;
 	let stringExpectedText = expectedText;
 
-	const elem = $(selector);
-	elem.waitForDisplayed();
-	const text = elem[command]();
+	await element.waitForDisplayed();
+	const text = await element[command]();
 
 	if (typeof expectedText === "undefined") {
 		stringExpectedText = falseCase;

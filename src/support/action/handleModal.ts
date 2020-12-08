@@ -4,16 +4,17 @@
  * @param  {String}   action    Action to perform on the modal (accept, dismiss)
  * @param  {String}   modalType Type of modal (alertbox, confirmbox, prompt)
  */
-export function handleModal(
+export async function handleModal(
 	action: "accept" | "dismiss",
 	modalType: "alertbox" | "confirmbox" | "prompt"
-): void {
-	let command = `${action.slice(0, 1).toLowerCase()}${action.slice(1)}Alert`;
+): Promise<void> {
+	let command: "acceptAlert" | "dismissAlert" =
+		action == "accept" ? "acceptAlert" : "dismissAlert";
 
 	// Alert boxes can't be dismissed, this causes Chrome to crash during tests
 	if (modalType === "alertbox") {
 		command = "acceptAlert";
 	}
 
-	browser[command]();
+	await browser[command]();
 }

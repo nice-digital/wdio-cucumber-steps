@@ -5,8 +5,12 @@ import { expect } from "chai";
  * @param  {String}   selector   Element selector
  * @param  {String}   falseCase Whether to check if the given selector is enabled or not
  */
-export function isEnabled(selector: string, falseCase: string): void {
-	const enabled = $(selector).isEnabled();
+export async function isEnabled(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const element = await $(selector),
+		enabled = await element.isEnabled();
 
 	if (falseCase) {
 		expect(enabled).to.not.equal(

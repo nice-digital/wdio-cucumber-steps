@@ -2,9 +2,6 @@
  * Delete a cookie
  * @param  {String}   name The name of the cookie to delete
  */
-export function deleteCookies(name: string): void {
-	browser.deleteCookies([name]);
+export async function deleteCookie(name: string): Promise<void> {
+	await browser.deleteCookie(name);
 }
-// module.exports = (name) => {
-// 	browser.deleteCookie(name);
-// };

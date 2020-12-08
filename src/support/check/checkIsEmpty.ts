@@ -1,10 +1,10 @@
 import { checkContainsAnyText } from "./checkContainsAnyText";
 
-export function checkIsEmpty(
+export async function checkIsEmpty(
 	elementType: string,
 	element: string,
 	falseCase: string
-): void {
+): Promise<void> {
 	let newFalseCase = true;
 
 	if (typeof falseCase === "function") {
@@ -13,5 +13,5 @@ export function checkIsEmpty(
 		newFalseCase = false;
 	}
 
-	checkContainsAnyText(elementType, element, newFalseCase);
+	await checkContainsAnyText(elementType, element, newFalseCase);
 }

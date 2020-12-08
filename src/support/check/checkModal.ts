@@ -6,11 +6,14 @@ import { expect } from "chai";
  *                               confirmbox or prompt)
  * @param  {String}   falseState Whether to check if the modal was opened or not
  */
-export function checkModal(modalType: string, falseState: string): void {
+export async function checkModal(
+	modalType: string,
+	falseState: string
+): Promise<void> {
 	let promptText = "";
 
 	try {
-		promptText = browser.getAlertText();
+		promptText = await browser.getAlertText();
 
 		if (falseState) {
 			expect(promptText).to.not.equal(

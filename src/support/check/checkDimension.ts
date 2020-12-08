@@ -7,13 +7,14 @@ import { expect } from "chai";
  * @param  {String}   expectedSize Expected size
  * @param  {String}   dimension    Dimension to check (broad or tall)
  */
-export function checkDimension(
+export async function checkDimension(
 	selector: string,
 	falseCase: string,
 	expectedSize: string,
 	dimension: string
-): void {
-	const elementSize = $(selector).getSize();
+): Promise<void> {
+	const element = await $(selector);
+	const elementSize = await element.getSize();
 	const intExpectedSize = parseInt(expectedSize, 10);
 	let originalSize = elementSize.height;
 	let label = "height";

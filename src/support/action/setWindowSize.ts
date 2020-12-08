@@ -3,6 +3,12 @@
  * @param  {String}   screenWidth  The width of the window to resize to
  * @param  {String}   screenHeight The height of the window to resize to
  */
-export function setWindowSize(screenWidth: string, screenHeight: string): void {
-	browser.setWindowSize(parseInt(screenWidth, 10), parseInt(screenHeight, 10));
+export async function setWindowSize(
+	screenWidth: string,
+	screenHeight: string
+): Promise<void> {
+	await browser.setWindowSize(
+		parseInt(screenWidth, 10),
+		parseInt(screenHeight, 10)
+	);
 }

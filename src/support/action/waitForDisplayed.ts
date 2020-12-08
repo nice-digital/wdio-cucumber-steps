@@ -5,16 +5,13 @@
  * @param  {String}   falseCase Whether or not to expect a visible or hidden
  *                              state
  */
-export function waitForDisplayed(selector: string, falseCase: string): void {
-	const ms = 10000;
-	$(selector).waitForDisplayed(ms, !!falseCase);
-}
-// module.exports = (elem, falseCase) => {
-// 	/**
-//      * Maximum number of milliseconds to wait for
-//      * @type {Int}
-//      */
-// 	const ms = 10000;
+export async function waitForDisplayed(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const timeout = 10000,
+		reverse = !!falseCase,
+		element = await $(selector);
 
-// 	browser.waitForVisible(elem, ms, !!falseCase);
-// };
+	await element.waitForDisplayed({ timeout, reverse });
+}

@@ -3,9 +3,7 @@
  * Clear a given input field (placeholder for WDIO's clearElement)
  * @param  {String}   selector Element selector */
 
-export function clearInputField(selector: string): void {
-	$(selector).clearValue();
+export async function clearInputField(selector: string): Promise<void> {
+	const element = await $(selector);
+	await element.clearValue();
 }
-//  module.exports = (element) => {
-// 	browser.clearElement(element);
-// };

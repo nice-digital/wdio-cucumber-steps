@@ -3,6 +3,7 @@
  * Scroll the page to the given element
  * @param  {String}   selector Element selector
  */
-export function scroll(selector: string): void {
-	$(selector).scrollIntoView();
+export async function scroll(selector: string): Promise<void> {
+	const element = await $(selector);
+	await element.scrollIntoView();
 }

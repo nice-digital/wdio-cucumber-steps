@@ -7,13 +7,14 @@ import { expect } from "chai";
  * @param  {String}   expectedPosition  The position to check against
  * @param  {String}   axis              The axis to check on (x or y)
  */
-export function checkOffset(
+export async function checkOffset(
 	selector: string,
 	falseCase: string,
 	expectedPosition: string,
 	axis: "x" | "y"
-): void {
-	const location = $(selector).getLocation(axis);
+): Promise<void> {
+	const element = await $(selector);
+	const location = await element.getLocation(axis);
 	const intExpectedPosition = parseFloat(expectedPosition);
 
 	if (falseCase) {

@@ -1,5 +1,9 @@
 import { login } from "./login";
-import { getNICEAccountsUrl, AccountsEnvironment } from "../lib/nice-accounts";
+import {
+	getNICEAccountsUrl,
+	AccountsEnvironment,
+	isLoggedIn,
+} from "../lib/nice-accounts";
 
 /**
  * Log in to particular version of nice accounts indepentendly of TopHat
@@ -12,9 +16,7 @@ export async function accountsLogin(
 	usernameEnvVar: string,
 	passwordEnvVar: string
 ): Promise<void> {
-	// You're already logged in if you have the nrpa auth cookie, so no need to do anything more
-	const accountsAuthCookie = await browser.getCookies("__nrpa_2.2");
-	if (accountsAuthCookie.length > 0) return;
+	if (await isLoggedIn()) return;
 
 	const accountsUrl = getNICEAccountsUrl(environment);
 

@@ -8,12 +8,14 @@ import { expect } from "chai";
  *                                      or not ('has', 'does not have')
  * @param  {String}   expectedClassName The class name to check
  */
-export function checkClass(
+export async function checkClass(
 	selector: string,
 	falseCase: string,
 	expectedClassName: string
-): void {
-	const classesList = $(selector).getAttribute("class").split(" ");
+): Promise<void> {
+	const element = await $(selector),
+		classAttr = await element.getAttribute("class"),
+		classesList = classAttr.split(" ");
 
 	if (falseCase === "does not have") {
 		expect(classesList).to.not.include(

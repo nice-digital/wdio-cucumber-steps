@@ -6,8 +6,12 @@ import { expect } from "chai";
  * @param  {String}   falseCase Whether to check if the element is visible
  *                              within the current viewport or not
  */
-export function checkWithinViewport(selector: string, falseCase: string): void {
-	const isDisplayed = $(selector).isDisplayedInViewport();
+export async function checkWithinViewport(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const element = await $(selector),
+		isDisplayed = await element.isDisplayedInViewport();
 
 	if (falseCase) {
 		expect(isDisplayed).to.not.equal(

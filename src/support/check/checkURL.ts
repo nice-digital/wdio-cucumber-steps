@@ -6,8 +6,11 @@ import { expect } from "chai";
  *                                expected value or not
  * @param  {String}   expectedUrl The expected URL to check against
  */
-export function checkUrl(falseCase: string, expectedUrl: string): void {
-	const currentUrl = browser.getUrl();
+export async function checkUrl(
+	falseCase: string,
+	expectedUrl: string
+): Promise<void> {
+	const currentUrl = await browser.getUrl();
 
 	if (falseCase) {
 		expect(currentUrl).to.not.equal(

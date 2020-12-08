@@ -5,8 +5,11 @@ import { expect } from "chai";
  * @param  {String}   name      The name of the cookie
  * @param  {String}   falseCase Whether or not to check if the cookie exists or not
  */
-export function checkCookieExists(name: string, falseCase: string): void {
-	const cookie = browser.getCookies([name]);
+export async function checkCookieExists(
+	name: string,
+	falseCase: string
+): Promise<void> {
+	const cookie = await browser.getCookies([name]);
 
 	if (falseCase) {
 		expect(cookie.length).to.equal(

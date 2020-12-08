@@ -6,8 +6,11 @@ import { expect } from "chai";
  *                                 expected value or not
  * @param  {String}   expectedPath The expected path to match against
  */
-export function checkUrlPath(falseCase: string, expectedPath: string): void {
-	let currentUrl = browser.getUrl().replace(/http(s?):\/\//, "");
+export async function checkUrlPath(
+	falseCase: string,
+	expectedPath: string
+): Promise<void> {
+	let currentUrl = (await browser.getUrl()).replace(/http(s?):\/\//, "");
 	const domain = `${currentUrl.split("/")[0]}`;
 
 	currentUrl = currentUrl.replace(domain, "");

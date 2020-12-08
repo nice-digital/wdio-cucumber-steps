@@ -6,8 +6,12 @@ import { expect } from "chai";
  * @param  {String}   falseCase Whether to check if the given element has focus
  *                              or not
  */
-export function checkFocus(selector: string, falseCase: string): void {
-	const hasFocus = $(selector).isFocused();
+export async function checkFocus(
+	selector: string,
+	falseCase: string
+): Promise<void> {
+	const element = await $(selector);
+	const hasFocus = await element.isFocused();
 
 	if (falseCase) {
 		expect(hasFocus).to.not.equal(

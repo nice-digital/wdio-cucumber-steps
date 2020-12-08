@@ -6,13 +6,12 @@ import { expect } from "chai";
  * @param  {String}   falseCase     Whether or not to check if the value matches or not
  * @param  {String}   expectedValue The value to check against
  */
-export function checkCookieContent(
+export async function checkCookieContent(
 	name: string,
 	falseCase: string,
 	expectedValue: string
-): void {
-	const cookie = browser.getCookies([name])[0];
-	expect(cookie.name).to.equal(name, `no cookie found with the name "${name}"`);
+): Promise<void> {
+	const cookie = await browser.getNamedCookie(name);
 
 	if (falseCase) {
 		expect(cookie.value).to.not.equal(

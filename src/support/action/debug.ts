@@ -1,3 +1,3 @@
-export function debug(): void {
-	browser.debug();
+export async function debug(): Promise<void> {
+	await browser.debug();
 }
