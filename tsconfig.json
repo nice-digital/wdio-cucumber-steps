@@ -14,10 +14,10 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node", "webdriverio", "@types/jest"],
+    "types": ["node", "webdriverio"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./test/**/*.ts", "./src/**/*.ts"]
+  "include": ["./src/**/*.ts"]
 }
