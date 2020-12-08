@@ -1,5 +1,3 @@
-import given from "./given";
-import when from "./when";
-import then from "./then";
-
-export { given, when, then };
+import "./given";
+import "./when";
+import "./then";
