@@ -6,20 +6,20 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [@nice-digital/wdio-cucumber-steps](#nice-digitalwdio-cucumber-steps)
-	- [v1 breaking changes](#v1-breaking-changes)
-	- [Usage](#usage)
-		- [VS Code integration](#vs-code-integration)
-	- [Development](#development)
-		- [Debug](#debug)
-		- [npm linking](#npm-linking)
-	- [Releasing](#releasing)
-	- [Tests](#tests)
-		- [Running the tests](#running-the-tests)
-	- [Step definitions](#step-definitions)
-		- [Given steps](#given-steps)
-		- [When steps](#when-steps)
-		- [Then steps](#then-steps)
-	- [License](#license)
+  - [v1 breaking changes](#v1-breaking-changes)
+  - [Usage](#usage)
+    - [VS Code integration](#vs-code-integration)
+  - [Development](#development)
+    - [Debug](#debug)
+    - [npm linking](#npm-linking)
+  - [Releasing](#releasing)
+  - [Tests](#tests)
+    - [Running the tests](#running-the-tests)
+  - [Step definitions](#step-definitions)
+    - [Given steps](#given-steps)
+    - [When steps](#when-steps)
+    - [Then steps](#then-steps)
+  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -34,6 +34,8 @@ v0 targeted webdriverio v4. v1 targets wdio v6, so includes breaking changes. Th
 - the `waitFor` module now only accepts `enabled`, `displayed` and `exist` as `state` (and not `checked`, `selected` etc)
 - `globalnavLogin` is now `globalNavAccountsLogin`
 - `submitForm` has been removed along with the corresponding `When I submit the form X` step definition
+- the _src_ folder is no longer included in the published npm package, just the _lib_ folder
+  - so change any `cucumberautocomplete.steps` paths inside your _.vscode/settings.json_ files to replace _src_ with _lib_
 
 ## Usage
 
@@ -62,7 +64,7 @@ import '@nice-digital/wdio-cucumber-steps/lib/when';
 import '@nice-digital/wdio-cucumber-steps/lib/then';
 ```
 
-The easiest way is to fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies.
+The easiest way is to fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies. Note: make sure you clone the Webdriverio v6 version of frontend testing base (and not v4!).
 
 ### VS Code integration
 
@@ -73,16 +75,18 @@ Install the extension and configure by adding the following to _.vscode/settings
 ```diff
 {
 +    "cucumberautocomplete.steps": [
-+        "node_modules/@nice-digital/wdio-cucumber-steps/src/given/definitions.js",
-+        "node_modules/@nice-digital/wdio-cucumber-steps/src/when/definitions.js",
-+        "node_modules/@nice-digital/wdio-cucumber-steps/src/then/definitions.js",
++        "node_modules/@nice-digital/wdio-cucumber-steps/lib/given/definitions.js",
++        "node_modules/@nice-digital/wdio-cucumber-steps/lib/when/definitions.js",
++        "node_modules/@nice-digital/wdio-cucumber-steps/lib/then/definitions.js",
 +    ]
 }
 ```
 
+Note: in v0 these settings pointed to the src folder, but the src folder is no longer published to npm in v1.
+
 ## Development
 
-You can use ES6 and [Flow type definitions](https://flow.org/) when developing in the [src folder](src). The source is automatically transpiled with [Babel](https://babeljs.io/docs/usage/cli/) into the lib folder when you [release](#releasing).
+The source files (in the _src_ directory) are written in TypeScript. This _src_ is automatically transpiled into the _lib_ folder when you [release](#releasing).
 
 ### Debug
 
