@@ -21,7 +21,7 @@ export async function accountsLogin(
 	const accountsUrl = getNICEAccountsUrl(environment);
 
 	if (accountsUrl) {
-		browser.url(accountsUrl);
+		await browser.url(accountsUrl);
 		login(usernameEnvVar, passwordEnvVar);
 	} else throw "Invalid NICE Accounts URL/environment";
 }
