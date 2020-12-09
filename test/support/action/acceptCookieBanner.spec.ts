@@ -1,23 +1,37 @@
-import { acceptCookieBanner } from "../../../src/support/action/acceptCookieBanner";
+import { acceptCookieBanner } from "@src/support/action/acceptCookieBanner";
 
 describe("acceptCookieBanner", () => {
+	const waitForDisplayed = jest.fn(),
+		click = jest.fn(),
+		isDisplayed = jest.fn().mockResolvedValue(true);
+
 	beforeEach(() => {
-		global.browser = {
-			waitForExist: jest.fn(),
-			click: jest.fn(),
-			isVisible: () => true,
-		};
+		jest.clearAllMocks();
+
+		global.$ = jest.fn().mockResolvedValue({
+			waitForDisplayed,
+			$: jest.fn().mockResolvedValue({
+				isDisplayed,
+				click,
+			}),
+		});
 	});
 
-	it("should wait for the cookie control panel to exist", () => {
-		acceptCookieBanner();
-		expect(global.browser.waitForExist).toHaveBeenCalledWith("body #ccc", 2000);
+	it("should wait for the cookie control panel to exist", async () => {
+		await acceptCookieBanner();
+		expect(waitForDisplayed).toHaveBeenCalledWith({
+			timeout: expect.any(Number),
+		});
 	});
 
-	it("should click accept when the accept button is available", () => {
-		acceptCookieBanner();
-		expect(global.browser.click).toHaveBeenCalledWith(
-			"button.ccc-accept-button"
-		);
+	it("should click accept when the accept button is available", async () => {
+		await acceptCookieBanner();
+		expect(click).toHaveBeenCalledTimes(1);
+	});
+
+	it("should not click accept when the accept button is hidden", async () => {
+		isDisplayed.mockResolvedValueOnce(false);
+		await acceptCookieBanner();
+		expect(click).not.toHaveBeenCalled();
 	});
 });
