@@ -1,73 +1,72 @@
-// @flow
+import {
+	StepDefinitionCode,
+	StepDefinitionOptions,
+	defineStep,
+} from "cucumber";
 
-interface StepDefType {
-	pattern: string | RegExp;
-	options?: unknown;
-	code: (...args: any) => void;
-	title: string;
-	examples: string[];
-	withDocs: (arg: string) => StepDefType;
-	withOptions: (arg: string) => StepDefType;
-	withExample: (arg: string) => StepDefType;
-}
+type CucumberPattern = string | RegExp;
 
-const cucumberFunction = (
-	pattern: string | RegExp,
-	code: any
-): StepDefType => ({
-	pattern: pattern,
-	options: null,
-	code: code,
-	examples: [],
-	title: "",
-	withOptions: function (options) {
-		this.options = options;
+export type StepType = "given" | "when" | "then";
+
+export class CustomStepDefinition {
+	docs = "";
+	examples: string[] = [];
+
+	constructor(
+		readonly stepType: StepType,
+		readonly pattern: CucumberPattern,
+		readonly code: StepDefinitionCode,
+		readonly options?: StepDefinitionOptions
+	) {}
+
+	withDocs(docs: string): CustomStepDefinition {
+		this.docs = docs;
 		return this;
-	},
-	withDocs: function (title: string): StepDefType {
-		this.title = title;
-		return this;
-	},
-	withExample: function (example: string): StepDefType {
+	}
+
+	withExample(example: string): CustomStepDefinition {
 		this.examples.push(example);
 		return this;
-	},
-});
+	}
+}
 
-const Given: StepDefType = cucumberFunction;
-const When: StepDefType = cucumberFunction;
-const Then: StepDefType = cucumberFunction;
+type CucumberFunctionArgs =
+	| [pattern: RegExp | string, code: StepDefinitionCode]
+	| [
+			pattern: RegExp | string,
+			options: StepDefinitionOptions,
+			code: StepDefinitionCode
+	  ];
 
-/**
- * Applies the given list of step definitions to the given cucumber function
- * @param {Given|When|Then} fn The function to apply (one of Given/When/Then)
- * @param {Array<StepDefType>} steps The array of step objects
- */
-const applyStepDefinitions = (fn, steps) => {
-	steps.forEach((step) => {
-		if (step.options) {
-			fn(step.pattern, step.options, step.code);
+type CucumberFunction = (...args: CucumberFunctionArgs) => CustomStepDefinition;
+
+export const customSteps: CustomStepDefinition[] = [];
+
+const cucumberFunction = (stepType: StepType): CucumberFunction => (
+	...args: CucumberFunctionArgs
+): CustomStepDefinition => {
+	const pattern = args[0],
+		options = args.length === 3 ? args[1] : undefined,
+		code = args.length === 2 ? args[1] : args[2];
+
+	// No need to actually call cucumber when we're getting the step defs to populate the readme
+	if (process.env.README !== "true") {
+		// Call the original matching cucumber function
+		// Ideally we'd use a spread arg but can't cos of this TS bug: https://github.com/microsoft/TypeScript/issues/28010
+		if (options) {
+			defineStep(pattern, options, code);
 		} else {
-			fn(step.pattern, step.code);
+			defineStep(pattern, code);
 		}
-	});
-};
-
-/**
- * Returns the homepage of the NICE Accounts instance for the given environment
- * @param {String} environment The name of the accounts environment (beta, live or test)
- */
-const getNICEAccountsUrl = (environment: string): string | false => {
-	function isValidEnvironment(env) {
-		return env === "live" || env === "beta" || env === "test";
 	}
 
-	if (isValidEnvironment(environment)) {
-		const accountsHostPrefix: string =
-			environment === "live" ? "" : `${environment}-`;
-		return `https://${accountsHostPrefix}accounts.nice.org.uk`;
-	}
-	return false;
+	const stepDef = new CustomStepDefinition(stepType, pattern, code, options);
+
+	customSteps.push(stepDef);
+
+	return stepDef;
 };
 
-export { Given, When, Then, applyStepDefinitions, getNICEAccountsUrl };
+export const Given: CucumberFunction = cucumberFunction("given");
+export const When: CucumberFunction = cucumberFunction("when");
+export const Then: CucumberFunction = cucumberFunction("then");

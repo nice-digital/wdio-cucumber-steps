@@ -5,21 +5,20 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [@nice-digital/wdio-cucumber-steps](#nice-digitalwdio-cucumber-steps)
-  - [v1 breaking changes](#v1-breaking-changes)
-  - [Usage](#usage)
-    - [VS Code integration](#vs-code-integration)
-  - [Development](#development)
-    - [Debug](#debug)
-    - [npm linking](#npm-linking)
-  - [Releasing](#releasing)
-  - [Tests](#tests)
-    - [Running the tests](#running-the-tests)
-  - [Step definitions](#step-definitions)
-    - [Given steps](#given-steps)
-    - [When steps](#when-steps)
-    - [Then steps](#then-steps)
-  - [License](#license)
+- [v1 breaking changes](#v1-breaking-changes)
+- [Usage](#usage)
+	- [VS Code integration](#vs-code-integration)
+- [Development](#development)
+	- [Debug](#debug)
+	- [npm linking](#npm-linking)
+- [Releasing](#releasing)
+- [Tests](#tests)
+	- [Running the tests](#running-the-tests)
+- [Step definitions](#step-definitions)
+	- [Given steps](#given-steps)
+	- [When steps](#when-steps)
+	- [Then steps](#then-steps)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -188,7 +187,6 @@ When…
 | `/^I (add\|set) "([^"]*)?" to the inputfield "([^"]*)?"$/`                                     | Add or set the content of an input field                                                                                                                                                               |
 | `/^I clear the inputfield "([^"]*)?"$/`                                                        | Clear an input field                                                                                                                                                                                   |
 | `/^I drag element "([^"]*)?" to element "([^"]*)?"$/`                                          | Drag a element to another element                                                                                                                                                                      |
-| `/^I submit the form "([^"]*)?"$/`                                                             | Submit a form                                                                                                                                                                                          |
 | `/^I pause for (\d+)ms$/`                                                                      | Pause for a certain number of milliseconds                                                                                                                                                             |
 | `/^I set a cookie "([^"]*)?" with the content "([^"]*)?"$/`                                    | Set the content of a cookie with the given name to the given string                                                                                                                                    |
 | `/^I delete the cookie "([^"]*)?"$/`                                                           | Delete the cookie with the given name                                                                                                                                                                  |

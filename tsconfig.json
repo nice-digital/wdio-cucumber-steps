@@ -4,6 +4,7 @@
     "module": "commonjs",
     "removeComments": false,
     "strict": true,
+    "noEmit": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -14,11 +15,11 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node"],
+    "types": ["node", "webdriverio", "expect-webdriverio", "jest"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [],
+  "include": ["scripts/**/*.ts"],
   "references": [{ "path": "./src" }, { "path": "./test" }]
 }

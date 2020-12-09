@@ -3,6 +3,7 @@
   "compilerOptions": {
     "types": ["node", "webdriverio", "expect-webdriverio", "jest"],
     "composite": true,
+    "noEmit": false,
     "rootDir": "./",
     "outDir": "../lib"
   },

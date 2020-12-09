@@ -3,6 +3,7 @@
   "compilerOptions": {
     "types": ["node", "webdriverio", "jest"],
     "composite": true,
+    "noEmit": false,
     "rootDir": "./",
     "outDir": "../lib-tests",
     "baseUrl": ".",
