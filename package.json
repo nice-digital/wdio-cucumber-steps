@@ -53,6 +53,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "@wdio/cucumber-framework": "6.x"
+  },
   "devDependencies": {
     "@babel/node": "^7.12.1",
     "@types/cucumber": "^6.0.1",
