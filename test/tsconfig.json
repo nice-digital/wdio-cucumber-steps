@@ -1,10 +1,14 @@
 {
-  "extends": "./../tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["@types/jest"],
+    "types": ["node", "webdriverio", "jest"],
     "composite": true,
     "rootDir": "./",
-    "outDir": "../lib-tests"
+    "outDir": "../lib-tests",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["../src/*"]
+    }
   },
   "include": ["./**/*.ts"],
   "references": [{ "path": "../src" }]
