@@ -1,17 +1,18 @@
-import {
-	source as axeSource,
-	Result,
-	RunOptions,
-	run,
-	AxeResults,
-} from "axe-core";
-import { expect } from "chai";
+import { source as axeSource, Result, run, AxeResults } from "axe-core";
 
-interface AxeWindow extends Window {
-	axe: {
-		run: typeof run;
-	};
+declare global {
+	interface Window {
+		axe: {
+			run: typeof run;
+		};
+	}
 }
+
+// interface AxeWindow {
+// 	axe: {
+// 		run: typeof run;
+// 	};
+// }
 
 /**
  * Check if the page has accessibility issues.
@@ -31,30 +32,30 @@ export async function checkForAccessibilityIssues(
 	// inject the axe script source
 	await browser.execute(axeSource);
 	// run inside browser and get results
-	const results: AxeResults | Error = (await browser.executeAsync(
-		// Two horrible comments until https://github.com/webdriverio/webdriverio/issues/6206 is released
-		/* eslint-disable @typescript-eslint/ban-ts-comment */
-		// @ts-ignore: explicit-function-return-type
-		function (levels, done): void {
-			const options: RunOptions = {
+	const results = (await browser.executeAsync(
+		`function (levels, done) {
+			var options = {
 				runOnly: {
 					type: "tag",
 					values: levels,
 				},
 			};
-			const axeWindow = (window as unknown) as AxeWindow;
-			axeWindow.axe.run(options, function (err, results) {
-				// eslint-disable-line no-undef
+			axe.run(options, function (err, results) {
 				if (err) done(err);
 				else done(results);
 			});
-		},
+		}`,
 		levels
 	)) as AxeResults | Error;
 
 	if (results instanceof Error) throw results;
 
-	expect(results.violations, getErrorMessage(results.violations)).to.eql([]);
+	if (results.violations.length > 0) {
+		const message = getErrorMessage(results.violations);
+		fail(message);
+	}
+
+	expect(results.violations).toHaveLength(0);
 }
 
 export const getErrorMessage = (violations: Result[]): string => {

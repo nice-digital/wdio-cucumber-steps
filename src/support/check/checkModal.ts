@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if a modal was opened
  * @param  {String}   modalType  The type of modal that is expected (alertbox,
@@ -7,7 +5,7 @@ import { expect } from "chai";
  * @param  {String}   falseState Whether to check if the modal was opened or not
  */
 export async function checkModal(
-	modalType: string,
+	_modalType: "alertbox" | "confirmbox" | "prompt",
 	falseState: string
 ): Promise<void> {
 	let promptText = "";
@@ -16,17 +14,11 @@ export async function checkModal(
 		promptText = await browser.getAlertText();
 
 		if (falseState) {
-			expect(promptText).to.not.equal(
-				null,
-				`A ${modalType} was opened when it shouldn't`
-			);
+			expect(promptText).not.toBe(null);
 		}
 	} catch (e) {
 		if (!falseState) {
-			expect(promptText).to.equal(
-				null,
-				`A ${modalType} was not opened when it should have been`
-			);
+			expect(promptText).toBe(null);
 		}
 	}
 }

@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check the text of a modal
  * @param  {String}   modalType     The type of modal that is expected
@@ -16,20 +14,11 @@ export async function checkModalText(
 		const text = await browser.getAlertText();
 
 		if (falseState) {
-			expect(text).to.not.equal(
-				expectedText,
-				`Expected the text of ${modalType} not to equal ` + `"${expectedText}"`
-			);
+			expect(text).not.toBe(expectedText);
 		} else {
-			expect(text).to.equal(
-				expectedText,
-				`Expected the text of ${modalType} to equal ` +
-					`"${expectedText}", instead found "${text}"`
-			);
+			expect(text).toBe(expectedText);
 		}
 	} catch (e) {
-		expect.fail(
-			`A ${modalType} was not opened when it should have been opened`
-		);
+		fail(`A ${modalType} was not opened when it should have been opened`);
 	}
 }

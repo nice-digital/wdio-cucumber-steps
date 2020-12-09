@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if the given element is visible inside the current viewport
  * @param  {String}   selector   Element selector
@@ -10,18 +8,11 @@ export async function checkWithinViewport(
 	selector: string,
 	falseCase: string
 ): Promise<void> {
-	const element = await $(selector),
-		isDisplayed = await element.isDisplayedInViewport();
+	const element = await $(selector);
 
 	if (falseCase) {
-		expect(isDisplayed).to.not.equal(
-			true,
-			`Expected element "${selector}" to be outside the viewport`
-		);
+		expect(element).not.toBeDisplayedInViewport();
 	} else {
-		expect(isDisplayed).to.equal(
-			true,
-			`Expected element "${selector}" to be inside the viewport`
-		);
+		expect(element).toBeDisplayedInViewport();
 	}
 }

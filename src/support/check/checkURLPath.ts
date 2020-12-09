@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if the current URL path matches the given path
  * @param  {String}   falseCase    Whether to check if the path matches the
@@ -16,14 +14,8 @@ export async function checkUrlPath(
 	currentUrl = currentUrl.replace(domain, "");
 
 	if (falseCase) {
-		expect(currentUrl).to.not.equal(
-			expectedPath,
-			`expected path not to be "${currentUrl}"`
-		);
+		expect(currentUrl).not.toEqual(expectedPath);
 	} else {
-		expect(currentUrl).to.equal(
-			expectedPath,
-			`expected path to be "${expectedPath}" but found "${currentUrl}"`
-		);
+		expect(currentUrl).toEqual(expectedPath);
 	}
 }

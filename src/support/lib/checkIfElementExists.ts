@@ -1,4 +1,3 @@
-import { expect } from "chai";
 
 /**
  * Check if the given element exists in the DOM one or more times
@@ -15,19 +14,10 @@ export async function checkIfElementExists(
 	const elements = await $$(selector);
 
 	if (falseCase === true) {
-		expect(elements).to.have.lengthOf(
-			0,
-			`Element with selector "${selector}" should not exist on the page`
-		);
+		expect(elements).toBeElementsArrayOfSize(0)
 	} else if (exactly) {
-		expect(elements).to.have.lengthOf(
-			exactly,
-			`Element with selector "${selector}" should exist exactly ${exactly} time(s)`
-		);
+		expect(elements).toBeElementsArrayOfSize(exactly)
 	} else {
-		expect(elements).to.have.length.of.at.least(
-			1,
-			`Element with selector "${selector}" should exist on the page`
-		);
+		expect(elements).toBeElementsArrayOfSize({ gte: 1 });
 	}
 }

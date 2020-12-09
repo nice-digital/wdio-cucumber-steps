@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check the dimensions of the given element
  * @param  {String}   selector     Element selector
@@ -11,30 +9,17 @@ export async function checkDimension(
 	selector: string,
 	falseCase: string,
 	expectedSize: string,
-	dimension: string
+	dimension: "broad" | "tall"
 ): Promise<void> {
-	const element = await $(selector);
-	const elementSize = await element.getSize();
-	const intExpectedSize = parseInt(expectedSize, 10);
-	let originalSize = elementSize.height;
-	let label = "height";
-
-	if (dimension === "broad") {
-		originalSize = elementSize.width;
-		label = "width";
-	}
+	const element = await $(selector),
+		elementSize = await element.getSize(),
+		originalSize =
+			dimension === "broad" ? elementSize.width : elementSize.height,
+		intExpectedSize = parseInt(expectedSize, 10);
 
 	if (falseCase) {
-		expect(originalSize).to.not.equal(
-			intExpectedSize,
-			`Element "${selector}" should not have a ${label} of ` +
-				`${intExpectedSize}px`
-		);
+		expect(originalSize).not.toBe(intExpectedSize);
 	} else {
-		expect(originalSize).to.equal(
-			intExpectedSize,
-			`Element "${selector}" should have a ${label} of ` +
-				`${intExpectedSize}px, but is ${originalSize}px`
-		);
+		expect(originalSize).toBe(intExpectedSize);
 	}
 }

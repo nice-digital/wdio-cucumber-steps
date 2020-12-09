@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if the given elements text is the same as the given text
  * @param  {String}   elementType   Element type (element or button)
@@ -40,8 +38,8 @@ export async function checkEqualsText(
 	const text = await element[command]();
 
 	if (boolFalseCase) {
-		expect(parsedExpectedText).to.not.equal(text);
+		expect(parsedExpectedText).not.toBe(text);
 	} else {
-		expect(parsedExpectedText).to.equal(text);
+		expect(parsedExpectedText).toBe(text);
 	}
 }

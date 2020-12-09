@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if a new window or tab is opened
  * @param  {String}   obsolete  The type of opened object (window or tab)
@@ -12,14 +10,8 @@ export async function checkNewWindow(
 	const windowHandles = await browser.getWindowHandles();
 
 	if (falseCase) {
-		expect(windowHandles.length).to.equal(
-			1,
-			"A new window should not have been opened"
-		);
+		expect(windowHandles).toHaveLength(1);
 	} else {
-		expect(windowHandles.length).to.not.equal(
-			1,
-			"A new window has been opened"
-		);
+		expect(windowHandles).not.toHaveLength(1);
 	}
 }

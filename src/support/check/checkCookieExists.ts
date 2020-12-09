@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if a cookie with the given name exists
  * @param  {String}   name      The name of the cookie
@@ -9,17 +7,11 @@ export async function checkCookieExists(
 	name: string,
 	falseCase: string
 ): Promise<void> {
-	const cookie = await browser.getCookies([name]);
+	const cookies = await browser.getCookies([name]);
 
 	if (falseCase) {
-		expect(cookie.length).to.equal(
-			0,
-			`Expected cookie "${name}" not to exists but it does`
-		);
+		expect(cookies).toHaveLength(0);
 	} else {
-		expect(cookie.length).to.not.equal(
-			0,
-			`Expected cookie "${name}" to exists but it does not`
-		);
+		expect(cookies).not.toHaveLength(0);
 	}
 }

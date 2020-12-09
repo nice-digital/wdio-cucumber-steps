@@ -1,5 +1,4 @@
 /*! https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/support/check/checkContainsText.js */
-import { expect } from "chai";
 /**
  * Check if the given elements contains text
  * @param  {String}   elementType   Element type (element or button)
@@ -39,8 +38,8 @@ export async function checkContainsText(
 	}
 
 	if (boolFalseCase) {
-		expect(text).to.not.contain(stringExpectedText);
+		expect(text).not.toContain(stringExpectedText);
 	} else {
-		expect(text).to.contain(stringExpectedText);
+		expect(text).toContain(stringExpectedText);
 	}
 }

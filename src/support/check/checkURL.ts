@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check the URL of the given browser window
  * @param  {String}   falseCase   Whether to check if the URL matches the
@@ -10,17 +8,9 @@ export async function checkUrl(
 	falseCase: string,
 	expectedUrl: string
 ): Promise<void> {
-	const currentUrl = await browser.getUrl();
-
 	if (falseCase) {
-		expect(currentUrl).to.not.equal(
-			expectedUrl,
-			`expected url not to be "${currentUrl}"`
-		);
+		expect(browser).not.toHaveUrl(expectedUrl);
 	} else {
-		expect(currentUrl).to.equal(
-			expectedUrl,
-			`expected url to be "${expectedUrl}" but found "${currentUrl}"`
-		);
+		expect(browser).toHaveUrl(expectedUrl);
 	}
 }

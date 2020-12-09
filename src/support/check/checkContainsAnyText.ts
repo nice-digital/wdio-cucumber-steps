@@ -1,4 +1,3 @@
-import { expect } from "chai";
 /**
  * Check if the given elements contains text
  * @param  {String}   elementType   Element type (element or button)
@@ -20,7 +19,7 @@ export async function checkContainsAnyText(
 	}
 
 	let boolFalseCase;
-	const text = element[command]();
+	const text = await element[command]();
 
 	if (typeof falseCase === "undefined") {
 		boolFalseCase = false;
@@ -29,8 +28,8 @@ export async function checkContainsAnyText(
 	}
 
 	if (boolFalseCase) {
-		expect(text).to.equal("");
+		expect(text).toEqual("");
 	} else {
-		expect(text).to.not.equal("");
+		expect(text).not.toEqual("");
 	}
 }

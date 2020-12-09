@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if the given element is (not) visible
  * @param  {String}   selector   Element selector
@@ -9,18 +7,11 @@ export async function isDisplayed(
 	selector: string,
 	falseCase: string
 ): Promise<void> {
-	const element = await $(selector),
-		displayed = await element.isDisplayed();
+	const element = await $(selector);
 
 	if (falseCase) {
-		expect(displayed).to.not.equal(
-			true,
-			`Expected element "${selector}" not to be displayed`
-		);
+		expect(element).not.toBeDisplayed();
 	} else {
-		expect(displayed).to.equal(
-			true,
-			`Expected element "${selector}" to be displayed`
-		);
+		expect(element).toBeDisplayed();
 	}
 }

@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check if the given URL was opened in a new window
  * @param  {String}   expectedUrl The URL to check for
@@ -11,16 +9,14 @@ export async function checkIsOpenedInNewWindow(
 ): Promise<void> {
 	const windowHandles = await browser.getWindowHandles();
 
-	expect(windowHandles).length.to.not.equal(1, "A popup was not opened");
+	expect(windowHandles).not.toHaveLength(1);
 
 	const lastWindowHandle = windowHandles.slice(-1);
 
 	// Make sure we focus on the last opened window handle
 	await browser.switchToWindow(lastWindowHandle[0]);
 
-	const windowUrl = await browser.getUrl();
-
-	expect(windowUrl).to.contain(expectedUrl, "The popup has a incorrect getUrl");
+	expect(browser).toHaveUrlContaining(expectedUrl);
 
 	await browser.closeWindow();
 }

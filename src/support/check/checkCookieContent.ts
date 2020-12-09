@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check the content of a cookie against a given value
  * @param  {String}   name          The name of the cookie
@@ -14,14 +12,12 @@ export async function checkCookieContent(
 	const cookie = await browser.getNamedCookie(name);
 
 	if (falseCase) {
-		expect(cookie.value).to.not.equal(
-			expectedValue,
-			`expected cookie "${name}" not to have value "${expectedValue}"`
-		);
+		expect(cookie).not.toHaveValue(expectedValue, {
+			message: `expected cookie "${name}" not to have value "${expectedValue}"`,
+		});
 	} else {
-		expect(cookie.value).to.equal(
-			expectedValue,
-			`expected cookie "${name}" to have value "${expectedValue}" but got "${cookie.value}"`
-		);
+		expect(cookie).toHaveValue(expectedValue, {
+			message: `expected cookie "${name}" to have value "${expectedValue}"`,
+		});
 	}
 }

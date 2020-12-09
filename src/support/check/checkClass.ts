@@ -1,5 +1,4 @@
 /*! https://github.com/webdriverio/cucumber-boilerplate/blob/master/src/support/check/checkClass.js */
-import { expect } from "chai";
 /**
  * Check if the given element has the given class
  * @param  {String}   selector              Element selector
@@ -13,19 +12,15 @@ export async function checkClass(
 	falseCase: string,
 	expectedClassName: string
 ): Promise<void> {
-	const element = await $(selector),
-		classAttr = await element.getAttribute("class"),
-		classesList = classAttr.split(" ");
+	const element = await $(selector);
 
 	if (falseCase === "does not have") {
-		expect(classesList).to.not.include(
-			expectedClassName,
-			`Element ${selector} should not have the class ${expectedClassName}`
-		);
+		expect(element).not.toHaveElementClass(expectedClassName, {
+			message: `Element ${selector} should not have the class ${expectedClassName}`,
+		});
 	} else {
-		expect(classesList).to.include(
-			expectedClassName,
-			`Element ${selector} should have the class ${expectedClassName}`
-		);
+		expect(element).toHaveElementClass(expectedClassName, {
+			message: `Element ${selector} should have the class ${expectedClassName}`,
+		});
 	}
 }

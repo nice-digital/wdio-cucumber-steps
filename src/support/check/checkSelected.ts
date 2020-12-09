@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Check the selected state of the given element
  * @param  {String}   selector   Element selector
@@ -9,15 +7,11 @@ export async function checkSelected(
 	selector: string,
 	falseCase: string
 ): Promise<void> {
-	const element = await $(selector),
-		isSelected = await element.isSelected();
+	const element = await $(selector);
 
 	if (falseCase) {
-		expect(isSelected).to.not.equal(
-			true,
-			`"${selector}" should not be selected`
-		);
+		expect(element).not.toBeSelected();
 	} else {
-		expect(isSelected).to.equal(true, `"${selector}" should be selected`);
+		expect(element).toBeSelected();
 	}
 }

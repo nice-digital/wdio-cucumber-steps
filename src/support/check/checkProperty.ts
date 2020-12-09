@@ -1,4 +1,3 @@
-import { expect } from "chai";
 /**
  * Check the given property of the given element
  * @param  {String}   isCSS         Whether to check for a CSS property or an attribute
@@ -17,7 +16,6 @@ export async function checkProperty(
 ): Promise<void> {
 	const element = await $(selector),
 		command = isCSS ? "getCSSProperty" : "getAttribute",
-		attrType = isCSS ? "CSS attribute" : "Attribute",
 		attributeValue = await element[command](attrName);
 
 	const value =
@@ -31,16 +29,8 @@ export async function checkProperty(
 	// 	attributeValue = (attributeValue as WebdriverIO.CSSProperty).value;
 	// }
 	if (falseCase) {
-		expect(attributeValue).to.not.equal(
-			value,
-			`${attrType}: ${attrName} of element "${selector}" should ` +
-				`not contain "${attributeValue}"`
-		);
+		expect(attributeValue).not.toEqual(value);
 	} else {
-		expect(attributeValue).to.equal(
-			value,
-			`${attrType}: ${attrName} of element "${selector}" should ` +
-				`contain "${attributeValue}", but "${expectedValue}"`
-		);
+		expect(attributeValue).toEqual(value);
 	}
 }

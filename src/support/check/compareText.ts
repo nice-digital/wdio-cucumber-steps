@@ -1,5 +1,3 @@
-import { expect } from "chai";
-
 /**
  * Compare the contents of two elements with each other
  * @param  {String}   selector1  Element selector for the first element
@@ -18,11 +16,8 @@ export async function compareText(
 		text2 = await element2.getText();
 
 	if (falseCase) {
-		expect(text1).to.not.equal(text2, `Expected text not to be "${text1}"`);
+		expect(text1).not.toEqual(text2);
 	} else {
-		expect(text1).to.equal(
-			text2,
-			`Expected text to be "${text1}" but found "${text2}"`
-		);
+		expect(text1).toEqual(text2);
 	}
 }
