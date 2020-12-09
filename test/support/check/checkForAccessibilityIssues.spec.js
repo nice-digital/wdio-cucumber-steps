@@ -1,4 +1,6 @@
-import checkForAccessibilityIssues, { getErrorMessage } from "../../../src/support/check/checkForAccessibilityIssues";
+import checkForAccessibilityIssues, {
+	getErrorMessage,
+} from "../../../src/support/check/checkForAccessibilityIssues";
 import { source as axeSource } from "axe-core";
 
 const _expect = global.expect;
@@ -10,17 +12,17 @@ describe("checkForAccessibilityIssues", () => {
 			executeAsync: jest.fn(() => {
 				return { value: { violations: [] } };
 			}),
-			getUrl: jest.fn()
+			getUrl: jest.fn(),
 		};
 
 		global.axe = {
-			run: jest.fn()
+			run: jest.fn(),
 		};
 
 		global.expect = jest.fn(() => ({
 			to: {
-				eql: jest.fn()
-			}
+				eql: jest.fn(),
+			},
 		}));
 	});
 
@@ -40,7 +42,6 @@ describe("checkForAccessibilityIssues", () => {
 	});
 
 	describe("Accessibility Levels", () => {
-
 		const a11yLevelTest = (level, expected) => {
 			global.browser.executeAsync = jest.fn((func, levels) => {
 				func(levels);
@@ -64,7 +65,6 @@ describe("checkForAccessibilityIssues", () => {
 	});
 
 	describe("Axe run callback", () => {
-
 		const axeCallbackTest = (err, results, expected) => {
 			const done = jest.fn();
 
@@ -94,7 +94,6 @@ describe("checkForAccessibilityIssues", () => {
 	});
 
 	describe("Violation assertions", () => {
-
 		it("Should call expect with empty violations", () => {
 			checkForAccessibilityIssues();
 			_expect(expect).toHaveBeenCalledTimes(1);
@@ -102,18 +101,21 @@ describe("checkForAccessibilityIssues", () => {
 		});
 
 		it("Should call expect with violations", () => {
-			const violations =  [
-				{ nodes: [ { html: "A" },  { html: "B" } ] },
-				{ nodes: [ { html: "C" } ] }
+			const violations = [
+				{ nodes: [{ html: "A" }, { html: "B" }] },
+				{ nodes: [{ html: "C" }] },
 			];
 
 			global.browser.executeAsync = jest.fn(() => {
-				return { value: { violations: violations} };
+				return { value: { violations: violations } };
 			});
 
 			checkForAccessibilityIssues();
 			_expect(expect).toHaveBeenCalledTimes(1);
-			_expect(expect).toHaveBeenCalledWith(violations, getErrorMessage(violations));
+			_expect(expect).toHaveBeenCalledWith(
+				violations,
+				getErrorMessage(violations)
+			);
 		});
 	});
 });

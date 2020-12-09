@@ -4,7 +4,6 @@ import loginModule from "../../../src/support/action/login";
 jest.mock("../../../src/support/action/login");
 
 describe("tophatLogIn", () => {
-
 	var callOrder = [];
 	let login;
 
@@ -24,7 +23,7 @@ describe("tophatLogIn", () => {
 			}),
 			click: jest.fn(() => {
 				callOrder.push("click");
-			})
+			}),
 		};
 	});
 
@@ -56,5 +55,4 @@ describe("tophatLogIn", () => {
 		expect(login).toHaveBeenCalledTimes(1);
 		expect(login).toHaveBeenCalledWith("JoeBloggs", "pwd1");
 	});
-
 });

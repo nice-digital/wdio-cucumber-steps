@@ -36,8 +36,7 @@ describe("checkContainsText", () => {
 		checkContainsText("element", "element1", "text");
 
 		_expect(global.browser.getText).toHaveBeenCalledTimes(1);
-		_expect(global.browser.getText)
-			.toHaveBeenCalledWith("element1");
+		_expect(global.browser.getText).toHaveBeenCalledWith("element1");
 
 		_expect(global.expect).toHaveBeenCalledTimes(1);
 		_expect(global.expect).toHaveBeenCalledWith("text");
@@ -50,8 +49,7 @@ describe("checkContainsText", () => {
 		checkContainsText("element", "element1", " not", "text");
 
 		_expect(global.browser.getText).toHaveBeenCalledTimes(1);
-		_expect(global.browser.getText)
-			.toHaveBeenCalledWith("element1");
+		_expect(global.browser.getText).toHaveBeenCalledWith("element1");
 
 		_expect(global.expect).toHaveBeenCalledTimes(1);
 		_expect(global.expect).toHaveBeenCalledWith("text");
@@ -64,8 +62,7 @@ describe("checkContainsText", () => {
 		checkContainsText("button", "button1", "text");
 
 		_expect(global.browser.getText).toHaveBeenCalledTimes(1);
-		_expect(global.browser.getText)
-			.toHaveBeenCalledWith("button1");
+		_expect(global.browser.getText).toHaveBeenCalledWith("button1");
 
 		_expect(global.expect).toHaveBeenCalledTimes(1);
 		_expect(global.expect).toHaveBeenCalledWith("text");
@@ -75,15 +72,10 @@ describe("checkContainsText", () => {
 	});
 
 	it("should call checkContainsText on the browser object", () => {
-		checkContainsText(
-			"element",
-			"element2",
-			"text"
-		);
+		checkContainsText("element", "element2", "text");
 
 		_expect(global.browser.getValue).toHaveBeenCalledTimes(1);
-		_expect(global.browser.getValue)
-			.toHaveBeenCalledWith("element2");
+		_expect(global.browser.getValue).toHaveBeenCalledWith("element2");
 
 		_expect(global.expect).toHaveBeenCalledTimes(1);
 		_expect(global.expect).toHaveBeenCalledWith("value");
@@ -93,16 +85,10 @@ describe("checkContainsText", () => {
 	});
 
 	it("should call checkContainsText on the browser object", () => {
-		checkContainsText(
-			"element",
-			"element2",
-			" not",
-			"text"
-		);
+		checkContainsText("element", "element2", " not", "text");
 
 		_expect(global.browser.getValue).toHaveBeenCalledTimes(1);
-		_expect(global.browser.getValue)
-			.toHaveBeenCalledWith("element2");
+		_expect(global.browser.getValue).toHaveBeenCalledWith("element2");
 
 		_expect(global.expect).toHaveBeenCalledTimes(1);
 		_expect(global.expect).toHaveBeenCalledWith("value");

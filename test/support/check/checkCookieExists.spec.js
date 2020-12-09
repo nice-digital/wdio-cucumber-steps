@@ -36,11 +36,10 @@ describe("checkCookieExists", () => {
 		_expect(global.browser.getCookie).toHaveBeenCalledWith("cookie1");
 
 		_expect(expectToNotEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToNotEqual)
-			.toHaveBeenCalledWith(
-				null,
-				"Expected cookie \"cookie1\" to exists but it does not"
-			);
+		_expect(expectToNotEqual).toHaveBeenCalledWith(
+			null,
+			'Expected cookie "cookie1" to exists but it does not'
+		);
 	});
 
 	it("Should fail if no cookie was found with the given name", () => {
@@ -52,10 +51,9 @@ describe("checkCookieExists", () => {
 		_expect(global.browser.getCookie).toHaveBeenCalledWith("cookie2");
 
 		_expect(expectToEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToEqual)
-			.toHaveBeenCalledWith(
-				null,
-				"Expected cookie \"cookie2\" not to exists but it does"
-			);
+		_expect(expectToEqual).toHaveBeenCalledWith(
+			null,
+			'Expected cookie "cookie2" not to exists but it does'
+		);
 	});
 });

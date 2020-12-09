@@ -41,16 +41,13 @@ describe("handleModal", () => {
 		expect(global.browser.alertText).not.toHaveBeenCalled();
 	});
 
-	it(
-		"should call alertDismiss on the browser to dismiss a confirmbox",
-		() => {
-			handleModal("dismiss", "confirmbox");
+	it("should call alertDismiss on the browser to dismiss a confirmbox", () => {
+		handleModal("dismiss", "confirmbox");
 
-			expect(global.browser.alertDismiss).toHaveBeenCalledTimes(1);
-			expect(global.browser.alertAccept).not.toHaveBeenCalled();
-			expect(global.browser.alertText).not.toHaveBeenCalled();
-		}
-	);
+		expect(global.browser.alertDismiss).toHaveBeenCalledTimes(1);
+		expect(global.browser.alertAccept).not.toHaveBeenCalled();
+		expect(global.browser.alertText).not.toHaveBeenCalled();
+	});
 
 	it("should call alertDismiss on the browser to dismiss a prompt", () => {
 		handleModal("dismiss", "prompt");

@@ -33,11 +33,10 @@ describe("checkURLPath", () => {
 		_expect(global.browser.url).toHaveBeenCalledWith();
 
 		_expect(expectToEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToEqual)
-			.toHaveBeenCalledWith(
-				"test",
-				"expected path to be \"test\" but found \"/test\""
-			);
+		_expect(expectToEqual).toHaveBeenCalledWith(
+			"test",
+			'expected path to be "test" but found "/test"'
+		);
 	});
 
 	it("Should test if the URL path does not match the given value", () => {
@@ -47,11 +46,10 @@ describe("checkURLPath", () => {
 		_expect(global.browser.url).toHaveBeenCalledWith();
 
 		_expect(expectToNotEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToNotEqual)
-			.toHaveBeenCalledWith(
-				"test",
-				"expected path not to be \"/test\""
-			);
+		_expect(expectToNotEqual).toHaveBeenCalledWith(
+			"test",
+			'expected path not to be "/test"'
+		);
 	});
 
 	it("Should replace the domain from the current url", () => {
@@ -65,10 +63,9 @@ describe("checkURLPath", () => {
 		_expect(global.browser.url).toHaveBeenCalledWith();
 
 		_expect(expectToNotEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToNotEqual)
-			.toHaveBeenCalledWith(
-				"test",
-				"expected path not to be \"/test\""
-			);
+		_expect(expectToNotEqual).toHaveBeenCalledWith(
+			"test",
+			'expected path not to be "/test"'
+		);
 	});
 });

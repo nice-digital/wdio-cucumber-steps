@@ -11,7 +11,6 @@ describe("selectOptionByIndex", () => {
 		selectOptionByIndex(1, "", "element");
 
 		expect(global.browser.selectByIndex).toHaveBeenCalledTimes(1);
-		expect(global.browser.selectByIndex)
-			.toHaveBeenCalledWith("element", 1);
+		expect(global.browser.selectByIndex).toHaveBeenCalledWith("element", 1);
 	});
 });

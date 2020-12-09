@@ -10,11 +10,13 @@ describe("clickElement", () => {
 		global.browser = {
 			click: jest.fn(),
 			doubleClick: jest.fn(),
-			elements: jest.fn(() => ({
-				value: ["1"],
-			})).mockImplementationOnce(() => ({
-				value: [],
-			})),
+			elements: jest
+				.fn(() => ({
+					value: ["1"],
+				}))
+				.mockImplementationOnce(() => ({
+					value: [],
+				})),
 		};
 
 		expectToHaveLengthOf = jest.fn();
@@ -44,7 +46,7 @@ describe("clickElement", () => {
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledTimes(1);
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledWith(
 			1,
-			"Element with selector \"element0\" should exist on the page"
+			'Element with selector "element0" should exist on the page'
 		);
 	});
 
@@ -56,7 +58,7 @@ describe("clickElement", () => {
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledTimes(1);
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledWith(
 			1,
-			"Element with selector \"element1\" should exist on the page"
+			'Element with selector "element1" should exist on the page'
 		);
 	});
 
@@ -68,7 +70,7 @@ describe("clickElement", () => {
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledTimes(1);
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledWith(
 			1,
-			"Element with selector \"element2\" should exist on the page"
+			'Element with selector "element2" should exist on the page'
 		);
 	});
 
@@ -80,7 +82,7 @@ describe("clickElement", () => {
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledTimes(1);
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledWith(
 			1,
-			"Element with selector \"=element3\" should exist on the page"
+			'Element with selector "=element3" should exist on the page'
 		);
 	});
 });

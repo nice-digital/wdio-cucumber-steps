@@ -11,10 +11,9 @@ describe("setCookie", () => {
 		setCookie("cookieName", "cookieContent");
 
 		expect(global.browser.setCookie).toHaveBeenCalledTimes(1);
-		expect(global.browser.setCookie)
-			.toHaveBeenCalledWith({
-				name: "cookieName",
-				value: "cookieContent",
-			});
+		expect(global.browser.setCookie).toHaveBeenCalledWith({
+			name: "cookieName",
+			value: "cookieContent",
+		});
 	});
 });

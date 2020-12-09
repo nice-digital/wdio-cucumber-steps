@@ -31,11 +31,10 @@ describe("checkFocus", () => {
 		_expect(global.browser.hasFocus).toHaveBeenCalledWith("element1");
 
 		_expect(expectToEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToEqual)
-			.toHaveBeenCalledWith(
-				true,
-				"Expected element to be focused, but it is not"
-			);
+		_expect(expectToEqual).toHaveBeenCalledWith(
+			true,
+			"Expected element to be focused, but it is not"
+		);
 	});
 
 	it("Should test if the element does not have the focus", () => {
@@ -45,10 +44,9 @@ describe("checkFocus", () => {
 		_expect(global.browser.hasFocus).toHaveBeenCalledWith("element1");
 
 		_expect(expectToNotEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToNotEqual)
-			.toHaveBeenCalledWith(
-				true,
-				"Expected element to not be focused, but it is"
-			);
+		_expect(expectToNotEqual).toHaveBeenCalledWith(
+			true,
+			"Expected element to not be focused, but it is"
+		);
 	});
 });
