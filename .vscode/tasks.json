@@ -10,6 +10,14 @@
       "detail": "Run TypScript build command in watch mode"
     },
     {
+      "type": "npm",
+      "script": "ts:build",
+      "group": "build",
+      "problemMatcher": ["$tsc"],
+      "label": "TypeScript build",
+      "detail": "Build TypeScript files into the lib folder"
+    },
+    {
       "type": "shell",
       "command": "npx",
       "args": ["http-server", "./coverage/lcov-report", "-o", "-p", "8096"],
