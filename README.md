@@ -6,10 +6,17 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [v1 breaking changes](#v1-breaking-changes)
+- [:warning: Important note](#warning-important-note)
 - [Usage](#usage)
+  - [:rocket: Quick start](#rocket-quick-start)
+  - [:turtle: Slow start](#turtle-slow-start)
+  - [Support functions](#support-functions)
   - [VS Code integration](#vs-code-integration)
 - [Development](#development)
-  - [Debug](#debug)
+  - [Typechecking](#typechecking)
+  - [TypeScript watch mode](#typescript-watch-mode)
+  - [Linting](#linting)
+  - [Browser debugging](#browser-debugging)
   - [npm linking](#npm-linking)
 - [Releasing](#releasing)
 - [Tests](#tests)
@@ -29,47 +36,75 @@ v0 targeted webdriverio v4. v1 targets wdio v6, so includes breaking changes. Th
 - support files are now written in TypeScript and ship with type definitions, so you'll get TS intellisense
 - all support files are now promise based, so you'll have to `await` them in your step definitions
 - the support modules use named exports rather than default exports
-- the support modules are TypeScript
+- the support modules are written in TypeScript
 - the `waitFor` module now only accepts `enabled`, `displayed` and `exist` as `state` (and not `checked`, `selected` etc)
 - `globalnavLogin` is now `globalNavAccountsLogin`
 - `submitForm` has been removed along with the corresponding `When I submit the form X` step definition
 - the _src_ folder is no longer included in the published npm package, just the _lib_ folder
   - so change any `cucumberautocomplete.steps` paths inside your _.vscode/settings.json_ files to replace _src_ with _lib_
+- `chai` has been removed in favour of `expect` and `expect-webdriverio`.
+
+## :warning: Important note
+
+This library allows you to _focus on writing features, not step definitions_. This is great for getting up and running quickly. It allows you to pull in the shared step definitions and start writing feature files.
+
+But **beware**.
+
+The down side of this is that feature files can quickly become implementation-focussed rather than behavioural. From the [cucumber docs](https://cucumber.io/docs/bdd/better-gherkin/#describe-behaviour):
+
+> Your scenarios should describe the intended behaviour of the system, not the implementation. In other words, it should describe _what_, not _how_.
+
+This means it's easy to write scenarios like `When I click the button "#signin"` where `When I login` is probably better. Writing behavioural scenarios usually means writing more custom step definitions. Consider importing the _lib/support_ actions/check modules into custom step definitions in preference to using the built in step definitions directly.
 
 ## Usage
 
-First install via npm:
+### :rocket: Quick start
+
+Fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies. This is the best approach for new testing projects. Make sure you clone the Webdriverio v6 version of frontend testing base (and not v4!).
+
+Or to install wdio-cucumber-steps into an existing testing project, follow the slow start guide:
+
+### :turtle: Slow start
+
+Install Node 12 LTS. Then install _@nice-digital/wdio-cucumber-steps_ via npm, along with required dependencies:
 
 ```sh
-npm i @nice-digital/wdio-cucumber-steps --save-dev
+npm i @nice-digital/wdio-cucumber-steps@1 expect expect-webdriverio --save-dev
 ```
 
-Then assuming you have a _wdio.conf.js_ that looks something like this:
+Then add _node_modules/@nice-digital/wdio-cucumber-steps/lib_ into `cucumberOpts.requre` in _wdio.conf.js_:
 
-```js
+```diff
 exports.config = {
-  // Options missing here for brevity
+	...
   cucumberOpts: {
-    require: ['./src/steps/index.js'],
+    require: [
+			'./src/steps/index.js',
++			'./node_modules/@nice-digital/wdio-cucumber-steps/lib'
+		],
   },
 };
 ```
 
-Then import the following into _./src/steps/index.js_ (or wherever your custom step definitions) are:
+This tells cucumber to automatically require this module when the test runner runs, which in turn loads all the custom step definitions. Alternatively you can `import '@nice-digital/wdio-cucumber-steps/lib/given';` inside a JavaScript module.
+
+You can now start adding any [steps](#step-definitions) to your feature files. But you'll probably want to write custom step definitions and import support functions directly:
+
+### Support functions
+
+It's good practice to keep scenarios behaviour-focussed rather than implementation-focussed. This usually means writing more custom step definitions to keep feature files clean, light and behavioural. Use the wdio-cucumber-steps support functions directly within custom step definitions to help with this. Import support functions like this:
 
 ```js
-import '@nice-digital/wdio-cucumber-steps/lib/given';
-import '@nice-digital/wdio-cucumber-steps/lib/when';
-import '@nice-digital/wdio-cucumber-steps/lib/then';
+import { openWebsite } from '@nice-digital/wdio-cucumber-steps/lib/support/action/openWebsite';
 ```
 
-The easiest way is to fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies. Note: make sure you clone the Webdriverio v6 version of frontend testing base (and not v4!).
+> Note: these support functions were default exports in v0 and are now named exports in v1
 
 ### VS Code integration
 
-We recommend the [Cucumber (Gherkin) Full Support VSCode extension](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete#overview) for intellisense for step definitions.
+Install the [Cucumber (Gherkin) Full Support VSCode extension](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete#overview) for intellisense for step definitions in your testing project.
 
-Install the extension and configure by adding the following to _.vscode/settings.json_ in your testing application:
+Install the extension and configure by adding the following to _.vscode/settings.json_ in your testing project:
 
 ```diff
 {
@@ -81,15 +116,39 @@ Install the extension and configure by adding the following to _.vscode/settings
 }
 ```
 
-Note: in v0 these settings pointed to the src folder, but the src folder is no longer published to npm in v1.
+> Note: in v0 these settings pointed to the _src_ folder, but the _src_ folder is no longer included in the npm package in v1.
 
 ## Development
 
-The source files (in the _src_ directory) are written in TypeScript. This _src_ is automatically transpiled into the _lib_ folder when you [release](#releasing).
+### Typechecking
 
-### Debug
+The source files (in the _src_ directory) are written in TypeScript. This _src_ is automatically compile into the _lib_ folder when you [release](#releasing). Or run `npm run ts:build` to manually compile TypeScript into the _lib_ folder. There's also a command to use watch mode (see [TypeScript watch mode](#typescript-watch-mode) below).
 
-You can use Given/Then/When/And followed by "I debug" within the feature file which stops the running browser and gives you time to jump into it and check the state of your application ([WDIO Help on Debug](http://webdriver.io/api/utility/debug.html)):
+Using TypeScript gives us static type checking, via:
+
+- CLI commands
+- VSCode IDE for local development
+- CLI and VSCode for testing projects that import wdio-cucumber steps.
+
+The _lib_ folder that's included in the npm package contains JavaScript, type definitions (.d.ts files) and source maps (.map files).
+
+### TypeScript watch mode
+
+Run `npm run ts:watch` to build the _src_ TypeScript files in watch mode. This compiles the _src_ folder into _lib_ but also watches for file changes to re-compile. There's also a task configured in VSCode if you prefer to not use the command line: choose _Tasks: Run Task_ then _TypeScript watch_ from the command palette (Ctrl + Shift + P).
+
+Watch mode is useful when you're linking this wdio-cucumber-steps project into a testing project for local development, see the [npm linking](#npm-linking) section.
+
+### Linting
+
+We have both ESLint and Prettier configured, with corresponding npm commands. Run `npm run lint` to run both commands, or alternatively run `npm run prettier` or `npm run lint:ts` individually. These commands run automatically as part of the [release](#releasing) process.
+
+VSCode is configured to format files on save, so you shouldn't get fixable linting errors saved into files. But if you do, run `npm run prettier:fix` and `npm run lint:fix` to fix any fixable linting errors.
+
+### Browser debugging
+
+Note: don't confuse debugging using browser dev tools and VSCode debugging of step definitions!
+
+Use `Given`, `Then`, `When` or `And` followed by `I debug` within a feature file to pause the browser to allow debugging with dev tools:
 
 ```sh
 Given I debug
@@ -98,27 +157,31 @@ When I debug
 And I debug
 ```
 
+This stops the running browser and gives you time to inspect the browser using dev tools. See [the WebdriverIO debug docs](https://webdriver.io/docs/api/browser/debug.html) for more information. Note: as per the docs:
+
+> If you run the WDIO testrunner make sure you increase the timeout property of the test framework you are using (e.g. Mocha or Jasmine) in order to prevent test termination due to a test timeout. Also avoid executing the command with multiple capabilities running at the same time.
+
+Our [frontend-testing-base](https://github.com/nice-digital/frontend-testing-base) project use cucumber, so the timeout property is `cucumberOpts.timeout` inside _wdio.conf.js_.
+
 ### npm linking
 
-To dev locally, it can be useful to test these step definitions in context of real features. In this case, use [npm link](https://docs.npmjs.com/cli/link) to symlink to another folder:
+To develop wdio-cucumber-steps locally, you need to test these step definitions in context of real features (as well as writing unit tests). This means using the steps within a real webdriverio project like [frontend-testing-base](https://github.com/nice-digital/frontend-testing-base). Do this using [npm link](https://docs.npmjs.com/cli/link) to avoid having to push up to npm each time. `npm link` uses a symlink under the hood to link the node module to this repo on the file system.
+
+First run this command in the @nice-digital\wdio-cucumber-steps folder:
 
 ```sh
 npm link
 ```
 
-Then in your testing project:
+Then in your testing project (e.g. frontend-testing-base), run:
 
 ```sh
 npm link @nice-digital/wdio-cucumber-steps
 ```
 
-Once they are all linked, run the following command to recompile the files as you make changes so that they are reflected in your test project:
+Testing projects load step definitions and support modules from the _lib_ folder. This _lib_ is excluded from git and is where the TypeScript source files in _src_ files are compiled to. This means you need to re-compile the TypeScript files if you make any changes to the _src_ folder. This is best done via watch mode, see the [TypeScript watch mode](#typescript-watch-mode) section for how to do this.
 
-```sh
-npm run es5ify:watch
-```
-
-> Don't forget to unlink! `npm unlink @nice-digital/wdio-cucumber-steps`
+> Don't forget to unlink when you're finished! `npm unlink @nice-digital/wdio-cucumber-steps`
 
 ## Releasing
 
@@ -126,15 +189,21 @@ We use [np](https://www.npmjs.com/package/np) for releasing. Run `npm run releas
 
 ## Tests
 
+We have unit tests written in Jest that test each of the support files in the _src_ folder.
+
 ### Running the tests
 
-Run the following command to lint and run unit tests:
+VSCode is set up with debug launch configurations for running the tests. Run _Jest tests - all files_ from the VSCode debug window to run all the tests. Or open a test file and run _Jest tests - current file_ to run _just_ the currently opened file. Thes VSCode launch configurations are recommended as they allow breakpoint debugging of tests directly inside the VSCode IDE.
+
+There are also commands to run the tests manually in a terminal. Run all unit tests with:
 
 ```sh
-npm test
+npm run test:unit
 ```
 
-Or alternatively just run `npm run lint` or `npm run test:unit` individually. If you're devving and you've got eslint errors you need to fix, run `npm run lint:fix`.
+Or alternatively run `npm test` to lint (Prettier and ESLint), typecheck and run the unit tests - this is useful as a 'full' test, for example before pushing to git.
+
+Run a single test by passing a filename after the [npm custom argument double dash](https://docs.npmjs.com/cli/v6/commands/npm-run-script#description). For example, running `npm run test:unit -- cookie` would run all the test files containing _cookie_ in the name include _acceptCookieBanner_, _setCookie_ etc.
 
 ## Step definitions
 
