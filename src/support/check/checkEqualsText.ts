@@ -7,16 +7,17 @@
  * @param  {String}   expectedText  The text to validate against
  */
 export async function checkEqualsText(
-	elementType: string,
+	elementType: "element" | "button",
 	selector: string,
 	falseCase: string,
 	expectedText: string
 ): Promise<void> {
-	const element = await $(selector);
+	const element = await $(selector),
+		elementValueAttr = (await element.getAttribute("value")) as string | null;
 
 	let command: "getValue" | "getText" = "getValue";
 
-	if (elementType === "button" || element.getAttribute("value") === null) {
+	if (elementType === "button" || elementValueAttr === null) {
 		command = "getText";
 	}
 
@@ -38,8 +39,8 @@ export async function checkEqualsText(
 	const text = await element[command]();
 
 	if (boolFalseCase) {
-		expect(parsedExpectedText).not.toBe(text);
+		expect(text).not.toBe(parsedExpectedText);
 	} else {
-		expect(parsedExpectedText).toBe(text);
+		expect(text).toBe(parsedExpectedText);
 	}
 }
