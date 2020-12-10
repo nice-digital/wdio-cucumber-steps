@@ -8,6 +8,14 @@
       "problemMatcher": ["$tsc-watch"],
       "label": "TypeScript watch",
       "detail": "Run TypScript build command in watch mode"
+    },
+    {
+      "type": "shell",
+      "command": "npx",
+      "args": ["http-server", "./coverage/lcov-report", "-o", "-p", "8096"],
+      "label": "Open coverage",
+      "detail": "Serves coverage on localhost:8096 and opens a browser",
+      "problemMatcher": []
     }
   ]
 }
