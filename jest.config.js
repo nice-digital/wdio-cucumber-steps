@@ -6,13 +6,13 @@ module.exports = {
 	testMatch: ["**/?(*.)+(spec|test).ts"],
 	moduleFileExtensions: ["js", "ts"],
 	transform: {
-		"^.+\\.(ts|tsx)$": "ts-jest",
+		"^.+\\.ts$": "ts-jest",
 	},
 	preset: "ts-jest",
 	collectCoverage: false,
 	collectCoverageFrom: ["src/support/**/*.ts"],
 	notify: true,
-	setupFilesAfterEnv: ["./test/setup.js"],
+	setupFilesAfterEnv: ["./jest.setup.js"],
 	globals: {
 		"ts-jest": {
 			tsconfig: "test/tsconfig.json",

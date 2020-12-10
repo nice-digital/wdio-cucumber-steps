@@ -4,12 +4,48 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Jest Tests",
-      "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
-      "args": ["-c", "./jest.config.js", "--verbose", "-i", "--no-cache"],
+      "name": "Jest tests - all files",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "--config",
+        "./jest.config.js",
+        "--runInBand",
+        "--colors",
+        "--detectOpenHandles"
+      ],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "openOnSessionStart",
-      "outFiles": ["${workspaceRoot}/dist/**/*"]
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Tests",
+        "order": 1
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest tests - current file",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "--config",
+        "./jest.config.js",
+        "--runInBand",
+        "--colors",
+        "--detectOpenHandles",
+        "--runTestsByPath",
+        "${relativeFile}"
+      ],
+      "console": "integratedTerminal",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Tests",
+        "order": 2
+      }
     }
   ]
 }
