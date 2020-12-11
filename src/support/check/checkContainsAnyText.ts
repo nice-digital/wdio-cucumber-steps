@@ -10,11 +10,12 @@ export async function checkContainsAnyText(
 	selector: string,
 	falseCase?: string | boolean
 ): Promise<void> {
-	const element = await $(selector);
+	const element = await $(selector),
+		elementValueAttr = (await element.getAttribute("value")) as string | null;
 
 	let command: "getValue" | "getText" = "getValue";
 
-	if (elementType === "button" || element.getAttribute("value") === null) {
+	if (elementType === "button" || elementValueAttr === null) {
 		command = "getText";
 	}
 

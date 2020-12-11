@@ -1,4 +1,10 @@
-import { source as axeSource, Result, run, AxeResults } from "axe-core";
+import {
+	source as axeSource,
+	Result,
+	run,
+	AxeResults,
+	RunOptions,
+} from "axe-core";
 
 declare global {
 	interface Window {
@@ -32,21 +38,45 @@ export async function checkForAccessibilityIssues(
 	// inject the axe script source
 	await browser.execute(axeSource);
 	// run inside browser and get results
+
+	// Some truly horrible casting here because of this bug: https://github.com/webdriverio/webdriverio/issues/6206
 	const results = (await browser.executeAsync(
-		`function (levels, done) {
-			var options = {
+		(function checkForAccessibilityIssues(
+			levels: string[],
+			done: (results: AxeResults | Error) => void
+		) {
+			const options: RunOptions = {
 				runOnly: {
 					type: "tag",
 					values: levels,
 				},
 			};
-			axe.run(options, function (err, results) {
-				if (err) done(err);
-				else done(results);
-			});
-		}`,
+			((window as unknown) as { axe: { run: typeof run } }).axe.run(
+				options,
+				function (err: Error, results: AxeResults) {
+					if (err) done(err);
+					else done(results);
+				}
+			);
+		} as unknown) as () => void,
 		levels
 	)) as AxeResults | Error;
+
+	// const results = (await browser.executeAsync(
+	// 	`function checkForAccessibilityIssues (levels, done) {
+	// 		var options = {
+	// 			runOnly: {
+	// 				type: "tag",
+	// 				values: levels,
+	// 			},
+	// 		};
+	// 		axe.run(options, function (err, results) {
+	// 			if (err) done(err);
+	// 			else done(results);
+	// 		});
+	// 	}`,
+	// 	levels
+	// )) as AxeResults | Error;
 
 	if (results instanceof Error) throw results;
 

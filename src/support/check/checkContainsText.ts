@@ -13,13 +13,14 @@ export async function checkContainsText(
 	falseCase: string,
 	expectedText: string
 ): Promise<void> {
-	const element = await $(selector);
+	const element = await $(selector),
+		elementValueAttr = (await element.getAttribute("value")) as string | null;
 
 	let command: "getValue" | "getText" = "getValue";
 
 	if (
 		["button", "container"].includes(elementType) ||
-		element.getAttribute("value") === null
+		elementValueAttr === null
 	) {
 		command = "getText";
 	}
