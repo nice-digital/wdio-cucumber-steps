@@ -41,8 +41,7 @@ describe("checkContent", () => {
 		_expect(global.browser.getValue).toHaveBeenCalledWith("element1");
 
 		_expect(expectToNotEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToNotEqual)
-			.toHaveBeenCalledWith("");
+		_expect(expectToNotEqual).toHaveBeenCalledWith("");
 	});
 
 	it("Should handle elements", () => {

@@ -4,11 +4,7 @@ describe("closeAllButFirstTab", () => {
 	beforeEach(() => {
 		global.browser = {
 			windowHandles: jest.fn(() => ({
-				value: [
-					"one",
-					"two",
-					"three",
-				],
+				value: ["one", "two", "three"],
 			})),
 			switchTab: jest.fn(() => ({
 				close() {},

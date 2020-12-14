@@ -12,7 +12,9 @@ describe("dragElement", () => {
 
 		expect(global.browser.dragAndDrop).toHaveBeenCalledTimes(1);
 
-		expect(global.browser.dragAndDrop)
-			.toHaveBeenCalledWith("source", "destination");
+		expect(global.browser.dragAndDrop).toHaveBeenCalledWith(
+			"source",
+			"destination"
+		);
 	});
 });

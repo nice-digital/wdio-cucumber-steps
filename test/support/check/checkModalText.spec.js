@@ -19,12 +19,10 @@ describe("checkModalText", () => {
 
 		// mocking of the expect function
 		global.expect = jest.fn((arg) => {
-			if (typeof arg === "function")
-			{
+			if (typeof arg === "function") {
 				try {
 					arg();
-				}
-				catch (e) {
+				} catch (e) {
 					expectToThrow(e);
 				}
 			}
@@ -35,7 +33,7 @@ describe("checkModalText", () => {
 						throw: jest.fn(),
 					},
 					equal: expectToEqual,
-					throw: expectToThrow
+					throw: expectToThrow,
 				},
 			};
 		});
@@ -46,22 +44,19 @@ describe("checkModalText", () => {
 		checkModalText("alertbox", false, txt);
 
 		_expect(expectToEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToEqual)
-			.toHaveBeenCalledWith(
-				"actual modal text",
-				`Expected the text of alertbox to equal "${txt}", instead found "${txt}"`
-			);
+		_expect(expectToEqual).toHaveBeenCalledWith(
+			"actual modal text",
+			`Expected the text of alertbox to equal "${txt}", instead found "${txt}"`
+		);
 	});
 
 	it("Should test if alertText does not contain the given value", () => {
 		checkModalText("confirmbox", true, "test");
 
 		_expect(expectToNotEqual).toHaveBeenCalledTimes(1);
-		_expect(expectToNotEqual)
-			.toHaveBeenCalledWith(
-				"test",
-				"Expected the text of confirmbox not to equal " +
-                "\"test\""
-			);
+		_expect(expectToNotEqual).toHaveBeenCalledWith(
+			"test",
+			"Expected the text of confirmbox not to equal " + '"test"'
+		);
 	});
 });
