@@ -13,8 +13,7 @@ describe("setPromptText", () => {
 		setPromptText("modalText");
 
 		expect(global.browser.alertText).toHaveBeenCalledTimes(1);
-		expect(global.browser.alertText)
-			.toHaveBeenCalledWith("modalText");
+		expect(global.browser.alertText).toHaveBeenCalledWith("modalText");
 	});
 
 	it("should call fail when no prompt is open", () => {
@@ -26,15 +25,13 @@ describe("setPromptText", () => {
 		setPromptText("modalText2");
 
 		expect(global.browser.alertText).toHaveBeenCalledTimes(1);
-		expect(global.browser.alertText)
-			.toHaveBeenCalledWith("modalText2");
+		expect(global.browser.alertText).toHaveBeenCalledWith("modalText2");
 		expect(global.browser.alertText).toThrow();
 
 		expect(global.assert).toHaveBeenCalledTimes(1);
-		expect(global.assert)
-			.toHaveBeenCalledWith(
-				error,
-				"A prompt was not open when it should have been open"
-			);
+		expect(global.assert).toHaveBeenCalledWith(
+			error,
+			"A prompt was not open when it should have been open"
+		);
 	});
 });

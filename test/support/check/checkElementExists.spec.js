@@ -41,7 +41,7 @@ describe("checkElementExists", () => {
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledTimes(1);
 		_expect(expectToHaveLengthOfAtLeast).toHaveBeenCalledWith(
 			1,
-			"Element with selector \"element1\" should exist on the page"
+			'Element with selector "element1" should exist on the page'
 		);
 	});
 
@@ -54,7 +54,7 @@ describe("checkElementExists", () => {
 		_expect(expectToHaveLengthOf).toHaveBeenCalledTimes(1);
 		_expect(expectToHaveLengthOf).toHaveBeenCalledWith(
 			0,
-			"Element with selector \"element2\" should not exist on the page"
+			'Element with selector "element2" should not exist on the page'
 		);
 	});
 });

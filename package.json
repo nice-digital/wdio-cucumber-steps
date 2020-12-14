@@ -1,25 +1,40 @@
 {
   "name": "@nice-digital/wdio-cucumber-steps",
-  "version": "0.12.1",
-  "description": "Shared step definitions for Cucumber JS BDD tests in WebdriverIO",
+  "version": "1.0.1-0",
+  "description": "Shared step definitions for Cucumber JS BDD tests in WebdriverIO Version 6",
   "main": "lib/index.js",
   "scripts": {
-    "es5ify": "babel src -s inline -d lib",
-    "es5ify:watch": "babel src -s inline -d lib -w",
+    "// Linting/style": "",
+    "lint": "npm run prettier && npm run lint:ts && npm run ts:check",
+    "prettier": "prettier --check .",
+    "prettier:fix": "npm run prettier -- --write",
+    "lint:ts": "eslint .",
+    "lint:ts:fix": "npm run lint:ts -- --fix",
+    "// TYPECHECKING": "",
+    "ts": "tsc",
+    "ts:build": "tsc -b",
+    "ts:watch": "tsc -b src --watch",
+    "ts:check": "tsc -p src -p test --noEmit",
     "// Tests": "",
-    "lint": "eslint **/*.js",
-    "lint:fix": "eslint **/*.js --fix",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "jest --config=jest.json",
-    "readme": "doctoc ./README.md && babel-node ./scripts/readme.js",
+    "test:unit": "jest --config=jest.config.js",
+    "test:watch": "npm run test:unit -- --watch",
+    "// Readme": "",
+    "readme": "doctoc ./README.md && ts-node ./scripts/readme.ts && prettier --write \"./README.md\"",
     "// Releasing": "",
     "release": "np",
     "release:patch": "np patch",
     "release:minor": "np minor",
     "release:major": "np major",
     "// Lifecycle hooks": "",
-    "prepublish": "npm run es5ify",
-    "version": "npm run readme"
+    "prepare": "npm run ts:build",
+    "prepublishOnly": "npm run readme"
+  },
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=12.16.1"
   },
   "repository": {
     "type": "git",
@@ -42,24 +57,32 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "@wdio/cucumber-framework": "6.x"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-flow": "^7.12.1",
-    "@nice-digital/eslint-config": "^1.0.3",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.6.2",
-    "chai": "^4.2.0",
+    "@types/cucumber": "^6.0.1",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^12.12.6",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "cucumber": "^6.0.5",
     "doctoc": "^1.4.0",
     "eslint": "^7.12.1",
-    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "fs-extra": "^9.0.1",
     "jest": "^26.6.2",
-    "np": "^7.0.0"
+    "np": "^7.0.0",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5",
+    "webdriverio": "^6.10.5"
   },
   "dependencies": {
-    "axe-core": "^4.0.2"
+    "axe-core": "^4.0.2",
+    "expect-webdriverio": "^1.4.1"
   }
 }

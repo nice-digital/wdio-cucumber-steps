@@ -3,7 +3,7 @@ import focusElement from "../../../src/support/action/focusElement";
 describe("focusElement", () => {
 	beforeEach(() => {
 		global.browser = {
-			execute: jest.fn()
+			execute: jest.fn(),
 		};
 	});
 

@@ -4,11 +4,7 @@ describe("focusLastOpenedWindow", () => {
 	beforeEach(() => {
 		global.browser = {
 			windowHandles: jest.fn(() => ({
-				value: [
-					"one",
-					"two",
-					"three",
-				],
+				value: ["one", "two", "three"],
 			})),
 			window: jest.fn(),
 		};

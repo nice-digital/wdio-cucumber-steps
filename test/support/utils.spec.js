@@ -1,8 +1,11 @@
-import { Given, getNICEAccountsUrl, applyStepDefinitions } from "../../src/support/utils";
+import {
+	Given,
+	getNICEAccountsUrl,
+	applyStepDefinitions,
+} from "../../src/support/utils";
 
 describe("utils", () => {
 	describe("Given", () => {
-
 		it("creates a step definition object", () => {
 			let step = Given("rgx", "fn");
 
@@ -11,7 +14,7 @@ describe("utils", () => {
 				options: null,
 				code: "fn",
 				title: "",
-				examples: []
+				examples: [],
 			});
 		});
 
@@ -23,7 +26,7 @@ describe("utils", () => {
 				options: null,
 				code: "fn",
 				title: "test",
-				examples: []
+				examples: [],
 			});
 		});
 
@@ -35,7 +38,7 @@ describe("utils", () => {
 				options: null,
 				code: "fn",
 				title: "",
-				examples: ["test"]
+				examples: ["test"],
 			});
 		});
 
@@ -47,63 +50,51 @@ describe("utils", () => {
 				options: { test: true },
 				code: "fn",
 				title: "",
-				examples: []
+				examples: [],
 			});
 		});
 	});
 
 	describe("getNICEAccountsUrl", () => {
-
 		it("should return the correct URL when the domain is live", () => {
-
 			let URL = getNICEAccountsUrl("live");
 			expect(URL).toEqual("https://accounts.nice.org.uk");
 		});
 
 		it("should return the correct URL when the domain is test", () => {
-
 			let URL = getNICEAccountsUrl("test");
 			expect(URL).toEqual("https://test-accounts.nice.org.uk");
 		});
 
 		it("should return the correct URL when the domain is beta", () => {
-
 			let URL = getNICEAccountsUrl("beta");
 			expect(URL).toEqual("https://beta-accounts.nice.org.uk");
 		});
 
 		it("should not return URL when the domain is fake", () => {
-
 			let URL = getNICEAccountsUrl("fake");
 			expect(URL).toEqual(false);
 		});
 	});
 
-
 	describe("applyStepDefinitions", () => {
-
-		it("passes given step objects to given function", ()=>{
+		it("passes given step objects to given function", () => {
 			const myFunction = jest.fn();
 			const steps = [
 				{
 					pattern: "regex",
 					options: "options",
-					code: "functionOne"
+					code: "functionOne",
 				},
 				{
 					pattern: "regex2",
-					code: "functionTwo"
-				}
+					code: "functionTwo",
+				},
 			];
 
 			applyStepDefinitions(myFunction, steps);
-			expect(myFunction).toBeCalledWith(
-				"regex", "options", "functionOne"
-			);
-			expect(myFunction).toBeCalledWith(
-				"regex2", "functionTwo"
-			);
+			expect(myFunction).toBeCalledWith("regex", "options", "functionOne");
+			expect(myFunction).toBeCalledWith("regex2", "functionTwo");
 		});
-
 	});
 });

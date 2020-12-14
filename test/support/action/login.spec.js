@@ -14,15 +14,22 @@ describe("login", () => {
 		expect(global.browser.waitForVisible).toBeCalledWith("body #Email", 40000);
 	});
 
-	it("should set the form inputs to the supplied username and password", ()=>{
+	it("should set the form inputs to the supplied username and password", () => {
 		login("username", "password");
-		expect(global.browser.setValue).toHaveBeenCalledWith("input[name='Email']", process.env["username"]);
-		expect(global.browser.setValue).toHaveBeenCalledWith("input[name='Password']", process.env["password"]);
+		expect(global.browser.setValue).toHaveBeenCalledWith(
+			"input[name='Email']",
+			process.env["username"]
+		);
+		expect(global.browser.setValue).toHaveBeenCalledWith(
+			"input[name='Password']",
+			process.env["password"]
+		);
 	});
 
-	it("should submit the form", ()=> {
+	it("should submit the form", () => {
 		login();
-		expect(global.browser.submitForm).toHaveBeenCalledWith("input[name='Email']");
+		expect(global.browser.submitForm).toHaveBeenCalledWith(
+			"input[name='Email']"
+		);
 	});
-
 });

@@ -10,12 +10,10 @@ describe("resizeScreenSize", () => {
 	it("should call windowHandleSize on the browser object", () => {
 		resizeScreenSize(1, 2);
 
-		expect(global.browser.windowHandleSize)
-			.toHaveBeenCalledTimes(1);
-		expect(global.browser.windowHandleSize)
-			.toHaveBeenCalledWith({
-				width: 1,
-				height: 2,
-			});
+		expect(global.browser.windowHandleSize).toHaveBeenCalledTimes(1);
+		expect(global.browser.windowHandleSize).toHaveBeenCalledWith({
+			width: 1,
+			height: 2,
+		});
 	});
 });
