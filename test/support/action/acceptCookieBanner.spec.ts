@@ -1,7 +1,7 @@
 import { acceptCookieBanner } from "@src/support/action/acceptCookieBanner";
 
 describe("acceptCookieBanner", () => {
-	const waitForDisplayed = jest.fn(),
+	const waitForExist = jest.fn(),
 		click = jest.fn(),
 		isDisplayed = jest.fn().mockResolvedValue(true);
 
@@ -9,7 +9,7 @@ describe("acceptCookieBanner", () => {
 		jest.clearAllMocks();
 
 		global.$ = jest.fn().mockResolvedValue({
-			waitForDisplayed,
+			waitForExist,
 			$: jest.fn().mockResolvedValue({
 				isDisplayed,
 				click,
@@ -19,7 +19,7 @@ describe("acceptCookieBanner", () => {
 
 	it("should wait for the cookie control panel to exist", async () => {
 		await acceptCookieBanner();
-		expect(waitForDisplayed).toHaveBeenCalledWith({
+		expect(waitForExist).toHaveBeenCalledWith({
 			timeout: expect.any(Number),
 		});
 	});
