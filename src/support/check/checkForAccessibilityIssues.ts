@@ -81,14 +81,16 @@ export async function checkForAccessibilityIssues(
 	if (results instanceof Error) throw results;
 
 	if (results.violations.length > 0) {
-		const message = getErrorMessage(results.violations);
+		const message = await getErrorMessage(results.violations);
 		fail(message);
 	}
 
 	expect(results.violations).toHaveLength(0);
 }
 
-export const getErrorMessage = (violations: Result[]): string => {
+export const getErrorMessage = async (
+	violations: Result[]
+): Promise<string> => {
 	const errors = violations
 		.map((violation) => {
 			const elements = violation.nodes.map((node) => node.html).join(", ");
@@ -98,5 +100,5 @@ export const getErrorMessage = (violations: Result[]): string => {
 
 	return `Found ${
 		violations.length
-	} accessibility errors on ${browser.getUrl()}:\n - ${errors}`;
+	} accessibility errors on ${await browser.getUrl()}:\n - ${errors}`;
 };
