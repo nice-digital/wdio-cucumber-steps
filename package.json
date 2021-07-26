@@ -17,7 +17,7 @@
     "ts:check": "tsc -p src -p test --noEmit",
     "// Tests": "",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "jest --config=jest.config.js",
+    "test:unit": "jest --config=test/jest.config.js",
     "test:watch": "npm run test:unit -- --watch",
     "// Readme": "",
     "readme": "doctoc ./README.md && ts-node ./scripts/readme.ts && prettier --write \"./README.md\"",
@@ -34,7 +34,7 @@
     "lib"
   ],
   "engines": {
-    "node": ">=12.16.1"
+    "node": ">=14"
   },
   "repository": {
     "type": "git",
@@ -58,7 +58,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@wdio/cucumber-framework": "7.x"
+    "@wdio/cucumber-framework": "7.x",
+    "@cucumber/cucumber": "7.x"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.1",
@@ -73,6 +74,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "fs-extra": "^10.0.0",
     "jest": "^27.0.6",
+    "node-notifier": "^10.0.0",
     "np": "^7.5.0",
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.4",
@@ -84,5 +86,8 @@
   "dependencies": {
     "axe-core": "^4.3.1",
     "expect-webdriverio": "^3.1.0"
+  },
+  "volta": {
+    "node": "14.17.3"
   }
 }

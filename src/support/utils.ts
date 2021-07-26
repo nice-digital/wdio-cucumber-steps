@@ -55,6 +55,7 @@ const cucumberFunction =
 
 		// No need to actually call cucumber when we're getting the step defs to populate the readme
 		if (process.env.README !== "true")
+			// eslint-disable-next-line prefer-spread
 			defineStep.apply(null, args as UnionToIntersection<DefineStepArgs>);
 
 		const stepDef = new CustomStepDefinition(stepType, pattern, code, options);

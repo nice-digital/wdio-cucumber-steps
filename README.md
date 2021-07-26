@@ -5,31 +5,45 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [v1 breaking changes](#v1-breaking-changes)
+- [Which version do I need?](#which-version-do-i-need)
+	- [v1 breaking changes](#v1-breaking-changes)
+	- [v2 breaking changes](#v2-breaking-changes)
 - [:warning: Important note](#warning-important-note)
 - [Usage](#usage)
-  - [:rocket: Quick start](#rocket-quick-start)
-  - [:turtle: Slow start](#turtle-slow-start)
-  - [Support functions](#support-functions)
-  - [VS Code integration](#vs-code-integration)
+	- [:rocket: Quick start](#rocket-quick-start)
+	- [:turtle: Slow start](#turtle-slow-start)
+	- [Support functions](#support-functions)
+	- [VS Code integration](#vs-code-integration)
 - [Development](#development)
-  - [Typechecking](#typechecking)
-  - [TypeScript watch mode](#typescript-watch-mode)
-  - [Linting](#linting)
-  - [Browser debugging](#browser-debugging)
-  - [npm linking](#npm-linking)
+	- [Typechecking](#typechecking)
+	- [TypeScript watch mode](#typescript-watch-mode)
+	- [Linting](#linting)
+	- [Browser debugging](#browser-debugging)
+	- [npm linking](#npm-linking)
 - [Releasing](#releasing)
 - [Tests](#tests)
-  - [Running the tests](#running-the-tests)
+	- [Running the tests](#running-the-tests)
 - [Step definitions](#step-definitions)
-  - [Given steps](#given-steps)
-  - [When steps](#when-steps)
-  - [Then steps](#then-steps)
+	- [Given steps](#given-steps)
+	- [When steps](#when-steps)
+	- [Then steps](#then-steps)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## v1 breaking changes
+## Which version do I need?
+
+Use the following version of wdio-cucumber-steps depending on your WDIO version:
+
+| wdio-cucumber-steps version | WDIO version | Notes                                                                                         |
+| --------------------------- | ------------ | --------------------------------------------------------------------------------------------- |
+| v0                          | v4           |                                                                                               |
+| v1                          | v6           | Major rewrite: TypeScript, promise-based, named exports and expect rather than chai. Node 12. |
+| v2                          | v7           | Cucumber is now @cucumber/cucumber. Node 14.                                                  |
+
+Further details on the breaking changes are listed below.
+
+### v1 breaking changes
 
 v0 targeted webdriverio v4. v1 targets wdio v6, so includes breaking changes. These v1 changes include:
 
@@ -43,6 +57,12 @@ v0 targeted webdriverio v4. v1 targets wdio v6, so includes breaking changes. Th
 - the _src_ folder is no longer included in the published npm package, just the _lib_ folder
   - so change any `cucumberautocomplete.steps` paths inside your _.vscode/settings.json_ files to replace _src_ with _lib_
 - `chai` has been removed in favour of `expect` and `expect-webdriverio`.
+
+### v2 breaking changes
+
+Version 2 targets WebDriverIO v7 and cucumber v7. Cucumber is now published on npm under @cucumber/cucumber.
+
+We're also now targeting Node 14+.
 
 ## :warning: Important note
 
@@ -60,13 +80,13 @@ This means it's easy to write scenarios like `When I click the button "#signin"`
 
 ### :rocket: Quick start
 
-Fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies. This is the best approach for new testing projects. Make sure you clone the Webdriverio v6 version of frontend testing base (and not v4!).
+Fork the [NICE frontend testing base](https://github.com/nice-digital/frontend-testing-base/) as it comes with the required dependencies. This is the best approach for new testing projects. Make sure you clone the Webdriverio v7 version of frontend testing base (and not v4 or v6!).
 
 Or to install wdio-cucumber-steps into an existing testing project, follow the slow start guide:
 
 ### :turtle: Slow start
 
-Install Node 12 LTS. Then install _@nice-digital/wdio-cucumber-steps_ via npm, along with required dependencies:
+Install Node 14 LTS. Then install _@nice-digital/wdio-cucumber-steps_ via npm, along with required dependencies:
 
 ```sh
 npm i @nice-digital/wdio-cucumber-steps@1 expect expect-webdriverio --save-dev
