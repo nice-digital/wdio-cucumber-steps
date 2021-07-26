@@ -11,6 +11,6 @@
       "@src/*": ["../src/*"]
     }
   },
-  "include": ["./**/*.ts", "support/check/checkClass.spec.js"],
+  "include": ["./**/*.ts"],
   "references": [{ "path": "../src" }]
 }
