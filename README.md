@@ -1,3 +1,5 @@
+:warning: You are viewing wdio-cucumber-steps@v1, which targets WDIO v6. Use master for the latest (v2) version, for use with WDIO 7.
+
 # [@nice-digital/wdio-cucumber-steps](https://www.npmjs.com/package/@nice-digital/wdio-cucumber-steps)
 
 > Shared step definitions for Cucumber JS BDD tests in WebdriverIO. Focus on writing features, not step definitions.
