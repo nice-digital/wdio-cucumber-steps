@@ -1,10 +1,14 @@
+import { defineStep, IWorld } from "@cucumber/cucumber";
 import {
-	StepDefinitionCode,
-	StepDefinitionOptions,
-	defineStep,
-} from "cucumber";
+	DefineStepPattern,
+	IDefineStepOptions,
+	TestStepFunction,
+} from "@cucumber/cucumber/lib/support_code_library_builder/types";
+import { UnionToIntersection } from "type-fest";
 
-type CucumberPattern = string | RegExp;
+//type DefineStepPattern = Parameters<typeof defineStep>[0];
+//type IDefineStepOptions = Parameters<typeof defineStep>[1];
+//type TestStepFunction = Parameters<typeof defineStep>[2];
 
 export type StepType = "given" | "when" | "then";
 
@@ -14,9 +18,9 @@ export class CustomStepDefinition {
 
 	constructor(
 		readonly stepType: StepType,
-		readonly pattern: CucumberPattern,
-		readonly code: StepDefinitionCode,
-		readonly options?: StepDefinitionOptions
+		readonly pattern: DefineStepPattern,
+		readonly code: TestStepFunction<IWorld>,
+		readonly options?: IDefineStepOptions
 	) {}
 
 	withDocs(docs: string): CustomStepDefinition {
@@ -30,43 +34,35 @@ export class CustomStepDefinition {
 	}
 }
 
-type CucumberFunctionArgs =
-	| [pattern: RegExp | string, code: StepDefinitionCode]
+type DefineStepArgs =
+	| [pattern: DefineStepPattern, code: TestStepFunction<IWorld>]
 	| [
-			pattern: RegExp | string,
-			options: StepDefinitionOptions,
-			code: StepDefinitionCode
+			pattern: DefineStepPattern,
+			options: IDefineStepOptions,
+			code: TestStepFunction<IWorld>
 	  ];
 
-type CucumberFunction = (...args: CucumberFunctionArgs) => CustomStepDefinition;
+type CucumberFunction = (...args: DefineStepArgs) => CustomStepDefinition;
 
 export const customSteps: CustomStepDefinition[] = [];
 
-const cucumberFunction = (stepType: StepType): CucumberFunction => (
-	...args: CucumberFunctionArgs
-): CustomStepDefinition => {
-	const pattern = args[0],
-		options = args.length === 3 ? args[1] : undefined,
-		code = args.length === 2 ? args[1] : args[2];
+const cucumberFunction =
+	(stepType: StepType): CucumberFunction =>
+	(...args) => {
+		const pattern = args[0],
+			options = args.length === 3 ? args[1] : undefined,
+			code = args.length === 2 ? args[1] : args[2];
 
-	// No need to actually call cucumber when we're getting the step defs to populate the readme
-	if (process.env.README !== "true") {
-		// Call the original matching cucumber function
-		// Ideally we'd use a spread arg but can't cos of this TS bug: https://github.com/microsoft/TypeScript/issues/28010
-		if (options) {
-			defineStep(pattern, options, code);
-		} else {
-			defineStep(pattern, code);
-		}
-	}
+		// No need to actually call cucumber when we're getting the step defs to populate the readme
+		if (process.env.README !== "true")
+			// eslint-disable-next-line prefer-spread
+			defineStep.apply(null, args as UnionToIntersection<DefineStepArgs>);
 
-	const stepDef = new CustomStepDefinition(stepType, pattern, code, options);
+		const stepDef = new CustomStepDefinition(stepType, pattern, code, options);
 
-	customSteps.push(stepDef);
+		return customSteps.push(stepDef), stepDef;
+	};
 
-	return stepDef;
-};
-
-export const Given: CucumberFunction = cucumberFunction("given");
-export const When: CucumberFunction = cucumberFunction("when");
-export const Then: CucumberFunction = cucumberFunction("then");
+export const Given = cucumberFunction("given");
+export const When = cucumberFunction("when");
+export const Then = cucumberFunction("then");

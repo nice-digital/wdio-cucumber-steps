@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import checkIsOpenedInNewWindow from "../../../src/support/check/checkIsOpenedInNewWindow";
 
 const _expect = global.expect;

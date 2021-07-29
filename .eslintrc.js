@@ -1,7 +1,11 @@
 module.exports = {
 	root: true,
-	plugins: ["@typescript-eslint", "prettier"],
-	extends: ["eslint:recommended", "plugin:prettier/recommended"],
+	extends: [
+		"eslint:recommended",
+		"plugin:prettier/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+	],
 	env: {
 		node: true,
 	},
@@ -31,7 +35,7 @@ module.exports = {
 		},
 		{
 			files: [`**/*.ts`],
-			parser: `@typescript-eslint/parser`,
+			parser: "@typescript-eslint/parser",
 			parserOptions: {
 				project: [
 					`./tsconfig.json`,
@@ -39,13 +43,6 @@ module.exports = {
 					`./test/tsconfig.json`,
 				],
 			},
-			extends: [
-				"eslint:recommended",
-				"plugin:prettier/recommended",
-				"plugin:@typescript-eslint/eslint-recommended",
-				"plugin:@typescript-eslint/recommended",
-				`prettier/@typescript-eslint`,
-			],
 			rules: {
 				// Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
 				// e.g. "@typescript-eslint/explicit-function-return-type": "off",

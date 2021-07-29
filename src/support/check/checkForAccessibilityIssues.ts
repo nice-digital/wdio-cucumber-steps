@@ -41,7 +41,7 @@ export async function checkForAccessibilityIssues(
 
 	// Some truly horrible casting here because of this bug: https://github.com/webdriverio/webdriverio/issues/6206
 	const results = (await browser.executeAsync(
-		(function checkForAccessibilityIssues(
+		function checkForAccessibilityIssues(
 			levels: string[],
 			done: (results: AxeResults | Error) => void
 		) {
@@ -51,14 +51,14 @@ export async function checkForAccessibilityIssues(
 					values: levels,
 				},
 			};
-			((window as unknown) as { axe: { run: typeof run } }).axe.run(
+			(window as unknown as { axe: { run: typeof run } }).axe.run(
 				options,
 				function (err: Error, results: AxeResults) {
 					if (err) done(err);
 					else done(results);
 				}
 			);
-		} as unknown) as () => void,
+		} as unknown as () => void,
 		levels
 	)) as AxeResults | Error;
 

@@ -8,6 +8,7 @@ describe("checkProperty", () => {
 
 	beforeEach(() => {
 		global.browser = {
+			// eslint-disable-next-line @typescript-eslint/no-empty-function
 			getCssProperty: jest.fn(() => {}),
 			getAttribute: jest.fn(() => "element-name"),
 		};

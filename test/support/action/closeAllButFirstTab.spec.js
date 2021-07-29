@@ -7,6 +7,7 @@ describe("closeAllButFirstTab", () => {
 				value: ["one", "two", "three"],
 			})),
 			switchTab: jest.fn(() => ({
+				// eslint-disable-next-line @typescript-eslint/no-empty-function
 				close() {},
 			})),
 		};

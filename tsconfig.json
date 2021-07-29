@@ -7,6 +7,8 @@
     "declaration": true,
     "declarationMap": true,
     "strict": true,
+    "allowJs": true,
+    "checkJs": false,
     "noEmit": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -18,7 +20,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node", "webdriverio", "expect-webdriverio", "jest"],
+    "types": ["node", "webdriverio/async", "expect-webdriverio", "jest"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
