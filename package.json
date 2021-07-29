@@ -65,9 +65,9 @@
     "@cucumber/cucumber": "^7.3.1",
     "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.24",
-    "@types/node": "^14.14.31",
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
-    "@typescript-eslint/parser": "^4.28.4",
+    "@types/node": "^14.17.6",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
     "doctoc": "^2.0.1",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
@@ -79,12 +79,12 @@
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
-    "type-fest": "^1.2.2",
+    "type-fest": "^1.2.3",
     "typescript": "^4.3.5",
-    "webdriverio": "^7.8.0"
+    "webdriverio": "^7.9.0"
   },
   "dependencies": {
-    "axe-core": "^4.3.1",
+    "axe-core": "^4.3.2",
     "expect-webdriverio": "^3.1.0"
   },
   "volta": {
