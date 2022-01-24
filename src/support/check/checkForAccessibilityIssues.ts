@@ -82,7 +82,7 @@ export async function checkForAccessibilityIssues(
 
 	if (results.violations.length > 0) {
 		const message = await getErrorMessage(results.violations);
-		fail(message);
+		throw new Error(message);
 	}
 
 	expect(results.violations).toHaveLength(0);
