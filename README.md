@@ -8,7 +8,7 @@
 - [Which version do I need?](#which-version-do-i-need)
   - [v1 breaking changes](#v1-breaking-changes)
   - [v2 breaking changes](#v2-breaking-changes)
-	- [v3 breaking changes](#v3-breaking-changes)
+  - [v3 breaking changes](#v3-breaking-changes)
 - [:warning: Important note](#warning-important-note)
 - [Usage](#usage)
   - [:rocket: Quick start](#rocket-quick-start)
