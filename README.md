@@ -41,6 +41,7 @@ Use the following version of wdio-cucumber-steps depending on your WDIO version:
 | v0                          | v4           |                                                                                               |
 | v1                          | v6           | Major rewrite: TypeScript, promise-based, named exports and expect rather than chai. Node 12. |
 | v2                          | v7           | Cucumber is now @cucumber/cucumber. Node 14.                                                  |
+| v3                          | v8           |  Node 18.                                                  |
 
 Further details on the breaking changes are listed below.
 
