@@ -1,6 +1,6 @@
 {
   "name": "@nice-digital/wdio-cucumber-steps",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Shared step definitions for Cucumber JS BDD tests in WebdriverIO",
   "main": "lib/index.js",
   "scripts": {
