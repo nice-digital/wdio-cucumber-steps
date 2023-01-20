@@ -8,6 +8,7 @@
 - [Which version do I need?](#which-version-do-i-need)
   - [v1 breaking changes](#v1-breaking-changes)
   - [v2 breaking changes](#v2-breaking-changes)
+  - [v3 breaking changes](#v3-breaking-changes)
 - [:warning: Important note](#warning-important-note)
 - [Usage](#usage)
   - [:rocket: Quick start](#rocket-quick-start)
@@ -40,6 +41,7 @@ Use the following version of wdio-cucumber-steps depending on your WDIO version:
 | v0                          | v4           |                                                                                               |
 | v1                          | v6           | Major rewrite: TypeScript, promise-based, named exports and expect rather than chai. Node 12. |
 | v2                          | v7           | Cucumber is now @cucumber/cucumber. Node 14.                                                  |
+| v3                          | v8           |  Node 18.                                                  |
 
 Further details on the breaking changes are listed below.
 
@@ -76,6 +78,13 @@ The down side of this is that feature files can quickly become implementation-fo
 
 This means it's easy to write scenarios like `When I click the button "#signin"` where `When I login` is probably better. Writing behavioural scenarios usually means writing more custom step definitions. Consider importing the _lib/support_ actions/check modules into custom step definitions in preference to using the built in step definitions directly.
 
+### v3 breaking changes
+
+Version 3 targets WebDriverIO v8 and Node 18+.
+
+The only breaking change for us that we've noticed is the difference in the `scrollIntoView` function that has some changes in implementation.  These can be seen here [version 8](https://github.com/webdriverio/webdriverio/blob/v8.1.3/packages/webdriverio/src/commands/element/scrollIntoView.ts) and [version 7](https://github.com/webdriverio/webdriverio/blob/v7.20.9/packages/webdriverio/src/commands/element/scrollIntoView.ts).
+
+
 ## Usage
 
 ### :rocket: Quick start
@@ -86,10 +95,10 @@ Or to install wdio-cucumber-steps into an existing testing project, follow the s
 
 ### :turtle: Slow start
 
-Install Node 14 LTS. Then install _@nice-digital/wdio-cucumber-steps_ via npm, along with required dependencies:
+Install Node 18 LTS. Then install _@nice-digital/wdio-cucumber-steps_ via npm, along with required dependencies:
 
 ```sh
-npm i @nice-digital/wdio-cucumber-steps@1 expect expect-webdriverio --save-dev
+npm i @nice-digital/wdio-cucumber-steps@3 expect expect-webdriverio --save-dev
 ```
 
 Then add _node_modules/@nice-digital/wdio-cucumber-steps/lib_ into `cucumberOpts.requre` in _wdio.conf.js_:
@@ -100,7 +109,7 @@ exports.config = {
   cucumberOpts: {
     require: [
 			'./src/steps/index.js',
-+			'./node_modules/@nice-digital/wdio-cucumber-steps/lib'
++			'./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js'
 		],
   },
 };
@@ -182,6 +191,10 @@ This stops the running browser and gives you time to inspect the browser using d
 > If you run the WDIO testrunner make sure you increase the timeout property of the test framework you are using (e.g. Mocha or Jasmine) in order to prevent test termination due to a test timeout. Also avoid executing the command with multiple capabilities running at the same time.
 
 Our [frontend-testing-base](https://github.com/nice-digital/frontend-testing-base) project use cucumber, so the timeout property is `cucumberOpts.timeout` inside _wdio.conf.js_.
+
+#### Debugging in VSCode
+
+I found this [video](https://webdriver.io/docs/debugging/) a good introduction to debugging in vscode.
 
 ### npm linking
 

@@ -1,10 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "webdriverio/async", "expect-webdriverio", "jest"],
-    "composite": true,
-    "noEmit": false,
-    "rootDir": "./",
     "outDir": "../lib-tests",
     "baseUrl": ".",
     "paths": {

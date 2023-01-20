@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "webdriverio/async", "expect-webdriverio", "jest"],
+    "types": ["node", "@wdio/globals/types", "expect-webdriverio", "jest"],
     "composite": true,
     "noEmit": false,
     "rootDir": "./",

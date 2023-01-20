@@ -9,7 +9,7 @@
     "strict": true,
     "allowJs": true,
     "checkJs": false,
-    "noEmit": true,
+    "noEmit": false,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node", "webdriverio/async", "expect-webdriverio", "jest"],
+    "types": ["node", "@wdio/globals/types", "expect-webdriverio", "jest"],
+    "composite": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
