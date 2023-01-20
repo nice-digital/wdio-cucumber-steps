@@ -98,7 +98,7 @@ Or to install wdio-cucumber-steps into an existing testing project, follow the s
 Install Node 18 LTS. Then install _@nice-digital/wdio-cucumber-steps_ via npm, along with required dependencies:
 
 ```sh
-npm i @nice-digital/wdio-cucumber-steps@1 expect expect-webdriverio --save-dev
+npm i @nice-digital/wdio-cucumber-steps@3 expect expect-webdriverio --save-dev
 ```
 
 Then add _node_modules/@nice-digital/wdio-cucumber-steps/lib_ into `cucumberOpts.requre` in _wdio.conf.js_:
