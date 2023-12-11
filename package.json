@@ -58,11 +58,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@wdio/cucumber-framework": "^8.0.0",
-    "@cucumber/cucumber": "^8.0.0"
+    "@cucumber/cucumber": "^9.6.0",
+    "@wdio/cucumber-framework": "^8.0.0"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^8.10.0",
+    "@cucumber/cucumber": "^9.6.0",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.2",
     "@types/node": "^14.17.20",
