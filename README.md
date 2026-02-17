@@ -84,6 +84,7 @@ Version 3 targets WebDriverIO v8 and Node 18+.
 
 The only breaking change for us that we've noticed is the difference in the `scrollIntoView` function that has some changes in implementation.  These can be seen here [version 8](https://github.com/webdriverio/webdriverio/blob/v8.1.3/packages/webdriverio/src/commands/element/scrollIntoView.ts) and [version 7](https://github.com/webdriverio/webdriverio/blob/v7.20.9/packages/webdriverio/src/commands/element/scrollIntoView.ts).
 
+**NOTE:** Version 3.1 still targets WebDriverIO v8 and Node 18+, peer dependency ranges for @cucumber/cucumber have been bumped to include v9.  This was updated as part of ongoing maintenance and vulnerability mitigation.
 
 ## Usage
 
@@ -105,12 +106,12 @@ Then add _node_modules/@nice-digital/wdio-cucumber-steps/lib_ into `cucumberOpts
 
 ```diff
 exports.config = {
-	...
+ ...
   cucumberOpts: {
     require: [
-			'./src/steps/index.js',
-+			'./node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js'
-		],
+   './src/steps/index.js',
++   './node_modules/@nice-digital/wdio-cucumber-steps/lib/index.js'
+  ],
   },
 };
 ```
@@ -299,7 +300,7 @@ Step | Summary
 `/^I select the option with the (name\|value\|text) "([^"]*)?" for element "([^"]*)?"$/` | Select a option based on its name, value or visible text
 `/^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/` | Move the mouse by an (optional) offset of the specified element
 `/^I refresh$/` | Refresh the current page
-`/^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables 
+`/^I log in to Accounts via TopHat with username "([A-Z0-9_]+)" and password "([A-Z0-9_]+)"$/` | Use TopHat in your application to log into Nice accounts. Username and Password should be names of environment variables
 `/^I focus on the element "([^"]+)"$/` | Move focus to the given element
 `/^I accept all cookies$/` | Accept all cookies using the NICE cookie banner
 <!-- END when generated comment -->
